@@ -11,8 +11,14 @@ colorscheme horizon
 let g:lightline = {'colorscheme' : 'horizon'}
 
 " Robot syntax highlight
-highlight link robotKEYWORD PreProc
-highlight robotARGUMENT cterm=underline
+highlight link robotSETUP           Statement
+highlight link robotTEARDOWN        Statement
+highlight link robotTEMPLATE        Statement
+highlight link robotARGUMENTS       Statement
+highlight link robotTAGS            Statement
+highlight link robotKEYWORD         Function
+highlight link robotASSIGN          Type
+highlight link robotCOMMENT         Comment
 
 set smartindent
 set shell=bash\ -i
