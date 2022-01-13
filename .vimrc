@@ -19,6 +19,7 @@ highlight link robotTAGS            Statement
 highlight link robotKEYWORD         Function
 highlight link robotASSIGN          Type
 highlight link robotCOMMENT         Comment
+highlight link robotCONTINUATION    Special
 
 set smartindent
 set shell=bash\ -i
@@ -66,6 +67,7 @@ augroup robot
     autocmd BufWritePre *.robot :%s/\s\+$//e
 augroup cplusplus
     autocmd!
+    autocmd FileType cpp set noexpandtab
     autocmd FileType cpp nnoremap <buffer> <localleader>c I//<esc>
 augroup END
 augroup html
