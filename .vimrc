@@ -11,13 +11,15 @@ colorscheme horizon
 let g:lightline = {'colorscheme' : 'horizon'}
 
 " Robot syntax highlight
-highlight link robotSETUP           Statement
-highlight link robotTEARDOWN        Statement
-highlight link robotTEMPLATE        Statement
-highlight link robotARGUMENTS       Statement
-highlight link robotTAGS            Statement
+highlight link robotSETUP           Include
+highlight link robotTEARDOWN        Include
+highlight link robotTEMPLATE        Include
+highlight link robotARGUMENTS       Include
+highlight link robotTAGS            Include
 highlight link robotKEYWORD         Function
 highlight link robotASSIGN          Type
+highlight link robotFOR             Statement
+highlight link robotEND             Statement
 highlight link robotCOMMENT         Comment
 highlight link robotCONTINUATION    Special
 
@@ -69,6 +71,7 @@ augroup cplusplus
     autocmd!
     autocmd FileType cpp set noexpandtab
     autocmd FileType cpp nnoremap <buffer> <localleader>c I//<esc>
+    autocmd BufWritePre *.cpp,*.h,*.hpp :%s/\s\+$//e
 augroup END
 augroup html
     autocmd!
