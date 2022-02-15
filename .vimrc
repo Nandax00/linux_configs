@@ -3,12 +3,18 @@ execute pathogen#helptags()
 syntax on
 filetype plugin indent on
 
-set termguicolors
+if has('termguicolors')
+    set termguicolors
+endif
 
-colorscheme horizon
+set background=dark
+let g:gruvbox_material_background = 'hard'
+let g:gruvbox_material_enable_italic = 1
+let g:gruvbox_material_ui_contrast = 'high'
+colorscheme gruvbox-material
 
 " lightline
-let g:lightline = {'colorscheme' : 'horizon'}
+let g:lightline = {'colorscheme' : 'gruvbox_material'}
 
 " Robot syntax highlight
 highlight link robotSETUP           Include
