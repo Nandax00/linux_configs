@@ -77,7 +77,7 @@ augroup cplusplus
     autocmd!
     autocmd FileType cpp set noexpandtab
     autocmd FileType cpp nnoremap <buffer> <localleader>c I//<esc>
-    autocmd BufWritePre *.cpp,*.h,*.hpp :%s/\s\+$//e
+    " autocmd BufWritePre *.cpp,*.h,*.hpp :%s/\s\+$//e
 augroup END
 augroup html
     autocmd!
@@ -95,13 +95,15 @@ inoremap <leader><c-u> <esc>viwU<esc>ea
 inoremap jk <esc>
 
 " Normal mode mappings
-nnoremap <leader><c-u>  viwU<esc>e
-nnoremap <leader>ev     :vsplit ~/.vimrc<CR>
-nnoremap <leader>sv     :source $MYVIMRC<CR>
-" Copies the path of the current file to the clipboard
-nnoremap <leader>pwd    :let @+=expand("%:p")<CR>
-" Trim trailing whitespace
-nnoremap <leader>tr     :%s/\s\+$//e<CR>
+nnoremap <leader><c-u>      viwU<esc>e
+"   Open file under the cursor, move split to the right
+nnoremap <leader>wf         <c-w>f<c-w>L
+nnoremap <leader>ev         :vsplit ~/.vimrc<CR>
+nnoremap <leader>sv         :source $MYVIMRC<CR>
+"   Copies the path of the current file to the clipboard
+nnoremap <leader>pwd        :let @+=expand("%:p")<CR>
+"   Trim trailing whitespace
+nnoremap <leader>tr         :%s/\s\+$//e<CR>
 
 " Visual mode mappings
 vnoremap <leader>" <esc>`<i"<esc>`>a"<esc>v
