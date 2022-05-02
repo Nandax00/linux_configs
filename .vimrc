@@ -16,6 +16,9 @@ colorscheme gruvbox-material
 " lightline
 let g:lightline = {'colorscheme' : 'gruvbox_material'}
 
+" YouCompleteMe
+let g:ycm_goto_buffer_command = "split"
+
 " Robot syntax highlight
 highlight link robotSETUP           Include
 highlight link robotTEARDOWN        Include
@@ -28,6 +31,8 @@ highlight link robotFOR             Statement
 highlight link robotEND             Statement
 highlight link robotCOMMENT         Comment
 highlight link robotCONTINUATION    Special
+highlight link TrailingWhitespace   ErrorFloat
+match TrailingWhitespace /\s\+$/
 
 set smartindent
 set shell=bash\ -i
@@ -76,6 +81,7 @@ augroup robot
 augroup cplusplus
     autocmd!
     autocmd FileType cpp set noexpandtab
+    autocmd FileType cpp set colorcolumn=100
     autocmd FileType cpp nnoremap <buffer> <localleader>c I//<esc>
     " autocmd BufWritePre *.cpp,*.h,*.hpp :%s/\s\+$//e
 augroup END
@@ -87,7 +93,7 @@ augroup END
 augroup markdown
     autocmd!
     autocmd FileType markdown onoremap <buffer> ih :<c-u>execute "normal! ?^\\(==\\+\\\\|--\\+\\)$\r:nohlsearch\rkvg_"<cr>
-	autocmd FileType markdown onoremap <buffer> ah :<c-u>execute "normal! ?^\\(==\\+\\\\|--\\+\\)$\r:nohlsearch\rg_vk0"<cr>
+    autocmd FileType markdown onoremap <buffer> ah :<c-u>execute "normal! ?^\\(==\\+\\\\|--\\+\\)$\r:nohlsearch\rg_vk0"<cr>
 augroup END
 
 " Insert mode mappings
@@ -95,6 +101,8 @@ inoremap <leader><c-u> <esc>viwU<esc>ea
 inoremap jk <esc>
 
 " Normal mode mappings
+nnoremap <leader>gd :YcmCompleter GoTo<CR>
+nnoremap <leader>gr :YcmCompleter GoToReferences<CR>
 nnoremap <leader><c-u>      viwU<esc>e
 "   Open file under the cursor, move split to the right
 nnoremap <leader>wf         <c-w>f<c-w>L
