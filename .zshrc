@@ -1,15 +1,14 @@
 zstyle :compinstall filename '/home/nandax/.zshrc'
 
-autoload -Uz compinit promptinit vcs_info
+autoload -Uz compinit
 compinit
-promptinit
-vcs_info
 
 export CINEMO_TOOLCHAINS=/opt/cinemo/toolchains
 HISTFILE=~/.zsh_history
 HISTSIZE=10000000
 SAVEHIST=10000000
 unsetopt beep
+setopt PROMPT_SUBST
 
 alias ls='ls --color=auto'
 alias ll='ls -lah'
@@ -39,14 +38,9 @@ mkcd() {
     cd $1
 }
 
-prompt_theme_setup() {
-    # Format the vcs_info_msg_0_ variable
-    zstyle ':vcs_info:git:*' formats '%b'
-    PS1="%f[%F{yellow}%?%f] %F{red}%n%F{cyan}@%F{red}%m %F{cyan}> %f"
-    RPS1="%f[%F{yellow}${vcs_info_msg_0_}%f] %F{green}%~"
+parse_git_branch() {
+    git symbolic-ref --short HEAD 2> /dev/null
 }
 
-prompt_themes+=( theme )
-
-prompt theme
-
+PS1='%f[%F{yellow}%?%f] %F{red}%n%F{cyan}@%F{red}%m %F{cyan}> %f'
+RPS1='%f[%F{yellow}$(parse_git_branch)%f] %F{green}%~'
