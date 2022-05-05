@@ -7,6 +7,14 @@ if has('termguicolors')
     set termguicolors
 endif
 
+let mapleader="-"
+let maplocalleader=","
+
+" netrw
+let g:netrw_banner = 0
+let g:netrw_winsize = 30
+
+" theme
 set background=dark
 let g:gruvbox_material_background = 'hard'
 let g:gruvbox_material_enable_italic = 1
@@ -18,6 +26,13 @@ let g:lightline = {'colorscheme' : 'gruvbox_material'}
 
 " YouCompleteMe
 let g:ycm_goto_buffer_command = "split"
+
+" PYMODE SETTINGS
+let g:pymode = 1
+let g:pymode_options = 1
+let g:pymode_options_colorcolumn = 1
+" Sets the terminal window's scroolback buffer size
+let g:terminal_scrollback_buffer_size = 100000
 
 " Robot syntax highlight
 highlight link robotSETUP           Include
@@ -56,16 +71,6 @@ set wildmode=longest:full
 set wildmenu
 set colorcolumn=80
 
-" PYMODE SETTINGS
-let g:pymode = 1
-let g:pymode_options = 1
-let g:pymode_options_colorcolumn = 1
-" Sets the terminal window's scroolback buffer size
-let g:terminal_scrollback_buffer_size = 100000
-
-let mapleader="-"
-let maplocalleader=","
-
 augroup python
     autocmd!
     autocmd FileType python setlocal nowrap
@@ -95,6 +100,15 @@ augroup markdown
     autocmd FileType markdown onoremap <buffer> ih :<c-u>execute "normal! ?^\\(==\\+\\\\|--\\+\\)$\r:nohlsearch\rkvg_"<cr>
     autocmd FileType markdown onoremap <buffer> ah :<c-u>execute "normal! ?^\\(==\\+\\\\|--\\+\\)$\r:nohlsearch\rg_vk0"<cr>
 augroup END
+augroup netrw
+    autocmd!
+    " Open a file from netrw
+    autocmd FileType netrw nnoremap <buffer> l <CR>
+    " Open a file from netrw and close netrw
+    autocmd FileType netrw nnoremap <buffer> L <CR>:Lexplore<CR>
+    " Close preview (opened by `p`)
+    autocmd FileType netrw nnoremap <buffer> P <C-w>z
+augroup END
 
 " Insert mode mappings
 inoremap <leader><c-u> <esc>viwU<esc>ea
@@ -112,6 +126,10 @@ nnoremap <leader>sv         :source $MYVIMRC<CR>
 nnoremap <leader>pwd        :let @+=expand("%:p")<CR>
 "   Trim trailing whitespace
 nnoremap <leader>tr         :%s/\s\+$//e<CR>
+"   Browse working directory
+nnoremap <leader>bw         :Lexplore<CR>
+"   Browse current directory of the file
+nnoremap <leader>bc         :Lexplore %:p:h<CR>
 
 " Visual mode mappings
 vnoremap <leader>" <esc>`<i"<esc>`>a"<esc>v
