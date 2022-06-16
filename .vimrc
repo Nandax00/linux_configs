@@ -115,8 +115,8 @@ inoremap <leader><c-u> <esc>viwU<esc>ea
 inoremap jk <esc>
 
 " Normal mode mappings
-nnoremap <leader>gd :YcmCompleter GoTo<CR>
-nnoremap <leader>gr :YcmCompleter GoToReferences<CR>
+nnoremap <leader>gd         :rightbelow vertical YcmCompleter GoTo<CR>
+nnoremap <leader>gr         :YcmCompleter GoToReferences<CR>
 nnoremap <leader><c-u>      viwU<esc>e
 "   Open file under the cursor, move split to the right
 nnoremap <leader>wf         <c-w>f<c-w>L

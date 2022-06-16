@@ -39,6 +39,12 @@ mkcd() {
     cd $1
 }
 
+diff-clang-format() {
+    file=/tmp/diff.cpp
+    clang-format --assume-filename=.clang-format $1 > $file
+    nvim -d $file $1
+}
+
 prompt_theme_setup() {
     parse_git_branch() {
         git symbolic-ref --short HEAD 2> /dev/null
