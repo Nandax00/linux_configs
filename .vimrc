@@ -105,7 +105,7 @@ augroup netrw
     " Open a file from netrw
     autocmd FileType netrw nnoremap <buffer> l <CR>
     " Open a file from netrw and close netrw
-    autocmd FileType netrw nnoremap <buffer> L <CR>:Lexplore<CR>
+    autocmd FileType netrw nmap <buffer> L <CR>:Lexplore<CR>
     " Close preview (opened by `p`)
     autocmd FileType netrw nnoremap <buffer> P <C-w>z
 augroup END
@@ -115,6 +115,7 @@ inoremap <leader><c-u> <esc>viwU<esc>ea
 inoremap jk <esc>
 
 " Normal mode mappings
+nnoremap qq                 :nohlsearch<CR>
 nnoremap <leader>gd         :rightbelow vertical YcmCompleter GoTo<CR>
 nnoremap <leader>gr         :YcmCompleter GoToReferences<CR>
 nnoremap <leader><c-u>      viwU<esc>e
