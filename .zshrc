@@ -29,6 +29,7 @@ alias cs='cd ~/repos/cinemo/src'
 alias ca='cd ~/repos/cinemo-audio'
 alias gs='git status'
 alias cal='cal -m'
+alias vim='nvim'
 
 bindkey -v
 bindkey '^R' history-incremental-search-backward
@@ -49,7 +50,7 @@ prompt_theme_setup() {
     parse_git_branch() {
         git symbolic-ref --short HEAD 2> /dev/null
     }
-    PS1='%f[%F{yellow}%?%f] %F{red}%n%F{cyan}@%F{red}%m %F{cyan}> %f'
+    PS1='%f[%F{yellow}%?%f] %F{red}%n%F{cyan}@%F{green}%m %F{cyan}> %f'
     RPS1='%f[%F{yellow}$(parse_git_branch)%f] %F{green}%~'
 }
 
