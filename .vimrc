@@ -70,6 +70,7 @@ set tabpagemax=100
 set wildmode=longest:full
 set wildmenu
 set colorcolumn=80
+set splitbelow
 
 augroup python
     autocmd!
@@ -80,13 +81,13 @@ augroup python
 augroup END
 augroup robot
     autocmd!
-    autocmd BufNewFile,BufRead *.robot set filetype=robot
+    autocmd BufNewFile,BufRead *.robot setlocal filetype=robot
     autocmd FileType robot nnoremap <buffer> <localleader>c I# <esc>
     autocmd BufWritePre *.robot :%s/\s\+$//e
 augroup cplusplus
     autocmd!
-    autocmd FileType cpp set noexpandtab
-    autocmd FileType cpp set colorcolumn=100
+    autocmd FileType cpp setlocal noexpandtab
+    autocmd FileType cpp setlocal colorcolumn=100
     autocmd FileType cpp nnoremap <buffer> <localleader>c I//<esc>
     " autocmd BufWritePre *.cpp,*.h,*.hpp :%s/\s\+$//e
 augroup END
@@ -97,6 +98,8 @@ augroup html
 augroup END
 augroup markdown
     autocmd!
+    autocmd FileType markdown setlocal shiftwidth=2
+    autocmd FileType markdown setlocal tabstop=2
     autocmd FileType markdown onoremap <buffer> ih :<c-u>execute "normal! ?^\\(==\\+\\\\|--\\+\\)$\r:nohlsearch\rkvg_"<cr>
     autocmd FileType markdown onoremap <buffer> ah :<c-u>execute "normal! ?^\\(==\\+\\\\|--\\+\\)$\r:nohlsearch\rg_vk0"<cr>
 augroup END
@@ -108,6 +111,14 @@ augroup netrw
     autocmd FileType netrw nmap <buffer> L <CR>:Lexplore<CR>
     " Close preview (opened by `p`)
     autocmd FileType netrw nnoremap <buffer> P <C-w>z
+augroup END
+augroup godot
+    autocmd!
+    autocmd FileType gdscript setlocal foldmethod=expr
+    autocmd FileType gdscript setlocal tabstop=4
+    autocmd FileType gdscript setlocal foldlevel=99
+    autocmd FileType gdscript nnoremap <buffer> <localleader>r :GodotRun<CR>
+    autocmd FileType gdscript nnoremap <buffer> <localleader>c :GodotRunCurrent<CR>
 augroup END
 
 " Insert mode mappings

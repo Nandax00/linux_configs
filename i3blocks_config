@@ -52,9 +52,6 @@ interval=1
 signal=1
 STEP=10%
 
-# Memory usage
-#
-# The type defaults to "mem" if the instance is not specified.
 [xkb_layout]
 font=mononoki
 font_weight=bold
