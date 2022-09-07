@@ -1,5 +1,3 @@
-zstyle :compinstall filename '/home/nandax/.zshrc'
-
 autoload -Uz compinit promptinit
 compinit
 promptinit
@@ -17,11 +15,6 @@ alias remote='pip install -i \
     https://artifactory.internal.cinemo.com/artifactory/api/pypi/pypi/simple \
     --find-links ../robot/target_lib/whls/dist ../robot/target_lib \
     ../robot/host_lib && ../robot/scripts/remote/remote.sh'
-alias s_venv='s_venv38'
-alias s_venv38='source ./.env38/bin/activate'
-alias s_venv310='source ./.env310/bin/activate'
-alias g_venv38='python3.8 -m venv ./.env38 && s_venv'
-alias g_venv310='python3.10 -m venv ./.env310 && s_venv310'
 alias r='cd ~/repos/robot'
 alias t='cd ~/repos/tests'
 alias c='cd ~/repos/cinemo'
@@ -34,11 +27,6 @@ alias vim='nvim'
 bindkey -v
 bindkey '^R' history-incremental-search-backward
 bindkey 'jk' vi-cmd-mode
-
-mkcd() {
-    mkdir $1
-    cd $1
-}
 
 diff-clang-format() {
     file=/tmp/diff.cpp
@@ -91,6 +79,18 @@ key[Shift-Tab]="${terminfo[kcbt]}"
 [[ -n "${key[PageUp]}"    ]] && bindkey -- "${key[PageUp]}"     beginning-of-buffer-or-history
 [[ -n "${key[PageDown]}"  ]] && bindkey -- "${key[PageDown]}"   end-of-buffer-or-history
 [[ -n "${key[Shift-Tab]}" ]] && bindkey -- "${key[Shift-Tab]}"  reverse-menu-complete
+
+bindkey "^[." insert-last-word
+bindkey "^[0" digit-argument
+bindkey "^[1" digit-argument
+bindkey "^[2" digit-argument
+bindkey "^[3" digit-argument
+bindkey "^[4" digit-argument
+bindkey "^[5" digit-argument
+bindkey "^[6" digit-argument
+bindkey "^[7" digit-argument
+bindkey "^[8" digit-argument
+bindkey "^[9" digit-argument
 
 # Finally, make sure the terminal is in application mode, when zle is
 # active. Only then are the values from $terminfo valid.
