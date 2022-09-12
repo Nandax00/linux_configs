@@ -16,8 +16,8 @@ set $mod Mod4
 font pango:mononoki 12
 
 # Window settings
-new_window pixel 1
-client.focused #4c7e99 #4c5799 #ffffff #674c99 #4c5799
+default_border normal 1
+client.focused #3243a3 #4c5799 #ffffff #8d4c99 #4c5799
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -90,7 +90,7 @@ bindsym $mod+Shift+less move workspace to output left
 bindsym $mod+Shift+greater move workspace to output right
 
 # split in horizontal orientation
-bindsym $mod+m split h
+bindsym $mod+c split h
 
 # split in vertical orientation
 bindsym $mod+v split v
@@ -196,10 +196,11 @@ bar {
         statusline #ffffff
         separator #666666
 
-        focused_workspace  #4c7e99 #4c5799 #ffffff
+        focused_workspace  #3243a3 #4c5799 #ffffff
     }
 }
 
+bindsym $mod+i exec --no-startup-id i3lock -i /home/nandax/Downloads/02095d35491b71499466b083a1dacf0b.C_KSAD1.JPG &
 bindsym $mod+x [urgent=latest] focus
 bindsym $mod+F9 exec /home/nandax/.config/i3/video_player.py
 bindsym $mod+Print exec /usr/bin/flameshot gui

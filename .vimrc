@@ -12,7 +12,6 @@ let maplocalleader=","
 
 " netrw
 let g:netrw_banner = 0
-let g:netrw_winsize = 30
 
 " theme
 set background=dark
@@ -71,6 +70,7 @@ set wildmode=longest:full
 set wildmenu
 set colorcolumn=80
 set splitbelow
+set startofline
 
 augroup python
     autocmd!
@@ -128,6 +128,7 @@ inoremap jk <esc>
 " Normal mode mappings
 nnoremap qq                 :nohlsearch<CR>
 nnoremap <leader>gd         :rightbelow vertical YcmCompleter GoTo<CR>
+nnoremap <leader>gD         :tab YcmCompleter GoTo<CR>
 nnoremap <leader>gr         :YcmCompleter GoToReferences<CR>
 nnoremap <leader><c-u>      viwU<esc>e
 "   Open file under the cursor, move split to the right
