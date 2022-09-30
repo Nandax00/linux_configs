@@ -71,6 +71,7 @@ set wildmenu
 set colorcolumn=80
 set splitbelow
 set startofline
+set scrolloff=5
 
 augroup python
     autocmd!
@@ -130,6 +131,7 @@ nnoremap qq                 :nohlsearch<CR>
 nnoremap <leader>gd         :rightbelow vertical YcmCompleter GoTo<CR>
 nnoremap <leader>gD         :tab YcmCompleter GoTo<CR>
 nnoremap <leader>gr         :YcmCompleter GoToReferences<CR>
+nnoremap <leader>pd         :YcmDiags<CR><C-W>k
 nnoremap <leader><c-u>      viwU<esc>e
 "   Open file under the cursor, move split to the right
 nnoremap <leader>wf         <c-w>f<c-w>L
