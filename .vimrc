@@ -24,7 +24,12 @@ let g:gruvbox_material_statusline_style = 'original'
 colorscheme gruvbox-material
 
 " lightline
-let g:lightline = {'colorscheme' : 'gruvbox_material'}
+let g:lightline = {
+	\ 'colorscheme' : 'gruvbox_material',
+	\ 'component': {
+	\   'lineinfo': '%3l:%-2c%-2V'
+	\ },
+\ }
 
 " YouCompleteMe
 let g:ycm_goto_buffer_command = "split"
@@ -123,7 +128,8 @@ augroup godot
     autocmd FileType gdscript setlocal tabstop=4
     autocmd FileType gdscript setlocal foldlevel=99
     autocmd FileType gdscript nnoremap <buffer> <localleader>r :GodotRun<CR>
-    autocmd FileType gdscript nnoremap <buffer> <localleader>c :GodotRunCurrent<CR>
+    autocmd FileType gdscript nnoremap <buffer> <localleader>t :GodotRunCurrent<CR>
+    autocmd FileType gdscript nnoremap <buffer> <localleader>c I# <esc>
 augroup END
 
 " Insert mode mappings
