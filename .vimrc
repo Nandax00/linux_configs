@@ -12,12 +12,15 @@ let maplocalleader=","
 
 " netrw
 let g:netrw_banner = 0
+let g:netrw_winsize = 0
 
 " theme
 set background=dark
-let g:gruvbox_material_background = 'hard'
-let g:gruvbox_material_enable_italic = 1
+let g:gruvbox_material_background = 'medium'
 let g:gruvbox_material_ui_contrast = 'high'
+let g:gruvbox_material_foreground = 'original'
+let g:gruvbox_material_sign_column_background = 'grey'
+let g:gruvbox_material_statusline_style = 'original'
 colorscheme gruvbox-material
 
 " lightline
