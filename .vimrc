@@ -75,6 +75,7 @@ set colorcolumn=80
 set splitbelow
 set startofline
 set scrolloff=5
+set noshowmode
 
 augroup python
     autocmd!
