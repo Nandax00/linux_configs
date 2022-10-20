@@ -41,21 +41,6 @@ let g:pymode_options_colorcolumn = 1
 " Sets the terminal window's scroolback buffer size
 let g:terminal_scrollback_buffer_size = 100000
 
-" Robot syntax highlight
-highlight link robotSETUP           Include
-highlight link robotTEARDOWN        Include
-highlight link robotTEMPLATE        Include
-highlight link robotARGUMENTS       Include
-highlight link robotTAGS            Include
-highlight link robotKEYWORD         Function
-highlight link robotASSIGN          Type
-highlight link robotFOR             Statement
-highlight link robotEND             Statement
-highlight link robotCOMMENT         Comment
-highlight link robotCONTINUATION    Special
-highlight link TrailingWhitespace   ErrorFloat
-match TrailingWhitespace /\s\+$/
-
 set smartindent
 set shell=bash\ -i
 set mouse=a
@@ -81,6 +66,28 @@ set splitbelow
 set startofline
 set scrolloff=5
 set noshowmode
+
+" Line number customization
+set cursorline
+highlight clear CursorLine
+highlight CursorLineNr guifg=#fb4934 guibg=#45403d
+
+" Robot syntax highlight
+highlight link robotSETUP           Include
+highlight link robotTEARDOWN        Include
+highlight link robotTEMPLATE        Include
+highlight link robotARGUMENTS       Include
+highlight link robotTAGS            Include
+highlight link robotKEYWORD         Function
+highlight link robotASSIGN          Type
+highlight link robotFOR             Statement
+highlight link robotEND             Statement
+highlight link robotCOMMENT         Comment
+highlight link robotCONTINUATION    Special
+
+" Highlight trailing whitespaces across all files
+highlight link TrailingWhitespace   ErrorFloat
+match TrailingWhitespace /\s\+$/
 
 augroup python
     autocmd!
