@@ -39,7 +39,7 @@ prompt_theme_setup() {
         git symbolic-ref --short HEAD 2> /dev/null | head -c 40 |
             rev | cut -d '-' -f 2- | rev
     }
-    PS1='%f[%F{yellow}%?%f] %F{red}%n%F{cyan}@%F{green}%m %F{cyan}> %f'
+    PS1='%f[%F{yellow}%(?.+.-)%f] %F{cyan}@%F{green}%m %F{cyan}> %f'
     RPS1='%f[%F{yellow}$(parse_git_branch)%f] %F{green}%~'
 }
 
