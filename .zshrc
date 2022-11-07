@@ -15,8 +15,9 @@ alias remote='pip install -i \
     https://artifactory.internal.cinemo.com/artifactory/api/pypi/pypi/simple \
     --find-links ../robot/target_lib/whls/dist ../robot/target_lib \
     ../robot/host_lib && ../robot/scripts/remote/remote.sh'
+alias p='cd /mnt/storage/projects'
+alias t='cd /mnt/storage/projects/TemaProject'
 alias r='cd ~/repos/robot'
-alias t='cd ~/repos/tests'
 alias c='cd ~/repos/cinemo'
 alias cs='cd ~/repos/cinemo/src'
 alias ca='cd ~/repos/cinemo-audio'
@@ -39,7 +40,7 @@ prompt_theme_setup() {
         git symbolic-ref --short HEAD 2> /dev/null | head -c 40 |
             rev | cut -d '-' -f 2- | rev
     }
-    PS1='%f[%F{yellow}%(?.+.-)%f] %F{cyan}@%F{green}%m %F{cyan}> %f'
+    PS1='%f[%F{yellow}%(?.+.-)%f] %F{5}%m %F{cyan}> %f'
     RPS1='%f[%F{yellow}$(parse_git_branch)%f] %F{green}%~'
 }
 
