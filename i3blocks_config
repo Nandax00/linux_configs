@@ -40,17 +40,19 @@ instance=%any
 interval=5
 signal=10
 
-# Volume indicator
-#
-# The first parameter sets the step (and units to display)
-# The second parameter overrides the mixer selection
-# See the script for details.
-
-[volume]
-label=♪
-interval=1
+[volume-pulseaudio]
+interval=persist
 signal=1
-STEP=10%
+LONG_FORMAT="${SYMB} ${VOL}% [${INDEX}:${NAME}]"
+AUDIO_HIGH_SYMBOL=
+AUDIO_MED_THRESH=50
+AUDIO_MED_SYMBOL=
+AUDIO_LOW_THRESH=0
+AUDIO_LOW_SYMBOL=
+AUDIO_DELTA=5
+DEFAULT_COLOR="#ffffff"
+MUTED_COLOR="#a0a0a0"
+SUBSCRIBE=1
 
 [xkb_layout]
 font=mononoki
@@ -81,25 +83,6 @@ COLOR_NORMAL=#EBDBB2
 COLOR_WARN=#FFFC00
 COLOR_CRIT=#FF0000
 #separator=false
-
-# Network interface monitoring
-#
-# If the instance is not specified, use the interface used for default route.
-# The address can be forced to IPv4 or IPv6 with -4 or -6 switches.
-#[iface]
-##IFACE=wlan0
-#color=#00FF00
-#interval=10
-#separator=false
-
-[bandwidth]
-#INTERFACE=eth0
-interval=5
-
-
-#[load_average]
-#label=LOAD
-#interval=10
 
 # Date Time
 #
