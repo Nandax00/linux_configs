@@ -42,7 +42,9 @@ signal=10
 
 [volume-pulseaudio]
 interval=persist
-signal=1
+signal=10
+MIXER="pulse"
+SCONTROL="Master"
 LONG_FORMAT="${SYMB} ${VOL}% [${INDEX}:${NAME}]"
 AUDIO_HIGH_SYMBOL=
 AUDIO_MED_THRESH=50
@@ -50,6 +52,7 @@ AUDIO_MED_SYMBOL=
 AUDIO_LOW_THRESH=0
 AUDIO_LOW_SYMBOL=
 AUDIO_DELTA=5
+USE_ALSA_NAME=1
 DEFAULT_COLOR="#ffffff"
 MUTED_COLOR="#a0a0a0"
 SUBSCRIBE=1
