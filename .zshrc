@@ -10,20 +10,20 @@ unsetopt beep
 setopt PROMPT_SUBST
 
 alias ls='ls --color=auto'
+alias ip='ip -color=auto'
+alias grep='grep --color=auto'
 alias ll='ls -lah'
-alias remote='pip install -i \
-    https://artifactory.internal.cinemo.com/artifactory/api/pypi/pypi/simple \
-    --find-links ../robot/target_lib/whls/dist ../robot/target_lib \
-    ../robot/host_lib && ../robot/scripts/remote/remote.sh'
+alias gs='git status'
+alias cal='cal -m'
+alias vim='nvim'
+export LESS='-R --use-color -Dd+r$Du+b'
+
 alias p='cd /mnt/storage/projects'
 alias t='cd /mnt/storage/projects/TemaProject'
 alias r='cd ~/repos/robot'
 alias c='cd ~/repos/cinemo'
 alias cs='cd ~/repos/cinemo/src'
 alias ca='cd ~/repos/cinemo-audio'
-alias gs='git status'
-alias cal='cal -m'
-alias vim='nvim'
 
 bindkey -v
 bindkey '^R' history-incremental-search-backward

@@ -12,7 +12,7 @@ let maplocalleader=","
 
 " netrw
 let g:netrw_banner = 0
-let g:netrw_winsize = 0
+let g:netrw_winsize = 30
 
 " theme
 set background=dark
