@@ -41,7 +41,7 @@ Install GPU drivers based on [Xorg ArchWiki](https://wiki.archlinux.org/title/Xo
 #### ZSH
 
 ```bash
-yay -S zsh-autosuggestions zsh-syntax-highlighting
+yay -S zsh-completions zsh-syntax-highlighting
 ```
 
 #### NeoVim

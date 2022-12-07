@@ -82,11 +82,6 @@ key[Shift-Tab]="${terminfo[kcbt]}"
 bindkey -v
 bindkey "^R" history-incremental-search-backward
 bindkey "jk" vi-cmd-mode
-# forward-word accepts one word from the suggestion created by zsh-autosuggestions
-bindkey "^l" forward-word
-# end-of-line accepts the whole suggestion created by zsh-autosuggestions
-bindkey "^ " end-of-line
-
 
 bindkey "^[." insert-last-word
 bindkey "^[0" digit-argument
@@ -111,4 +106,3 @@ if (( ${+terminfo[smkx]} && ${+terminfo[rmkx]} )); then
 fi
 
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
