@@ -2,16 +2,58 @@
 
 ## General recommendations on fresh install
 
-Replace i3-gaps with i3-wm.
+### Networking setup
+
 ```bash
-pacman -S dhcpcd sshd i3 i3-wm xorg-xinit xorg-server iftop
 # Check name of wired/wireless interface
 ip a
 # Wired
 sudo systemctl start dhcpcd@<interface>
-# Wireless
+# Wireless, NOTE: Do in the installer, so that the laptop has internet connection
 pacman -S iwd
 sudo systemctl start iwd
+```
+
+### Yay
+
+```bash
+pacman -S --needed git base-devel
+git clone https://aur.archlinux.org/yay.git
+cd yay
+makepkg -si
+```
+
+### Dependencies of various tools
+
+#### General
+
+```bash
+yay -S dhcpcd sshd i3 i3-wm xorg-xinit xorg-server iftop pipewire pipewire-alsa pipewire-pulse pipewire-media-session
+```
+
+#### I3
+
+```bash
+yay -S playerctl alsa-utils sysstat xkb-switch
+```
+Install GPU drivers based on [Xorg ArchWiki](https://wiki.archlinux.org/title/Xorg#Driver_installation)
+
+#### ZSH
+
+```bash
+yay -S zsh-autosuggestions zsh-syntax-highlighting
+```
+
+#### NeoVim
+
+```bash
+yay -S vim-youcompleteme-git python-pip
+pip install pynvim
+mkdir -p ~/.vim/autoload ~/.vim/bundle && \
+curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
+git clone git@github.com:sainnhe/gruvbox-material.git ~/.vim/bundle/gruvbox-material
+git clone https://github.com/itchyny/lightline.vim ~/.vim/bundle/lightline
+git clone --recurse-submodules https://github.com/python-mode/python-mode.git ~/.vim/bundle/python-mode
 ```
 
 ## Zsh
@@ -21,18 +63,8 @@ chsh -s /usr/bin/zsh
 ln -s <path_to_Linux_Files_repo>/.zshrc ~/.zshrc
 ```
 
-## Yay
-
-```bash
-pacman -S --needed git base-devel
-git clone https://aur.archlinux.org/yay.git
-cd yay
-makepkg -si
-```
-
 ## I3
 
-Install GPU drivers based on [Xorg ArchWiki](https://wiki.archlinux.org/title/Xorg#Driver_installation)
 Setup Xorg:
 ```bash
 cp /etc/X11/xinit/xinitrc ~/.xinitrc
@@ -47,12 +79,7 @@ Now I3 can be started via:
 startx
 ```
 
-### Dependencies for i3blocks_config:
-```bash
-yay -S playerctl alsa-utils sysstat xkb-switch
-```
-
-## .vimrc
+## NeoVim
 
 ### Create `init.vim` file for nvim:
 
@@ -66,15 +93,3 @@ set runtimepath^=~/.vim runtimepath+=~/.vim/after
 let &packpath = &runtimepath
 source ~/.vimrc
 ```
-
-### Dependencies for .vimrc:
-```bash
-yay -S vim-youcompleteme-git python-pip
-pip install pynvim
-mkdir -p ~/.vim/autoload ~/.vim/bundle && \
-curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
-git clone git@github.com:sainnhe/gruvbox-material.git ~/.vim/bundle/gruvbox-material
-git clone https://github.com/itchyny/lightline.vim ~/.vim/bundle/lightline
-git clone --recurse-submodules https://github.com/python-mode/python-mode.git ~/.vim/bundle/python-mode
-```
-

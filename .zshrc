@@ -25,10 +25,6 @@ alias c='cd ~/repos/cinemo'
 alias cs='cd ~/repos/cinemo/src'
 alias ca='cd ~/repos/cinemo-audio'
 
-bindkey -v
-bindkey '^R' history-incremental-search-backward
-bindkey 'jk' vi-cmd-mode
-
 diff-clang-format() {
     file=/tmp/diff.cpp
     clang-format --assume-filename=.clang-format $1 > $file
@@ -47,8 +43,8 @@ prompt_theme_setup() {
 prompt_themes+=( theme )
 prompt theme
 
-# create a zkbd compatible hash;
-# to add other keys to this hash, see: man 5 terminfo
+# Create a zkbd compatible hash;
+# To add other keys to this hash, see: man 5 terminfo
 typeset -g -A key
 
 key[Home]="${terminfo[khome]}"
@@ -66,7 +62,7 @@ key[PageUp]="${terminfo[kpp]}"
 key[PageDown]="${terminfo[knp]}"
 key[Shift-Tab]="${terminfo[kcbt]}"
 
-# setup key accordingly
+# Setup key accordingly
 [[ -n "${key[Home]}"      ]] && bindkey -- "${key[Home]}"       beginning-of-line
 [[ -n "${key[End]}"       ]] && bindkey -- "${key[End]}"        end-of-line
 [[ -n "${key[Insert]}"    ]] && bindkey -- "${key[Insert]}"     overwrite-mode
@@ -81,6 +77,16 @@ key[Shift-Tab]="${terminfo[kcbt]}"
 [[ -n "${key[PageUp]}"    ]] && bindkey -- "${key[PageUp]}"     beginning-of-buffer-or-history
 [[ -n "${key[PageDown]}"  ]] && bindkey -- "${key[PageDown]}"   end-of-buffer-or-history
 [[ -n "${key[Shift-Tab]}" ]] && bindkey -- "${key[Shift-Tab]}"  reverse-menu-complete
+
+# User bindings
+bindkey -v
+bindkey "^R" history-incremental-search-backward
+bindkey "jk" vi-cmd-mode
+# forward-word accepts one word from the suggestion created by zsh-autosuggestions
+bindkey "^l" forward-word
+# end-of-line accepts the whole suggestion created by zsh-autosuggestions
+bindkey "^ " end-of-line
+
 
 bindkey "^[." insert-last-word
 bindkey "^[0" digit-argument
@@ -103,3 +109,6 @@ if (( ${+terminfo[smkx]} && ${+terminfo[rmkx]} )); then
 	add-zle-hook-widget -Uz zle-line-init zle_application_mode_start
 	add-zle-hook-widget -Uz zle-line-finish zle_application_mode_stop
 fi
+
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
