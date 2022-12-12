@@ -54,6 +54,7 @@ set shiftround
 set nobackup
 set showcmd
 set ignorecase
+set smartcase
 set backspace=indent,eol,start
 set autoindent
 set hlsearch
@@ -66,6 +67,7 @@ set splitbelow
 set startofline
 set scrolloff=5
 set noshowmode
+set undofile
 
 " Line number customization
 set cursorline
