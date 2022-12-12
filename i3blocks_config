@@ -40,11 +40,9 @@ instance=%any
 interval=5
 signal=10
 
-[volume-pulseaudio]
+[volume-pipewire]
 interval=persist
 signal=10
-MIXER="pulse"
-SCONTROL="Master"
 LONG_FORMAT="${SYMB} ${VOL}% [${INDEX}:${NAME}]"
 AUDIO_HIGH_SYMBOL=
 AUDIO_MED_THRESH=50

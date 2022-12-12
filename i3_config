@@ -16,7 +16,7 @@ set $mod Mod4
 font pango:mononoki 12
 
 # Window settings
-default_border normal 1
+default_border pixel 3
 client.focused #3243a3 #4c5799 #ffffff #8d4c99 #4c5799
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
