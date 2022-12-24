@@ -17,7 +17,7 @@ font pango:mononoki 12
 
 # Window settings
 default_border pixel 3
-client.focused #3243a3 #4c5799 #ffffff #8d4c99 #4c5799
+client.focused #fb4934 #ebdbb2 #5a524c #b8bb26 #ebdbb2
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -192,11 +192,11 @@ bar {
     status_command i3blocks
     position    top
     colors {
-        background #000000
-        statusline #ffffff
-        separator #666666
+        background #32302f
+        statusline #ebdbb2
+        separator #83a598
 
-        focused_workspace  #3243a3 #4c5799 #ffffff
+        focused_workspace #ebdbb2  #ebdbb2 #5a524c
     }
 }
 
