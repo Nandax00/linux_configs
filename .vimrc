@@ -12,7 +12,6 @@ let maplocalleader=","
 
 " netrw
 let g:netrw_banner = 0
-let g:netrw_winsize = 30
 
 " theme
 set background=dark
@@ -159,7 +158,7 @@ nnoremap <leader>wf         <c-w>f<c-w>L
 nnoremap <leader>ev         :vsplit ~/.vimrc<CR>
 nnoremap <leader>sv         :source $MYVIMRC<CR>
 "   Copies the path of the current file to the clipboard
-nnoremap <leader>pwd        :let @+=expand("%:p")<CR>
+nnoremap <leader>pwd        :let @+=expand("%:p")<CR>:echo expand("%:p")<CR>
 "   Trim trailing whitespace
 nnoremap <leader>tr         :%s/\s\+$//e<CR>
 "   Browse working directory
