@@ -206,5 +206,5 @@ bindsym $mod+F9 exec /home/nandax/.config/i3/video_player.py
 bindsym $mod+Print exec /usr/bin/flameshot gui
 
 
-exec --no-startup-id "localectl --no-convert set-x11-keymap us,hu pc104 ,102_qwertz_dot_dead grp:win_space_toggle caps:ctrl_modifier"
+exec --no-startup-id "setxkbmap -model pc104 -layout us,hu -option grp:win_space_toggle -option caps:ctrl_modifier"
 exec --no-startup-id "~/.screenlayout/one-screen.sh"
