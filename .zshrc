@@ -9,9 +9,9 @@ SAVEHIST=10000000
 unsetopt beep
 setopt PROMPT_SUBST
 
-alias ls='ls --color=auto'
-alias ip='ip -color=auto'
-alias grep='grep --color=auto'
+alias ls='ls --color=always'
+alias ip='ip -color=always'
+alias grep='grep --color=always'
 alias ll='ls -lah'
 alias gs='git status'
 alias cal='cal -m'

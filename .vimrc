@@ -105,7 +105,7 @@ augroup robot
 augroup cplusplus
     autocmd!
     autocmd FileType cpp setlocal noexpandtab
-    autocmd FileType cpp setlocal colorcolumn=100
+    autocmd FileType cpp setlocal colorcolumn=120
     autocmd FileType cpp nnoremap <buffer> <localleader>c I//<esc>
     " autocmd BufWritePre *.cpp,*.h,*.hpp :%s/\s\+$//e
 augroup END
