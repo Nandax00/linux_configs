@@ -40,6 +40,9 @@ let g:pymode_options_colorcolumn = 1
 " Sets the terminal window's scroolback buffer size
 let g:terminal_scrollback_buffer_size = 100000
 
+" COPILOT SETTINGS
+let g:copilot_no_tab_map = v:true
+
 set smartindent
 set shell=bash\ -i
 set mouse=a
@@ -142,8 +145,9 @@ augroup END
 
 " Insert mode mappings
 "   Switch word under cursor to uppercase
-inoremap <leader><c-u>      <esc>viwU<esc>ea
-inoremap jk                 <esc>
+inoremap <c-u>                          <esc>viwU<esc>ea
+inoremap jk                             <esc>
+inoremap <silent><script><expr> <c-l>   copilot#Accept("\<CR>")
 
 " Normal mode mappings
 nnoremap <leader>qq         :nohlsearch<CR>
