@@ -44,6 +44,9 @@ bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% && $refresh_i3status
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
+bindsym XF86AudioPlay exec --no-startup-id playerctl --player=spotify play-pause && $refresh_i3status
+bindsym XF86AudioNext exec --no-startup-id playerctl --player=spotify next && $refresh_i3status
+bindsym XF86AudioPrev exec --no-startup-id playerctl --player=spotify previous && $refresh_i3status
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -204,7 +207,6 @@ bindsym $mod+i exec --no-startup-id i3lock -i /home/nandax/Downloads/02095d35491
 bindsym $mod+x [urgent=latest] focus
 bindsym $mod+F9 exec /home/nandax/.config/i3/video_player.py
 bindsym $mod+Print exec /usr/bin/flameshot gui
-
 
 exec --no-startup-id "setxkbmap -model pc104 -layout us,hu -option grp:win_space_toggle -option caps:ctrl_modifier"
 exec --no-startup-id "~/.screenlayout/one-screen.sh"

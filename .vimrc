@@ -24,10 +24,16 @@ colorscheme gruvbox-material
 
 " lightline
 let g:lightline = {
-	\ 'colorscheme' : 'gruvbox_material',
-	\ 'component': {
-	\   'lineinfo': '%3l:%-2c%-2V'
-	\ },
+\   'colorscheme' : 'gruvbox_material',
+\   'active': {
+\       'left': [
+\           [ 'mode', 'paste' ],
+\           [ 'readonly', 'filename', 'modified', ]
+\       ]
+\   },
+\   'component': {
+\       'lineinfo': '%3l:%-2c%-2V',
+\   },
 \ }
 
 " YouCompleteMe
