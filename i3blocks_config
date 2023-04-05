@@ -60,6 +60,11 @@ font_weight=bold
 interval=persist
 markup=pango
 
+[battery]
+label=BAT
+label=⚡ 
+interval=30
+
 # Support multiple chips, though lm-sensors.
 # The script may be called with -w and -c switches to specify thresholds,
 # see the script for details.
