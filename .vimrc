@@ -49,6 +49,8 @@ let g:terminal_scrollback_buffer_size = 100000
 " COPILOT SETTINGS
 let g:copilot_no_tab_map = v:true
 
+let g:editorconfig = v:false
+
 set shell=bash\ -i
 set mouse=a
 set tabstop=4
