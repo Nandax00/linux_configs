@@ -49,7 +49,6 @@ let g:terminal_scrollback_buffer_size = 100000
 " COPILOT SETTINGS
 let g:copilot_no_tab_map = v:true
 
-set smartindent
 set shell=bash\ -i
 set mouse=a
 set tabstop=4
@@ -64,6 +63,7 @@ set showcmd
 set ignorecase
 set smartcase
 set backspace=indent,eol,start
+set smartindent
 set autoindent
 set hlsearch
 set incsearch
@@ -104,19 +104,17 @@ augroup python
     autocmd FileType python setlocal nowrap
     autocmd FileType python setlocal list
     autocmd FileType python nnoremap <buffer> <localleader>c I# <esc>
-    autocmd BufWritePre *.py :%s/\s\+$//e
 augroup END
 augroup robot
     autocmd!
     autocmd BufNewFile,BufRead *.robot setlocal filetype=robot
     autocmd FileType robot nnoremap <buffer> <localleader>c I# <esc>
-    autocmd BufWritePre *.robot :%s/\s\+$//e
+augroup END
 augroup cplusplus
     autocmd!
     autocmd FileType cpp setlocal noexpandtab
     autocmd FileType cpp setlocal colorcolumn=120
     autocmd FileType cpp nnoremap <buffer> <localleader>c I//<esc>
-    " autocmd BufWritePre *.cpp,*.h,*.hpp :%s/\s\+$//e
 augroup END
 augroup html
     autocmd!
@@ -147,6 +145,11 @@ augroup godot
     autocmd FileType gdscript nnoremap <buffer> <localleader>r :GodotRun<CR>
     autocmd FileType gdscript nnoremap <buffer> <localleader>t :GodotRunCurrent<CR>
     autocmd FileType gdscript nnoremap <buffer> <localleader>c I# <esc>
+augroup END
+augroup plantuml
+    autocmd!
+    autocmd FileType plantuml setlocal tabstop=2
+    autocmd FileType plantuml setlocal shiftwidth=2
 augroup END
 
 " Insert mode mappings

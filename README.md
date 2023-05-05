@@ -34,7 +34,7 @@ yay -S dhcpcd sshd i3 i3-wm xorg-xinit xorg-server iftop pipewire pipewire-alsa 
 #### I3
 
 ```bash
-yay -S playerctl alsa-utils sysstat xkb-switch
+yay -S playerctl alsa-utils sysstat xkb-switch lm-sensors
 ```
 Install GPU drivers based on [Xorg ArchWiki](https://wiki.archlinux.org/title/Xorg#Driver_installation)
 
