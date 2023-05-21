@@ -74,10 +74,12 @@ set wildmode=longest:full
 set wildmenu
 set colorcolumn=80
 set splitbelow
+set splitright
 set startofline
 set scrolloff=5
 set noshowmode
 set undofile
+set clipboard+=unnamedplus
 
 " Line number customization
 set cursorline
@@ -132,10 +134,10 @@ augroup markdown
 augroup END
 augroup netrw
     autocmd!
-    " Open a file from netrw
-    autocmd FileType netrw nnoremap <buffer> l <CR>
-    " Open a file from netrw and close netrw
-    autocmd FileType netrw nmap <buffer> L <CR>:Lexplore<CR>
+    " Open a file or go down the hierarchy
+    autocmd FileType netrw nmap <buffer> l <CR>
+    " Go up the hierarchy
+    autocmd FileType netrw nmap <buffer> h gg<CR>
     " Close preview (opened by `p`)
     autocmd FileType netrw nnoremap <buffer> P <C-w>z
 augroup END
