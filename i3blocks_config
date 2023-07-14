@@ -66,6 +66,7 @@ markup=pango
 [temperature]
 label=TEMP: 
 interval=10
+
 separator=false
 
 # CPU usage
@@ -82,7 +83,28 @@ DECIMALS=2
 COLOR_NORMAL=#EBDBB2
 COLOR_WARN=#FFFC00
 COLOR_CRIT=#FF0000
-#separator=false
+
+separator=false
+
+[gpu-load]
+label=GPU: 
+interval=10
+min_width=GPU 100% 100% 0% 0%
+GPU_BRAND=NVIDIA
+T_WARN=70
+T_CRIT=90
+
+separator=false
+
+[memory2]
+interval=persist
+markup=pango
+bar_chars=_▁▂▃▄▅▆▇█ 
+bar_size=10
+critical=80
+warning=50
+color_critical=#FF7373
+color_warning=#FFA500
 
 # Date Time
 #
