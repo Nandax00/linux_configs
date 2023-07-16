@@ -96,15 +96,9 @@ T_CRIT=90
 
 separator=false
 
-[memory2]
-interval=persist
-markup=pango
-bar_chars=_▁▂▃▄▅▆▇█ 
-bar_size=10
-critical=80
-warning=50
-color_critical=#FF7373
-color_warning=#FFA500
+[memory]
+label=MEM: 
+interval=10
 
 # Date Time
 #
