@@ -47,13 +47,12 @@ yay -S zsh-completions zsh-syntax-highlighting
 #### NeoVim
 
 ```bash
-yay -S vim-youcompleteme-git python-pip
-pip install pynvim
+yay -S python-pip python-jedi
 mkdir -p ~/.vim/autoload ~/.vim/bundle && \
 curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
 git clone git@github.com:sainnhe/gruvbox-material.git ~/.vim/bundle/gruvbox-material
 git clone https://github.com/itchyny/lightline.vim ~/.vim/bundle/lightline
-git clone --recurse-submodules https://github.com/python-mode/python-mode.git ~/.vim/bundle/python-mode
+git clone -b release https://github.com/neoclide/coc.nvim ~/.vim/bundle
 ```
 
 ## Zsh

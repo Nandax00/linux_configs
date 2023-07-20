@@ -164,10 +164,15 @@ inoremap <silent><script><expr> <c-l>   copilot#Accept("\<CR>")
 
 " Normal mode mappings
 nnoremap <leader>qq         :nohlsearch<CR>
-nnoremap <leader>gd         :rightbelow vertical YcmCompleter GoTo<CR>
-nnoremap <leader>gD         :tab YcmCompleter GoTo<CR>
-nnoremap <leader>gr         :YcmCompleter GoToReferences<CR>
-nnoremap <leader>pd         :YcmDiags<CR><C-W>k
+nnoremap <leader>gd         <Plug>(coc-definition)
+" FIXME: This is not working
+nnoremap <leader>gD         :tab <Plug>(coc-definition)<CR>
+nnoremap <leader>gi         <Plug>(coc-implementation)
+nnoremap <leader>gr         <Plug>(coc-references)
+"   As in "next diagnostic"
+nnoremap <leader>nd         <Plug>(coc-diagnostic-next)
+nnoremap <leader>nD         <Plug>(coc-diagnostic-prev)
+nnoremap <leader>cc         :CocListCancel<CR>
 "   Switch word under cursor to uppercase
 nnoremap <leader><c-u>      viwU<esc>e
 "   Open file under the cursor, move split to the right
