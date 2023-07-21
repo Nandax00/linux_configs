@@ -76,6 +76,8 @@ set scrolloff=5
 set noshowmode
 set undofile
 set clipboard+=unnamedplus
+set pumwidth=10
+set pumheight=10
 
 " Line number customization
 set cursorline
@@ -157,18 +159,26 @@ augroup END
 inoremap <c-u>                          <esc>viwU<esc>ea
 inoremap jk                             <esc>
 inoremap <silent><script><expr> <c-l>   copilot#Accept("\<CR>")
+inoremap <silent><expr> <Tab>           pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <silent><expr> <S-Tab>         pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
 " Normal mode mappings
 nnoremap <leader>qq         :nohlsearch<CR>
 nnoremap <leader>gd         <Plug>(coc-definition)
-" FIXME: This is not working
+"   FIXME: This is not working
 nnoremap <leader>gD         :tab <Plug>(coc-definition)<CR>
 nnoremap <leader>gi         <Plug>(coc-implementation)
 nnoremap <leader>gr         <Plug>(coc-references)
 "   As in "next diagnostic"
 nnoremap <leader>nd         <Plug>(coc-diagnostic-next)
 nnoremap <leader>nD         <Plug>(coc-diagnostic-prev)
-nnoremap <leader>cc         :CocListCancel<CR>
+"   Pair of <leader>cf; formats whole file
+nnoremap <leader>ccf        <Plug>(coc-format)
+nnoremap <leader>cw         <Plug>(coc-rename)
+nnoremap <leader>cW         <Plug>(coc-refactor)
+"   As in "mark (for editing)"
+nnoremap <leader>m          <Plug>(coc-cursors-position)
+nnoremap <leader>qa         :CocListCancel<CR>
 "   Switch word under cursor to uppercase
 nnoremap <leader><c-u>      viwU<esc>e
 "   Open file under the cursor, move split to the right
@@ -187,3 +197,5 @@ nnoremap <leader>bc         :Lexplore %:p:h<CR>
 " Visual mode mappings
 "   Wrap selection in apostrophe marks
 vnoremap <leader>"          <esc>`<i"<esc>`>a"<esc>v
+"   As in "change format"
+vnoremap <leader>cf         <Plug>(coc-format-selected)

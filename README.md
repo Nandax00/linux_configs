@@ -1,4 +1,4 @@
-#Linux Files
+# Linux Files
 
 ## General recommendations on fresh install
 
@@ -25,70 +25,88 @@ makepkg -si
 
 ### Dependencies of various tools
 
-#### General
-
 ```bash
-yay -S dhcpcd sshd i3 i3-wm xorg-xinit xorg-server iftop pipewire pipewire-alsa pipewire-pulse pipewire-media-session
-```
-
-#### I3
-
-```bash
+yay -S dhcpcd sshd i3 i3-wm xorg-xinit xorg-server iftop pipewire \
+pipewire-alsa pipewire-pulse pipewire-media-session
+# I3
 yay -S playerctl alsa-utils sysstat xkb-switch lm-sensors
-```
-Install GPU drivers based on [Xorg ArchWiki](https://wiki.archlinux.org/title/Xorg#Driver_installation)
-
-#### ZSH
-
-```bash
+# I3
 yay -S zsh-completions zsh-syntax-highlighting
+# Neovim
+yay -S python-pip python-jedi npm jedi-language-server clang
 ```
 
-#### NeoVim
-
-```bash
-yay -S python-pip python-jedi
-mkdir -p ~/.vim/autoload ~/.vim/bundle && \
-curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
-git clone git@github.com:sainnhe/gruvbox-material.git ~/.vim/bundle/gruvbox-material
-git clone https://github.com/itchyny/lightline.vim ~/.vim/bundle/lightline
-git clone -b release https://github.com/neoclide/coc.nvim ~/.vim/bundle
-```
+Install GPU drivers based on [Xorg ArchWiki](https://wiki.archlinux.org/title/Xorg#Driver_installation)
 
 ## Zsh
 
 ```bash
 chsh -s /usr/bin/zsh
-ln -s <path_to_Linux_Files_repo>/.zshrc ~/.zshrc
 ```
 
 ## I3
 
 Setup Xorg:
+
 ```bash
 cp /etc/X11/xinit/xinitrc ~/.xinitrc
 ```
+
 Modify last line of `~/.xinitrc` to be:
+
 ```bash
 exec /usr/bin/i3
 ```
 
 Now I3 can be started via:
+
 ```bash
 startx
 ```
 
 ## NeoVim
 
-### Create `init.vim` file for nvim:
+### Install dependencies
+
+```bash
+yay -S python-pip python-jedi jedi-language-server npm
+mkdir -p ~/.vim/autoload ~/.vim/bundle && \
+curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
+git clone git@github.com:sainnhe/gruvbox-material.git ~/.vim/bundle/gruvbox-material
+git clone https://github.com/itchyny/lightline.vim ~/.vim/bundle/lightline
+git clone -b release https://github.com/neoclide/coc.nvim ~/.vim/bundle/coc.nvim
+```
+
+### Create `init.vim` file for nvim
 
 ```bash
 mkdir -p ~/.config/nvim
 vim ~/.config/nvim/init.vim
 ```
+
 `init.vim` has the following content:
+
 ```bash
 set runtimepath^=~/.vim runtimepath+=~/.vim/after
 let &packpath = &runtimepath
 source ~/.vimrc
 ```
+
+### Complete the setup of COC
+
+```bash
+:CocInstall coc-clangd coc-jedi coc-json coc-markdownlint
+```
+
+## Link configs
+
+```bash
+# E.g.
+ln -s <path_to_Linux_Files_repo>/.zshrc ~/.zshrc
+ln -s <path_to_Linux_Files_repo>/i3blocks_config ~/.config/i3blocks/config
+```
+
+Note that all other configs which do not start with a "." are located under
+`~/.config` by default
+
+`coc-settings.json` is located in `./config/nvim`.
