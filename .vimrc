@@ -39,10 +39,6 @@ let g:lightline = {
 " YouCompleteMe
 let g:ycm_goto_buffer_command = "split"
 
-" PYMODE SETTINGS
-let g:pymode = 1
-let g:pymode_options = 1
-let g:pymode_options_colorcolumn = 1
 " Sets the terminal window's scroolback buffer size
 let g:terminal_scrollback_buffer_size = 100000
 
