@@ -203,10 +203,11 @@ bar {
     }
 }
 
-bindsym $mod+i exec --no-startup-id i3lock -i /home/nandax/Downloads/02095d35491b71499466b083a1dacf0b.C_KSAD1.JPG &
+bindsym $mod+i exec --no-startup-id i3lock -i /home/nandax/Downloads/touch_grass.png -f -t &
 bindsym $mod+x [urgent=latest] focus
 bindsym $mod+F9 exec /home/nandax/.config/i3/video_player.py
 bindsym $mod+Print exec /usr/bin/flameshot gui
 
 exec --no-startup-id setxkbmap -model pc104 -layout us,hu -option grp:win_space_toggle -option caps:ctrl_modifier
 exec --no-startup-id ~/.screenlayout/one-screen.sh
+exec --no-startup-id i3lock -i /home/nandax/Downloads/touch_grass.png -f -t &

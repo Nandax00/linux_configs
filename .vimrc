@@ -116,7 +116,7 @@ augroup cplusplus
     autocmd!
     autocmd FileType cpp setlocal noexpandtab
     autocmd FileType cpp setlocal colorcolumn=120
-    autocmd FileType cpp nnoremap <buffer> <localleader>c I//<esc>
+    autocmd FileType cpp nnoremap <buffer> <localleader>c I// <esc>
 augroup END
 augroup html
     autocmd!
@@ -159,8 +159,6 @@ augroup END
 inoremap <c-u>                          <esc>viwU<esc>ea
 inoremap jk                             <esc>
 inoremap <silent><script><expr> <c-l>   copilot#Accept("\<CR>")
-inoremap <silent><expr> <Tab>           pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <silent><expr> <S-Tab>         pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
 " Normal mode mappings
 nnoremap <leader>qq         :nohlsearch<CR>
@@ -169,6 +167,8 @@ nnoremap <leader>gd         <Plug>(coc-definition)
 nnoremap <leader>gD         :tab <Plug>(coc-definition)<CR>
 nnoremap <leader>gi         <Plug>(coc-implementation)
 nnoremap <leader>gr         <Plug>(coc-references)
+"   As in "go to dEclaration"
+nnoremap <leader>ge         <Plug>(coc-declaration)
 "   As in "next diagnostic"
 nnoremap <leader>nd         <Plug>(coc-diagnostic-next)
 nnoremap <leader>nD         <Plug>(coc-diagnostic-prev)
@@ -178,7 +178,6 @@ nnoremap <leader>cw         <Plug>(coc-rename)
 nnoremap <leader>cW         <Plug>(coc-refactor)
 "   As in "mark (for editing)"
 nnoremap <leader>m          <Plug>(coc-cursors-position)
-nnoremap <leader>qa         :CocListCancel<CR>
 "   Switch word under cursor to uppercase
 nnoremap <leader><c-u>      viwU<esc>e
 "   Open file under the cursor, move split to the right
