@@ -10,9 +10,6 @@ endif
 let mapleader="-"
 let maplocalleader=","
 
-" netrw
-let g:netrw_banner = 0
-
 " theme
 set background=dark
 let g:gruvbox_material_background = 'medium'
@@ -53,6 +50,7 @@ set tabstop=4
 set shiftwidth=4
 set expandtab
 set number
+set relativenumber
 set ruler
 set list
 set shiftround
@@ -134,8 +132,8 @@ augroup netrw
     autocmd!
     " Open a file or go down the hierarchy
     autocmd FileType netrw nmap <buffer> l <CR>
-    " Go up the hierarchy
-    autocmd FileType netrw nmap <buffer> h gg<CR>
+    " Go up the hierarchy, 8th line should be ".."
+    autocmd FileType netrw nmap <buffer> h 8G<CR>
     " Close preview (opened by `p`)
     autocmd FileType netrw nnoremap <buffer> P <C-w>z
 augroup END
