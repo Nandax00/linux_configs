@@ -86,13 +86,10 @@ COLOR_CRIT=#FF0000
 
 separator=false
 
-[gpu-load]
+[gpu]
+command=nvidia-smi | ag % | awk '{print $13}'
 label=GPU: 
 interval=10
-min_width=GPU 100% 100% 0% 0%
-GPU_BRAND=NVIDIA
-T_WARN=70
-T_CRIT=90
 
 separator=false
 
