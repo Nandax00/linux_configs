@@ -30,13 +30,18 @@ yay -S dhcpcd sshd i3 i3-wm xorg-xinit xorg-server iftop pipewire \
 pipewire-alsa pipewire-pulse pipewire-media-session
 # I3
 yay -S playerctl alsa-utils sysstat xkb-switch lm-sensors
-# I3
+# zsh
 yay -S zsh-completions zsh-syntax-highlighting
+# kitty
+yay -S kitty ttf-jetbrains-mono-nerd
 # Neovim
 yay -S python-pip python-jedi npm jedi-language-server clang
 ```
 
 Install GPU drivers based on [Xorg ArchWiki](https://wiki.archlinux.org/title/Xorg#Driver_installation)
+
+## Kitty
+
 
 ## Zsh
 
@@ -101,12 +106,15 @@ source ~/.vimrc
 ## Link configs
 
 ```bash
-# E.g.
+ln -s <path_to_Linux_Files_repo>/.gitconfig ~/.gitconfig
+ln -s <path_to_Linux_Files_repo>/.vimrc ~/.vimrc
 ln -s <path_to_Linux_Files_repo>/.zshrc ~/.zshrc
+ln -s <path_to_Linux_Files_repo>/coc-settings.json ~/.config/nvim/coc-settings.json
+ln -s <path_to_Linux_Files_repo>/gruvbox_dark.conf ~/.config/kitty/gruvbox_dark.conf
+ln -s <path_to_Linux_Files_repo>/i3_config ~/.config/i3/config
 ln -s <path_to_Linux_Files_repo>/i3blocks_config ~/.config/i3blocks/config
+ln -s <path_to_Linux_Files_repo>/kitty.conf ~/.config/kitty/kitty.conf
 ```
 
 Note that all other configs which do not start with a "." are located under
 `~/.config` by default
-
-`coc-settings.json` is located in `./config/nvim`.
