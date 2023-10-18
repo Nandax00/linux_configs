@@ -44,6 +44,8 @@ let g:copilot_no_tab_map = v:true
 
 let g:editorconfig = v:false
 
+let g:markdown_fenced_languages = ['python', 'bash=sh', 'cpp', 'gdscript', 'plantuml', 'rust']
+
 set shell=bash\ -i
 set mouse=a
 set tabstop=4
