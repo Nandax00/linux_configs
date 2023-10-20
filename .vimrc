@@ -25,11 +25,14 @@ let g:lightline = {
 \   'active': {
 \       'left': [
 \           [ 'mode', 'paste' ],
-\           [ 'readonly', 'filename', 'modified', ]
+\           [ 'cocstatus', 'readonly', 'filename', 'modified', ]
 \       ]
 \   },
 \   'component': {
 \       'lineinfo': '%3l:%-2c%-2V',
+\   },
+\   'component_function': {
+\     'cocstatus': 'coc#status'
 \   },
 \ }
 
