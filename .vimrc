@@ -110,21 +110,15 @@ augroup python
     autocmd FileType python setlocal list
     autocmd FileType python nnoremap <buffer> <localleader>c I# <esc>
 augroup END
-augroup robot
-    autocmd!
-    autocmd BufNewFile,BufRead *.robot setlocal filetype=robot
-    autocmd FileType robot nnoremap <buffer> <localleader>c I# <esc>
-augroup END
 augroup cplusplus
     autocmd!
     autocmd FileType cpp setlocal noexpandtab
     autocmd FileType cpp setlocal colorcolumn=120
     autocmd FileType cpp nnoremap <buffer> <localleader>c I// <esc>
 augroup END
-augroup html
+augroup rust
     autocmd!
-    " Fold tag content
-    autocmd FileType html nnoremap <buffer> <localleader>f Vatzf
+    autocmd FileType rust nnoremap <buffer> <localleader>c I// <esc>
 augroup END
 augroup markdown
     autocmd!
@@ -155,6 +149,11 @@ augroup plantuml
     autocmd!
     autocmd FileType plantuml setlocal tabstop=2
     autocmd FileType plantuml setlocal shiftwidth=2
+augroup END
+augroup robot
+    autocmd!
+    autocmd BufNewFile,BufRead *.robot setlocal filetype=robot
+    autocmd FileType robot nnoremap <buffer> <localleader>c I# <esc>
 augroup END
 
 " Insert mode mappings
