@@ -210,4 +210,3 @@ bindsym $mod+Print exec /usr/bin/shutter -s
 
 exec --no-startup-id setxkbmap -model pc104 -layout us,hu -option grp:win_space_toggle -option caps:ctrl_modifier
 exec --no-startup-id ~/.screenlayout/one-screen.sh
-exec --no-startup-id i3lock -i /home/nandax/Downloads/touch_grass.png -f -t &
