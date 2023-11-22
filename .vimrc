@@ -25,7 +25,7 @@ let g:lightline = {
 \   'active': {
 \       'left': [
 \           [ 'mode', 'paste' ],
-\           [ 'cocstatus', 'readonly', 'filename', 'modified', ]
+\           [ 'readonly', 'filename', 'modified', 'cocstatus' ]
 \       ]
 \   },
 \   'component': {
