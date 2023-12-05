@@ -203,6 +203,8 @@ bar {
     }
 }
 
+bindsym $mod+F6 exec sudo /usr/bin/xbacklight -dec 10
+bindsym $mod+F7 exec sudo /usr/bin/xbacklight -inc 10
 bindsym $mod+x [urgent=latest] focus
 bindsym $mod+Print exec /usr/bin/shutter -s
 bindsym $mod+i exec --no-startup-id "i3lock -i /home/nandax/Pictures/lock.png"
@@ -211,3 +213,6 @@ exec "feh --bg-fill /home/nandax/Pictures/bg.png"
 exec --no-startup-id "setxkbmap -model pc104 -layout us,hu -option grp:win_space_toggle -option caps:ctrl_modifier"
 exec --no-startup-id "~/.screenlayout/one_screen.sh"
 exec --no-startup-id "picom -b"
+exec "xinput set-prop 10 'libinput Tapping Enabled' 1"
+exec "xinput set-prop 10 'libinput Middle Emulation Enabled' 1"
+exec "xinput set-prop 10 'libinput Natural Scrolling Enabled' 1"
