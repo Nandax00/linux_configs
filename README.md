@@ -29,7 +29,7 @@ makepkg -si
 yay -S dhcpcd sshd i3 i3-wm xorg-xinit xorg-server iftop pipewire \
 pipewire-alsa pipewire-pulse pipewire-media-session
 # I3
-yay -S playerctl alsa-utils sysstat xkb-switch lm-sensors
+yay -S playerctl alsa-utils sysstat xkb-switch lm-sensors picom
 # zsh
 yay -S zsh-completions zsh-syntax-highlighting
 # kitty
