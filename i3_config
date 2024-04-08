@@ -190,6 +190,4 @@ bindsym $mod+i exec --no-startup-id "i3lock -i /home/nandax/Pictures/lock.png"
 exec --no-startup-id "feh --bg-fill /home/nandax/Pictures/bg.jpg"
 
 exec --no-startup-id "picom -b"
-exec "xinput set-prop 10 'libinput Tapping Enabled' 1"
-exec "xinput set-prop 10 'libinput Middle Emulation Enabled' 1"
-exec "xinput set-prop 10 'libinput Natural Scrolling Enabled' 1"
+exec --no-startup-id ~/tools/linux_configs/touchpad_i3_config.sh
