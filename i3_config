@@ -204,9 +204,8 @@ bar {
 }
 
 bindsym $mod+x [urgent=latest] focus
-bindsym $mod+Print exec /usr/bin/shutter -s
+bindsym $mod+Print exec --no-startup-id /usr/bin/shutter -s
 bindsym $mod+i exec --no-startup-id "i3lock -i /home/nandax/Pictures/lock.png"
-exec "feh --bg-fill /home/nandax/Pictures/bg.png"
+exec --no-startup-id "feh --bg-fill /home/nandax/Pictures/bg.png"
 
-exec --no-startup-id "setxkbmap -model pc104 -layout us,hu -option grp:win_space_toggle -option caps:ctrl_modifier"
 exec --no-startup-id "picom -b"
