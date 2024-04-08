@@ -155,6 +155,12 @@ augroup robot
     autocmd BufNewFile,BufRead *.robot setlocal filetype=robot
     autocmd FileType robot nnoremap <buffer> <localleader>c I# <esc>
 augroup END
+augroup proj
+    autocmd!
+    autocmd BufNewFile,BufRead *.proj setlocal filetype=proj
+    autocmd FileType proj setlocal tabstop=2
+    autocmd FileType proj setlocal shiftwidth=2
+augroup END
 
 " Insert mode mappings
 "   Switch word under cursor to uppercase

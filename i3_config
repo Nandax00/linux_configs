@@ -209,5 +209,4 @@ bindsym $mod+i exec --no-startup-id "i3lock -i /home/nandax/Pictures/lock.png"
 exec "feh --bg-fill /home/nandax/Pictures/bg.png"
 
 exec --no-startup-id "setxkbmap -model pc104 -layout us,hu -option grp:win_space_toggle -option caps:ctrl_modifier"
-exec --no-startup-id "~/.screenlayout/one_screen.sh"
 exec --no-startup-id "picom -b"
