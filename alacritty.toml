@@ -57,11 +57,10 @@ mods = "Alt"
 enabled = true
 mods = "None"
 
-[[keyboard.bindings]]
-action = "ToggleViMode"
-key = "Space"
-mode = "~Search"
-mods = "Alt"
+[keyboard]
+bindings = [
+{ key = "J", mods = "Control", action = "ToggleViMode"},
+]
 
 [scrolling]
 history = 100000
