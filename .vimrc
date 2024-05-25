@@ -138,43 +138,30 @@ inoremap <silent><script><expr> <c-l>   copilot#Accept("\<CR>")
 
 " Normal mode mappings
 nnoremap <leader>qq         :nohlsearch<CR>
-nnoremap <leader>gd         <Plug>(coc-definition)
-"   FIXME: This is not working
-nnoremap <leader>gD         :tab <Plug>(coc-definition)<CR>
-nnoremap <leader>gi         <Plug>(coc-implementation)
-nnoremap <leader>gr         <Plug>(coc-references)
-"   As in "go to dEclaration"
-nnoremap <leader>ge         <Plug>(coc-declaration)
-"   As in "next diagnostic"
-nnoremap <leader>nd         <Plug>(coc-diagnostic-next)
-nnoremap <leader>nD         <Plug>(coc-diagnostic-prev)
-"   Pair of <leader>cf; formats whole file
-nnoremap <leader>ccf        <Plug>(coc-format)
-nnoremap <leader>cw         <Plug>(coc-rename)
-nnoremap <leader>cW         <Plug>(coc-refactor)
-"   As in "mark (for editing)"
-nnoremap <leader>m          <Plug>(coc-cursors-position)
-"   Find files via Telescope, as in "explore"
+"   Telescope mappings
 "     <C-x> - open file in horizontal split
 "     <C-v> - open file in vertical split
 "     <C-t> - open file in new tab
-nnoremap <leader>e          :Telescope find_files<CR>
+"   Go to definition, using an LSP
+nnoremap <leader>gd         :Telescope lsp_definitions jump_type="vsplit" reuse_win=true<CR>
+nnoremap <leader>gi         :Telescope lsp_implementations jump_type="vsplit" reuse_win=true<CR>
+nnoremap <leader>gr         :Telescope lsp_references include_current_line=true jump_type="vsplit"<CR>
 nnoremap <leader>ff         :Telescope find_files<CR>
-nnoremap <leader>fg         :Telescope find_files<CR>
+nnoremap <leader>fg         :Telescope live_grep<CR>
+"   As in "find symbol"
+nnoremap <leader>fs         :Telescope lsp_document_symbols<CR>
 "   Open file under the cursor, move split to the right
 nnoremap <leader>wf         <c-w>f<c-w>L
-nnoremap <leader>ev         :vsplit ~/.vimrc<CR>
-nnoremap <leader>sv         :source $MYVIMRC<CR>
 "   Copies the path of the current file to the clipboard
 nnoremap <leader>pwd        :let @+=expand("%:p")<CR>:echo expand("%:p")<CR>
 "   Trim trailing whitespace
 nnoremap <leader>tr         :%s/\s\+$//e<CR>
+nnoremap <leader>ev         :vsplit ~/.vimrc<CR>
+nnoremap <leader>el         :vsplit ~/.config/nvim/lua/init.lua<CR>
 
 " Visual mode mappings
 "   Wrap selection in apostrophe marks
 vnoremap <leader>"          <esc>`<i"<esc>`>a"<esc>v
-"   As in "change format"
-vnoremap <leader>cf         <Plug>(coc-format-selected)
 
 " theme
 set background=dark
@@ -191,26 +178,13 @@ let g:lightline = {
 \   'active': {
 \       'left': [
 \           [ 'mode', 'paste' ],
-\           [ 'readonly', 'filename', 'modified', 'cocstatus' ]
+\           [ 'readonly', 'filename', 'modified' ]
 \       ]
 \   },
 \   'component': {
 \       'lineinfo': '%3l:%-2c%-2V',
 \   },
-\   'component_function': {
-\     'cocstatus': 'coc#status'
-\   },
 \ }
 
-" telescope
-lua << EOF
-require("telescope").setup{
-    defaults = {
-        sorting_strategy = "descending",
-        layout_strategy = "vertical",
-        wrap_results = true,
-        -- file_ignore_patterns = { ".mk" }
-    },
-}
-EOF
-
+" COQ
+let g:coq_settings = { "auto_start": "shut-up" }

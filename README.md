@@ -32,16 +32,11 @@ pipewire-alsa pipewire-pulse pipewire-media-session
 yay -S playerctl alsa-utils sysstat xkb-switch lm-sensors picom
 # zsh
 yay -S zsh-completions zsh-syntax-highlighting
-# kitty
-yay -S kitty ttf-jetbrains-mono-nerd
-# Neovim
-yay -S python-pip python-jedi npm jedi-language-server clang
+# alacritty
+yay -S alacritty ttf-fira-mono
 ```
 
 Install GPU drivers based on [Xorg ArchWiki](https://wiki.archlinux.org/title/Xorg#Driver_installation)
-
-## Kitty
-
 
 ## Zsh
 
@@ -79,41 +74,30 @@ mkdir -p ~/.vim/autoload ~/.vim/bundle
 curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
 git clone git@github.com:sainnhe/gruvbox-material.git ~/.vim/bundle
 git clone git@github.com:itchyny/lightline.vim.git ~/.vim/bundle
-git clone -b release git@github.com:neoclide/coc.nvim.git ~/.vim/bundle
 git clone git@github.com:aklt/plantuml-syntax.git ~/.vim/bundle
+git clone git@github.com:williamboman/mason.nvim.git
 git clone git@github.com:nvim-lua/plenary.nvim.git ~/.vim/bundle
 git clone git@github.com:nvim-telescope/telescope.nvim.git ~/.vim/bundle
 git clone git@github.com:nvim-telescope/telescope-fzf-native.nvim.git ~/.vim/bundle
+git clone git@github.com:neovim/nvim-lspconfig.git ~/.vim/bundle
+git clone git@github.com:ms-jpq/coq_nvim.git ~/.vim/bundle
 ```
 
-### Create `init.vim` file for nvim
+### Create directory structure for nvim
 
 ```bash
-mkdir -p ~/.config/nvim
-vim ~/.config/nvim/init.vim
+mkdir -p ~/.config/nvim/lua
 ```
 
-`init.vim` has the following content:
-
-```bash
-set runtimepath^=~/.vim runtimepath+=~/.vim/after
-let &packpath = &runtimepath
-source ~/.vimrc
-```
-
-### Complete the setup of COC
-
-```bash
-:CocInstall coc-clangd coc-jedi coc-json coc-markdownlint
-```
 
 ## Link configs
 
 ```bash
 ln -s <path_to_Linux_Files_repo>/.gitconfig ~/.gitconfig
 ln -s <path_to_Linux_Files_repo>/.vimrc ~/.vimrc
+ln -s <path_to_Linux_Files_repo>/init.vim ~/.config/nvim/init.vim
+ln -s <path_to_Linux_Files_repo>/init.lua ~/.config/nvim/lua/init.lua
 ln -s <path_to_Linux_Files_repo>/.zshrc ~/.zshrc
-ln -s <path_to_Linux_Files_repo>/coc-settings.json ~/.config/nvim/coc-settings.json
 ln -s <path_to_Linux_Files_repo>/gruvbox_dark.conf ~/.config/kitty/gruvbox_dark.conf
 ln -s <path_to_Linux_Files_repo>/i3_config ~/.config/i3/config
 ln -s <path_to_Linux_Files_repo>/i3blocks_config ~/.config/i3blocks/config
@@ -122,3 +106,10 @@ ln -s <path_to_Linux_Files_repo>/alacritty.toml ~/.config/alacritty/alacritty.to
 
 Note that all other configs which do not start with a "." are located under
 `~/.config` by default
+
+### Complete the setup of LSPs
+
+```bash
+:MasonInstall clangd clang-format jedi-language-server json-lsp marksman rust-analyzer
+:COQdeps
+```
