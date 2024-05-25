@@ -10,35 +10,6 @@ endif
 let mapleader="-"
 let maplocalleader=","
 
-" theme
-set background=dark
-let g:gruvbox_material_background = 'medium'
-let g:gruvbox_material_ui_contrast = 'high'
-let g:gruvbox_material_foreground = 'original'
-let g:gruvbox_material_sign_column_background = 'grey'
-let g:gruvbox_material_statusline_style = 'original'
-colorscheme gruvbox-material
-
-" lightline
-let g:lightline = {
-\   'colorscheme' : 'gruvbox_material',
-\   'active': {
-\       'left': [
-\           [ 'mode', 'paste' ],
-\           [ 'readonly', 'filename', 'modified', 'cocstatus' ]
-\       ]
-\   },
-\   'component': {
-\       'lineinfo': '%3l:%-2c%-2V',
-\   },
-\   'component_function': {
-\     'cocstatus': 'coc#status'
-\   },
-\ }
-
-" YouCompleteMe
-let g:ycm_goto_buffer_command = "split"
-
 " Sets the terminal window's scroolback buffer size
 let g:terminal_scrollback_buffer_size = 100000
 
@@ -162,8 +133,6 @@ augroup proj
 augroup END
 
 " Insert mode mappings
-"   Switch word under cursor to uppercase
-inoremap <c-u>                          <esc>viwU<esc>ea
 inoremap jk                             <esc>
 inoremap <silent><script><expr> <c-l>   copilot#Accept("\<CR>")
 
@@ -185,8 +154,13 @@ nnoremap <leader>cw         <Plug>(coc-rename)
 nnoremap <leader>cW         <Plug>(coc-refactor)
 "   As in "mark (for editing)"
 nnoremap <leader>m          <Plug>(coc-cursors-position)
-"   Switch word under cursor to uppercase
-nnoremap <leader><c-u>      viwU<esc>e
+"   Find files via Telescope, as in "explore"
+"     <C-x> - open file in horizontal split
+"     <C-v> - open file in vertical split
+"     <C-t> - open file in new tab
+nnoremap <leader>e          :Telescope find_files<CR>
+nnoremap <leader>ff         :Telescope find_files<CR>
+nnoremap <leader>fg         :Telescope find_files<CR>
 "   Open file under the cursor, move split to the right
 nnoremap <leader>wf         <c-w>f<c-w>L
 nnoremap <leader>ev         :vsplit ~/.vimrc<CR>
@@ -195,13 +169,48 @@ nnoremap <leader>sv         :source $MYVIMRC<CR>
 nnoremap <leader>pwd        :let @+=expand("%:p")<CR>:echo expand("%:p")<CR>
 "   Trim trailing whitespace
 nnoremap <leader>tr         :%s/\s\+$//e<CR>
-"   Browse working directory
-nnoremap <leader>bw         :Lexplore<CR>
-"   Browse current directory of the file
-nnoremap <leader>bc         :Lexplore %:p:h<CR>
 
 " Visual mode mappings
 "   Wrap selection in apostrophe marks
 vnoremap <leader>"          <esc>`<i"<esc>`>a"<esc>v
 "   As in "change format"
 vnoremap <leader>cf         <Plug>(coc-format-selected)
+
+" theme
+set background=dark
+let g:gruvbox_material_background = 'medium'
+let g:gruvbox_material_ui_contrast = 'high'
+let g:gruvbox_material_foreground = 'original'
+let g:gruvbox_material_sign_column_background = 'grey'
+let g:gruvbox_material_statusline_style = 'original'
+colorscheme gruvbox-material
+
+" lightline
+let g:lightline = {
+\   'colorscheme' : 'gruvbox_material',
+\   'active': {
+\       'left': [
+\           [ 'mode', 'paste' ],
+\           [ 'readonly', 'filename', 'modified', 'cocstatus' ]
+\       ]
+\   },
+\   'component': {
+\       'lineinfo': '%3l:%-2c%-2V',
+\   },
+\   'component_function': {
+\     'cocstatus': 'coc#status'
+\   },
+\ }
+
+" telescope
+lua << EOF
+require("telescope").setup{
+    defaults = {
+        sorting_strategy = "descending",
+        layout_strategy = "vertical",
+        wrap_results = true,
+        -- file_ignore_patterns = { ".mk" }
+    },
+}
+EOF
+

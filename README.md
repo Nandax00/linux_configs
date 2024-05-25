@@ -75,11 +75,15 @@ startx
 
 ```bash
 yay -S python-pip python-jedi jedi-language-server npm
-mkdir -p ~/.vim/autoload ~/.vim/bundle && \
+mkdir -p ~/.vim/autoload ~/.vim/bundle
 curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
-git clone git@github.com:sainnhe/gruvbox-material.git ~/.vim/bundle/gruvbox-material
-git clone https://github.com/itchyny/lightline.vim ~/.vim/bundle/lightline
-git clone -b release https://github.com/neoclide/coc.nvim ~/.vim/bundle/coc.nvim
+git clone git@github.com:sainnhe/gruvbox-material.git ~/.vim/bundle
+git clone git@github.com:itchyny/lightline.vim.git ~/.vim/bundle
+git clone -b release git@github.com:neoclide/coc.nvim.git ~/.vim/bundle
+git clone git@github.com:aklt/plantuml-syntax.git ~/.vim/bundle
+git clone git@github.com:nvim-lua/plenary.nvim.git ~/.vim/bundle
+git clone git@github.com:nvim-telescope/telescope.nvim.git ~/.vim/bundle
+git clone git@github.com:nvim-telescope/telescope-fzf-native.nvim.git ~/.vim/bundle
 ```
 
 ### Create `init.vim` file for nvim
@@ -113,7 +117,7 @@ ln -s <path_to_Linux_Files_repo>/coc-settings.json ~/.config/nvim/coc-settings.j
 ln -s <path_to_Linux_Files_repo>/gruvbox_dark.conf ~/.config/kitty/gruvbox_dark.conf
 ln -s <path_to_Linux_Files_repo>/i3_config ~/.config/i3/config
 ln -s <path_to_Linux_Files_repo>/i3blocks_config ~/.config/i3blocks/config
-ln -s <path_to_Linux_Files_repo>/kitty.conf ~/.config/kitty/kitty.conf
+ln -s <path_to_Linux_Files_repo>/alacritty.toml ~/.config/alacritty/alacritty.toml
 ```
 
 Note that all other configs which do not start with a "." are located under
