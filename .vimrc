@@ -78,24 +78,24 @@ augroup python
     autocmd!
     autocmd FileType python setlocal nowrap
     autocmd FileType python setlocal list
-    autocmd FileType python nnoremap <buffer> <localleader>c I# <esc>
+    autocmd FileType python nnoremap <buffer> <localleader>c I# <ESC>
 augroup END
 augroup cplusplus
     autocmd!
     autocmd FileType cpp setlocal noexpandtab
     autocmd FileType cpp setlocal colorcolumn=120
-    autocmd FileType cpp nnoremap <buffer> <localleader>c I// <esc>
+    autocmd FileType cpp nnoremap <buffer> <localleader>c I// <ESC>
 augroup END
 augroup rust
     autocmd!
-    autocmd FileType rust nnoremap <buffer> <localleader>c I// <esc>
+    autocmd FileType rust nnoremap <buffer> <localleader>c I// <ESC>
 augroup END
 augroup markdown
     autocmd!
     autocmd FileType markdown setlocal shiftwidth=2
     autocmd FileType markdown setlocal tabstop=2
-    autocmd FileType markdown onoremap <buffer> ih :<c-u>execute "normal! ?^\\(==\\+\\\\|--\\+\\)$\r:nohlsearch\rkvg_"<cr>
-    autocmd FileType markdown onoremap <buffer> ah :<c-u>execute "normal! ?^\\(==\\+\\\\|--\\+\\)$\r:nohlsearch\rg_vk0"<cr>
+    autocmd FileType markdown onoremap <buffer> ih :<C-U>execute "normal! ?^\\(==\\+\\\\|--\\+\\)$\r:nohlsearch\rkvg_"<CR>
+    autocmd FileType markdown onoremap <buffer> ah :<C-U>execute "normal! ?^\\(==\\+\\\\|--\\+\\)$\r:nohlsearch\rg_vk0"<CR>
 augroup END
 augroup netrw
     autocmd!
@@ -104,7 +104,7 @@ augroup netrw
     " Go up the hierarchy, 8th line should be ".."
     autocmd FileType netrw nmap <buffer> h 8G<CR>
     " Close preview (opened by `p`)
-    autocmd FileType netrw nnoremap <buffer> P <C-w>z
+    autocmd FileType netrw nnoremap <buffer> P <C-W>z
 augroup END
 augroup godot
     autocmd!
@@ -113,7 +113,7 @@ augroup godot
     autocmd FileType gdscript setlocal foldlevel=99
     autocmd FileType gdscript nnoremap <buffer> <localleader>r :GodotRun<CR>
     autocmd FileType gdscript nnoremap <buffer> <localleader>t :GodotRunCurrent<CR>
-    autocmd FileType gdscript nnoremap <buffer> <localleader>c I# <esc>
+    autocmd FileType gdscript nnoremap <buffer> <localleader>c I# <ESC>
 augroup END
 augroup plantuml
     autocmd!
@@ -123,7 +123,7 @@ augroup END
 augroup robot
     autocmd!
     autocmd BufNewFile,BufRead *.robot setlocal filetype=robot
-    autocmd FileType robot nnoremap <buffer> <localleader>c I# <esc>
+    autocmd FileType robot nnoremap <buffer> <localleader>c I# <ESC>
 augroup END
 augroup proj
     autocmd!
@@ -133,16 +133,16 @@ augroup proj
 augroup END
 
 " Insert mode mappings
-inoremap jk                             <esc>
+inoremap jk                             <ESC>
 " Remap the completion menu (used by LSPs)
 inoremap <C-K>                          <C-X><C-O>
 
 " Normal mode mappings
 nnoremap <leader>qq         :nohlsearch<CR>
 "   Telescope mappings
-"     <C-x> - open file in horizontal split
-"     <C-v> - open file in vertical split
-"     <C-t> - open file in new tab
+"     <C-X> - open file in horizontal split
+"     <C-V> - open file in vertical split
+"     <C-T> - open file in new tab
 "   Go to definition, using an LSP
 nnoremap <leader>gd         :Telescope lsp_definitions<CR>
 nnoremap <leader>gi         :Telescope lsp_implementations<CR>
@@ -152,7 +152,7 @@ nnoremap <leader>fg         :Telescope live_grep<CR>
 "   As in "find symbol"
 nnoremap <leader>fs         :Telescope lsp_document_symbols<CR>
 "   Open file under the cursor, move split to the right
-nnoremap <leader>wf         <c-w>f<c-w>L
+nnoremap <leader>wf         <C-W>f<C-W>L
 "   Copies the path of the current file to the clipboard
 nnoremap <leader>pwd        :let @+=expand("%:p")<CR>:echo expand("%:p")<CR>
 "   Trim trailing whitespace
@@ -162,7 +162,7 @@ nnoremap <leader>el         :vsplit ~/.config/nvim/lua/init.lua<CR>
 
 " Visual mode mappings
 "   Wrap selection in apostrophe marks
-vnoremap <leader>"          <esc>`<i"<esc>`>a"<esc>v
+vnoremap <leader>"          <ESC>`<i"<ESC>`>a"<ESC>v
 
 " theme
 set background=dark

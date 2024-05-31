@@ -20,10 +20,10 @@ lsp.clangd.setup{
         "clangd",
         "--offset-encoding=utf-16"
     },
-    completion = {enable = true},
 }
-lsp.jedi_language_server.setup{completion = {enable = true}}
-lsp.jsonls.setup{completion = {enable = true}}
-lsp.marksman.setup{completion = {enable = true}}
-lsp.rust_analyzer.setup{completion = {enable = true}}
-lsp.vimls.setup{completion = {enable = true}}
+lsp.jedi_language_server.setup{}
+lsp.jsonls.setup{}
+lsp.marksman.setup{}
+lsp.lua_ls.setup{}
+lsp.rust_analyzer.setup{}
+lsp.vimls.setup{}

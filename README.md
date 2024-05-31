@@ -92,22 +92,19 @@ mkdir -p ~/.config/nvim/lua
 ## Link configs
 
 ```bash
-ln -s <path_to_Linux_Files_repo>/.gitconfig ~/.gitconfig
-ln -s <path_to_Linux_Files_repo>/.vimrc ~/.vimrc
-ln -s <path_to_Linux_Files_repo>/init.vim ~/.config/nvim/init.vim
-ln -s <path_to_Linux_Files_repo>/init.lua ~/.config/nvim/lua/init.lua
-ln -s <path_to_Linux_Files_repo>/.zshrc ~/.zshrc
-ln -s <path_to_Linux_Files_repo>/gruvbox_dark.conf ~/.config/kitty/gruvbox_dark.conf
-ln -s <path_to_Linux_Files_repo>/i3_config ~/.config/i3/config
-ln -s <path_to_Linux_Files_repo>/i3blocks_config ~/.config/i3blocks/config
-ln -s <path_to_Linux_Files_repo>/alacritty.toml ~/.config/alacritty/alacritty.toml
+ln -s /home/nandax/tools/linux_configs/.gitconfig /home/nandax/.gitconfig
+ln -s /home/nandax/tools/linux_configs/.vimrc /home/nandax/.vimrc
+ln -s /home/nandax/tools/linux_configs/init.vim /home/nandax/.config/nvim/init.vim
+ln -s /home/nandax/tools/linux_configs/init.lua /home/nandax/.config/nvim/lua/init.lua
+ln -s /home/nandax/tools/linux_configs/.zshrc /home/nandax/.zshrc
+ln -s /home/nandax/tools/linux_configs/gruvbox_dark.conf /home/nandax/.config/kitty/gruvbox_dark.conf
+ln -s /home/nandax/tools/linux_configs/i3_config /home/nandax/.config/i3/config
+ln -s /home/nandax/tools/linux_configs/i3blocks_config /home/nandax/.config/i3blocks/config
+ln -s /home/nandax/tools/linux_configs/alacritty.toml /home/nandax/.config/alacritty/alacritty.toml
 ```
-
-Note that all other configs which do not start with a "." are located under
-`~/.config` by default
 
 ### Complete the setup of LSPs
 
 ```bash
-:MasonInstall clangd clang-format jedi-language-server json-lsp marksman rust-analyzer
+:MasonInstall clangd clang-format jedi-language-server json-lsp lua-language-server marksman rust-analyzer
 ```
