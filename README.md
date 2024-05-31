@@ -72,15 +72,15 @@ startx
 yay -S python-pip python-jedi jedi-language-server npm
 mkdir -p ~/.vim/autoload ~/.vim/bundle
 curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
-git clone git@github.com:sainnhe/gruvbox-material.git ~/.vim/bundle
-git clone git@github.com:itchyny/lightline.vim.git ~/.vim/bundle
-git clone git@github.com:aklt/plantuml-syntax.git ~/.vim/bundle
+cd ~/.vim/bundle
+git clone git@github.com:morhetz/gruvbox.git
+git clone git@github.com:itchyny/lightline.vim.git
+git clone git@github.com:aklt/plantuml-syntax.git
 git clone git@github.com:williamboman/mason.nvim.git
-git clone git@github.com:nvim-lua/plenary.nvim.git ~/.vim/bundle
-git clone git@github.com:nvim-telescope/telescope.nvim.git ~/.vim/bundle
-git clone git@github.com:nvim-telescope/telescope-fzf-native.nvim.git ~/.vim/bundle
-git clone git@github.com:neovim/nvim-lspconfig.git ~/.vim/bundle
-git clone git@github.com:ms-jpq/coq_nvim.git ~/.vim/bundle
+git clone git@github.com:nvim-lua/plenary.nvim.git
+git clone git@github.com:nvim-telescope/telescope.nvim.git
+git clone git@github.com:nvim-telescope/telescope-fzf-native.nvim.git
+git clone git@github.com:neovim/nvim-lspconfig.git
 ```
 
 ### Create directory structure for nvim
@@ -88,7 +88,6 @@ git clone git@github.com:ms-jpq/coq_nvim.git ~/.vim/bundle
 ```bash
 mkdir -p ~/.config/nvim/lua
 ```
-
 
 ## Link configs
 
@@ -111,5 +110,4 @@ Note that all other configs which do not start with a "." are located under
 
 ```bash
 :MasonInstall clangd clang-format jedi-language-server json-lsp marksman rust-analyzer
-:COQdeps
 ```

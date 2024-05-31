@@ -4,22 +4,26 @@ require("telescope").setup{
         layout_strategy = "vertical",
         sorting_strategy = "descending",
         wrap_results = true,
-        -- file_ignore_patterns = { ".mk" }
+        file_ignore_patterns = {
+            ".mak",
+            ".svg",
+            "Makefile",
+        },
     },
 }
 
 require("mason").setup{}
 
 local lsp = require("lspconfig")
-local coq = require("coq")
 lsp.clangd.setup{
-    coq.lsp_ensure_capabilities(),
     cmd = {
         "clangd",
         "--offset-encoding=utf-16"
-    }
+    },
+    completion = {enable = true},
 }
-lsp.jedi_language_server.setup{coq.lsp_ensure_capabilities()}
-lsp.jsonls.setup{coq.lsp_ensure_capabilities()}
-lsp.marksman.setup{coq.lsp_ensure_capabilities()}
-lsp.rust_analyzer.setup{coq.lsp_ensure_capabilities()}
+lsp.jedi_language_server.setup{completion = {enable = true}}
+lsp.jsonls.setup{completion = {enable = true}}
+lsp.marksman.setup{completion = {enable = true}}
+lsp.rust_analyzer.setup{completion = {enable = true}}
+lsp.vimls.setup{completion = {enable = true}}

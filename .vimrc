@@ -134,7 +134,8 @@ augroup END
 
 " Insert mode mappings
 inoremap jk                             <esc>
-inoremap <silent><script><expr> <c-l>   copilot#Accept("\<CR>")
+" Remap the completion menu (used by LSPs)
+inoremap <C-K>                          <C-X><C-O>
 
 " Normal mode mappings
 nnoremap <leader>qq         :nohlsearch<CR>
@@ -143,9 +144,9 @@ nnoremap <leader>qq         :nohlsearch<CR>
 "     <C-v> - open file in vertical split
 "     <C-t> - open file in new tab
 "   Go to definition, using an LSP
-nnoremap <leader>gd         :Telescope lsp_definitions jump_type="vsplit" reuse_win=true<CR>
-nnoremap <leader>gi         :Telescope lsp_implementations jump_type="vsplit" reuse_win=true<CR>
-nnoremap <leader>gr         :Telescope lsp_references include_current_line=true jump_type="vsplit"<CR>
+nnoremap <leader>gd         :Telescope lsp_definitions<CR>
+nnoremap <leader>gi         :Telescope lsp_implementations<CR>
+nnoremap <leader>gr         :Telescope lsp_references include_current_line=true<CR>
 nnoremap <leader>ff         :Telescope find_files<CR>
 nnoremap <leader>fg         :Telescope live_grep<CR>
 "   As in "find symbol"
@@ -165,16 +166,11 @@ vnoremap <leader>"          <esc>`<i"<esc>`>a"<esc>v
 
 " theme
 set background=dark
-let g:gruvbox_material_background = 'medium'
-let g:gruvbox_material_ui_contrast = 'high'
-let g:gruvbox_material_foreground = 'original'
-let g:gruvbox_material_sign_column_background = 'grey'
-let g:gruvbox_material_statusline_style = 'original'
-colorscheme gruvbox-material
+colorscheme gruvbox
 
 " lightline
 let g:lightline = {
-\   'colorscheme' : 'gruvbox_material',
+\   'colorscheme': 'gruvbox',
 \   'active': {
 \       'left': [
 \           [ 'mode', 'paste' ],
@@ -185,6 +181,3 @@ let g:lightline = {
 \       'lineinfo': '%3l:%-2c%-2V',
 \   },
 \ }
-
-" COQ
-let g:coq_settings = { "auto_start": "shut-up" }
