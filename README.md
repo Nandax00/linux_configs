@@ -106,5 +106,5 @@ ln -s /home/nandax/tools/linux_configs/alacritty.toml /home/nandax/.config/alacr
 ### Complete the setup of LSPs
 
 ```bash
-:MasonInstall clangd clang-format jedi-language-server json-lsp lua-language-server marksman rust-analyzer
+:MasonInstall autopep8 clangd clang-format json-lsp lua-language-server marksman python-lsp-server rust-analyzer vim-language-server
 ```

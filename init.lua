@@ -1,6 +1,5 @@
 require("telescope").setup{
     defaults = {
-        initial_mode = "normal",
         layout_strategy = "vertical",
         sorting_strategy = "descending",
         wrap_results = true,
@@ -21,9 +20,9 @@ lsp.clangd.setup{
         "--offset-encoding=utf-16"
     },
 }
-lsp.jedi_language_server.setup{}
 lsp.jsonls.setup{}
 lsp.marksman.setup{}
 lsp.lua_ls.setup{}
+lsp.pylsp.setup{}
 lsp.rust_analyzer.setup{}
 lsp.vimls.setup{}
