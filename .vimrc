@@ -7,8 +7,8 @@ if has('termguicolors')
     set termguicolors
 endif
 
-let mapleader="-"
-let maplocalleader=","
+let mapleader=","
+let maplocalleader="'"
 
 " Sets the terminal window's scroolback buffer size
 let g:terminal_scrollback_buffer_size = 100000
@@ -20,75 +20,56 @@ let g:editorconfig = v:false
 
 let g:markdown_fenced_languages = ['python', 'bash=sh', 'cpp', 'gdscript', 'plantuml', 'rust']
 
-set shell=bash\ -i
-set mouse=a
-set tabstop=4
-set shiftwidth=4
-set expandtab
-set number
-set ruler
-set list
-set shiftround
-set nobackup
-set showcmd
-set ignorecase
-set smartcase
-set backspace=indent,eol,start
-set smartindent
 set autoindent
-set hlsearch
-set incsearch
-set tabpagemax=100
-set wildmode=longest:full
-set wildmenu
+set backspace=indent,eol,start
+set binary
 set colorcolumn=80
+set display=uhex
+set expandtab
+set hlsearch
+set ignorecase
+set incsearch
+set list
+set mouse=a
+set nobackup
+set noshowmode
+set number
+set pumheight=10
+set pumwidth=10
+set ruler
+set scrolloff=5
+set shell=bash\ -i
+set shiftround
+set shiftwidth=4
+set showcmd
+set smartcase
+set smartindent
 set splitbelow
 set splitright
 set startofline
-set scrolloff=5
-set noshowmode
+set tabpagemax=100
+set tabstop=4
 set undofile
-set clipboard+=unnamedplus
-set pumwidth=10
-set pumheight=10
+set wildmenu
+set wildmode=longest:full
 
 " Line number customization
 set cursorline
-highlight clear CursorLine
-highlight CursorLineNr guifg=#fb4934 guibg=#45403d
 
-" Robot syntax highlight
-highlight link robotSETUP           Include
-highlight link robotTEARDOWN        Include
-highlight link robotTEMPLATE        Include
-highlight link robotARGUMENTS       Include
-highlight link robotTAGS            Include
-highlight link robotKEYWORD         Function
-highlight link robotASSIGN          Type
-highlight link robotFOR             Statement
-highlight link robotEND             Statement
-highlight link robotCOMMENT         Comment
-highlight link robotCONTINUATION    Special
-
-" Highlight trailing whitespaces across all files
-highlight link TrailingWhitespace   ErrorFloat
-match TrailingWhitespace /\s\+$/
-
-augroup python
-    autocmd!
-    autocmd FileType python setlocal nowrap
-    autocmd FileType python setlocal list
-    autocmd FileType python nnoremap <buffer> <localleader>c I# <ESC>
-augroup END
 augroup cplusplus
     autocmd!
-    autocmd FileType cpp setlocal noexpandtab
     autocmd FileType cpp setlocal colorcolumn=120
+    autocmd FileType cpp setlocal noexpandtab
     autocmd FileType cpp nnoremap <buffer> <localleader>c I// <ESC>
 augroup END
-augroup rust
+augroup godot
     autocmd!
-    autocmd FileType rust nnoremap <buffer> <localleader>c I// <ESC>
+    autocmd FileType gdscript setlocal foldlevel=99
+    autocmd FileType gdscript setlocal foldmethod=expr
+    autocmd FileType gdscript setlocal tabstop=4
+    autocmd FileType gdscript nnoremap <buffer> <localleader>r :GodotRun<CR>
+    autocmd FileType gdscript nnoremap <buffer> <localleader>t :GodotRunCurrent<CR>
+    autocmd FileType gdscript nnoremap <buffer> <localleader>c I# <ESC>
 augroup END
 augroup markdown
     autocmd!
@@ -106,71 +87,88 @@ augroup netrw
     " Close preview (opened by `p`)
     autocmd FileType netrw nnoremap <buffer> P <C-W>z
 augroup END
-augroup godot
-    autocmd!
-    autocmd FileType gdscript setlocal foldmethod=expr
-    autocmd FileType gdscript setlocal tabstop=4
-    autocmd FileType gdscript setlocal foldlevel=99
-    autocmd FileType gdscript nnoremap <buffer> <localleader>r :GodotRun<CR>
-    autocmd FileType gdscript nnoremap <buffer> <localleader>t :GodotRunCurrent<CR>
-    autocmd FileType gdscript nnoremap <buffer> <localleader>c I# <ESC>
-augroup END
 augroup plantuml
     autocmd!
-    autocmd FileType plantuml setlocal tabstop=2
     autocmd FileType plantuml setlocal shiftwidth=2
+    autocmd FileType plantuml setlocal tabstop=2
+augroup END
+augroup proj
+    autocmd!
+    autocmd BufNewFile,BufRead *.proj setlocal filetype=proj
+    autocmd FileType proj setlocal shiftwidth=2
+    autocmd FileType proj setlocal tabstop=2
+augroup END
+augroup python
+    autocmd!
+    autocmd FileType python setlocal list
+    autocmd FileType python setlocal nowrap
+    autocmd FileType python nnoremap <buffer> <localleader>c I# <ESC>
 augroup END
 augroup robot
     autocmd!
     autocmd BufNewFile,BufRead *.robot setlocal filetype=robot
     autocmd FileType robot nnoremap <buffer> <localleader>c I# <ESC>
 augroup END
-augroup proj
+augroup rust
     autocmd!
-    autocmd BufNewFile,BufRead *.proj setlocal filetype=proj
-    autocmd FileType proj setlocal tabstop=2
-    autocmd FileType proj setlocal shiftwidth=2
+    autocmd FileType rust nnoremap <buffer> <localleader>c I// <ESC>
+augroup END
+augroup sh
+    autocmd!
+    autocmd FileType sh setlocal tabstop=2
+    autocmd FileType sh setlocal shiftwidth=2
 augroup END
 
 " Insert mode mappings
-inoremap jk                             <ESC>
+inoremap jk                 <ESC>
 " Remap the completion menu (used by LSPs)
-inoremap <C-K>                          <C-X><C-O>
+inoremap <C-K>              <C-X><C-O>
+" Quick convert word under the cursor to uppercase
+inoremap <C-U>              <ESC>viwUea
 
 " Normal mode mappings
-nnoremap <leader>qq         :nohlsearch<CR>
+nnoremap <leader>qq     :nohlsearch<CR>
+"   Diagnostic Disable
+nnoremap <leader>dd     :lua vim.diagnostic.hide()<CR>
+"   Diagnostic Enable
+nnoremap <leader>de     :lua vim.diagnostic.show()<CR>
 "   Telescope mappings
 "     <C-X> - open file in horizontal split
 "     <C-V> - open file in vertical split
 "     <C-T> - open file in new tab
 "   Go to definition, using an LSP
-nnoremap <leader>gd         :Telescope lsp_definitions<CR>
-nnoremap <leader>gi         :Telescope lsp_implementations<CR>
-nnoremap <leader>gr         :Telescope lsp_references include_current_line=true<CR>
-nnoremap <leader>ff         :Telescope find_files<CR>
-nnoremap <leader>fg         :Telescope live_grep<CR>
+nnoremap <leader>gd     :Telescope lsp_definitions<CR>
+nnoremap <leader>gi     :Telescope lsp_implementations<CR>
+nnoremap <leader>gr     :Telescope lsp_references include_current_line=true<CR>
+nnoremap <leader>ff     :Telescope find_files<CR>
+nnoremap <leader>fg     :Telescope live_grep<CR>
 "   As in "find symbol"
-nnoremap <leader>fs         :Telescope lsp_document_symbols<CR>
+nnoremap <leader>fs     :Telescope lsp_document_symbols<CR>
 "   Open file under the cursor, move split to the right
-nnoremap <leader>wf         <C-W>f<C-W>L
+nnoremap <leader>wf     <C-W>f<C-W>L
 "   Copies the path of the current file to the clipboard
-nnoremap <leader>pwd        :let @+=expand("%:p")<CR>:echo expand("%:p")<CR>
+nnoremap <leader>pwd    :let @+=expand("%:p")<CR>:echo expand("%:p")<CR>
 "   Trim trailing whitespace
-nnoremap <leader>tr         :%s/\s\+$//e<CR>
-nnoremap <leader>ev         :vsplit ~/.vimrc<CR>
-nnoremap <leader>el         :vsplit ~/.config/nvim/lua/init.lua<CR>
+nnoremap <leader>tr     :%s/\s\+$//e<CR>
+nnoremap <leader>ev     :vsplit ~/.vimrc<CR>
+nnoremap <leader>el     :vsplit ~/.config/nvim/lua/init.lua<CR>
 
 " Visual mode mappings
 "   Wrap selection in apostrophe marks
-vnoremap <leader>"          <ESC>`<i"<ESC>`>a"<ESC>v
+vnoremap <leader>"      <ESC>`<i"<ESC>`>a"<ESC>v
 
-" theme
+" Everything color related
+"   Theme
 set background=dark
-colorscheme gruvbox
+colorscheme melange
 
-" lightline
+"   Highlight trailing whitespaces across all files
+match TrailingWhitespace /\s\+$/
+highlight link TrailingWhitespace   ErrorMsg
+
+"   lightline
 let g:lightline = {
-\   'colorscheme': 'gruvbox',
+\   'colorscheme': 'apprentice',
 \   'active': {
 \       'left': [
 \           [ 'mode', 'paste' ],
