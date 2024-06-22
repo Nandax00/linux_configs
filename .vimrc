@@ -168,7 +168,7 @@ highlight link TrailingWhitespace   ErrorMsg
 
 "   lightline
 let g:lightline = {
-\   'colorscheme': 'apprentice',
+\   'colorscheme': 'melange',
 \   'active': {
 \       'left': [
 \           [ 'mode', 'paste' ],

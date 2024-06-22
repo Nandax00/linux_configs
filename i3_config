@@ -17,7 +17,7 @@ font pango:JetBrainsMono Nerd Font 10
 
 # Window settings
 default_border pixel 3
-client.focused #fb4934 #ebdbb2 #5a524c #b8bb26 #ebdbb2
+client.focused #BD8183 #ECE1D7 #34302C #78997A #ECE1D7
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -195,11 +195,11 @@ bar {
     status_command i3blocks
     position    top
     colors {
-        background #32302f
-        statusline #ebdbb2
-        separator #83a598
+        background #34302C
+        statusline #ECE1D7
+        separator #E49B5D
 
-        focused_workspace #ebdbb2  #ebdbb2 #5a524c
+        focused_workspace #ECE1D7 #ECE1D7 #34302C
     }
 }
 
