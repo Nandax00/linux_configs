@@ -165,17 +165,3 @@ colorscheme melange
 "   Highlight trailing whitespaces across all files
 match TrailingWhitespace /\s\+$/
 highlight link TrailingWhitespace   ErrorMsg
-
-"   lightline
-let g:lightline = {
-\   'colorscheme': 'melange',
-\   'active': {
-\       'left': [
-\           [ 'mode', 'paste' ],
-\           [ 'readonly', 'filename', 'modified' ]
-\       ]
-\   },
-\   'component': {
-\       'lineinfo': '%3l:%-2c%-2V',
-\   },
-\ }

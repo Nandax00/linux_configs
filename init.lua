@@ -1,25 +1,51 @@
-require('nvim-treesitter.configs').setup{
-  ensure_installed = { "c", "cpp", "lua", "vim", "vimdoc", "query" },
-  sync_install = false,
-  auto_install = true,
-  highlight = {
-    enable = true,
-    disable = function(lang, buf)
-        local disabled_fts = { "gitrebase" }
-        if disabled_fts[lang] then
-            return true
-        end
-        local max_filesize = 100 * 1024 -- 100 KB
-        local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
-        if ok and stats and stats.size > max_filesize then
-            return true
-        end
-    end,
-    additional_vim_regex_highlighting = false,
-  },
+require("lualine").setup {
+    sections = {
+        lualine_b = { "diagnostics" },
+        lualine_c = {
+            {
+                "filename",
+                newfile_status = true,
+                path = 1,
+                symbols = { modified = " ●" },
+            }
+        },
+    },
+    tabline = {
+        lualine_a = {
+            {
+                "tabs",
+                max_length = vim.o.columns,
+                mode = 2,
+                use_mode_colors = true,
+                symbols = { modified = " ●" },
+            }
+        },
+        lualine_b = { "branch", "diff" },
+    },
 }
 
-require("telescope").setup{
+require("nvim-treesitter.configs").setup {
+    ensure_installed = { "c", "cpp", "lua", "vim", "vimdoc", "query" },
+    sync_install = false,
+    auto_install = true,
+    highlight = {
+        enable = true,
+        disable = function(lang, buf)
+            local disabled_fts = { "gitrebase" }
+            if disabled_fts[lang] then
+                return true
+            end
+            local max_filesize = 100 * 1024 -- 100 KB
+            local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
+            if ok and stats and stats.size > max_filesize then
+                return true
+            end
+        end,
+        additional_vim_regex_highlighting = false,
+    },
+}
+
+require("telescope").setup {
     defaults = {
         layout_strategy = "vertical",
         sorting_strategy = "descending",
@@ -32,21 +58,21 @@ require("telescope").setup{
     },
 }
 
-require("mason").setup{}
+require("mason").setup {}
 
 local lsp = require("lspconfig")
-lsp.clangd.setup{
+lsp.clangd.setup {
     cmd = {
         "clangd",
         "--offset-encoding=utf-16"
     },
 }
-lsp.jsonls.setup{}
-lsp.marksman.setup{}
-lsp.lua_ls.setup{}
-lsp.pylsp.setup{}
-lsp.rust_analyzer.setup{}
-lsp.taplo.setup{}
-lsp.tsserver.setup{}
-lsp.vimls.setup{}
-lsp.bashls.setup{}
+lsp.jsonls.setup {}
+lsp.marksman.setup {}
+lsp.lua_ls.setup {}
+lsp.pylsp.setup {}
+lsp.rust_analyzer.setup {}
+lsp.taplo.setup {}
+lsp.tsserver.setup {}
+lsp.vimls.setup {}
+lsp.bashls.setup {}
