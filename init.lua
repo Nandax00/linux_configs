@@ -6,7 +6,7 @@ require("lualine").setup {
                 "filename",
                 newfile_status = true,
                 path = 1,
-                symbols = { modified = " ●" },
+                symbols = { modified = "●" },
             }
         },
     },
