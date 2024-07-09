@@ -70,34 +70,21 @@ startx
 
 ```bash
 yay -S python-pip python-jedi jedi-language-server npm
-mkdir -p ~/.vim/autoload ~/.vim/bundle
-curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
-cd ~/.vim/bundle
-git clone git@github.com:morhetz/gruvbox.git
-git clone git@github.com:itchyny/lightline.vim.git
-git clone git@github.com:aklt/plantuml-syntax.git
-git clone git@github.com:williamboman/mason.nvim.git
-git clone git@github.com:nvim-lua/plenary.nvim.git
-git clone git@github.com:nvim-telescope/telescope.nvim.git
-git clone git@github.com:nvim-telescope/telescope-fzf-native.nvim.git
-git clone git@github.com:neovim/nvim-lspconfig.git
 ```
 
 ### Create directory structure for nvim
 
 ```bash
-mkdir -p ~/.config/nvim/lua
+mkdir -p ~/.config/nvim/lua/plugins
 ```
 
 ## Link configs
 
 ```bash
 ln -s /home/nandax/tools/linux_configs/.gitconfig /home/nandax/.gitconfig
-ln -s /home/nandax/tools/linux_configs/.vimrc /home/nandax/.vimrc
-ln -s /home/nandax/tools/linux_configs/init.vim /home/nandax/.config/nvim/init.vim
-ln -s /home/nandax/tools/linux_configs/init.lua /home/nandax/.config/nvim/lua/init.lua
+ln -s /home/nandax/tools/linux_configs/init.lua /home/nandax/.config/nvim/init.lua
+ln -s /home/nandax/tools/linux_configs/nvim_plugin_setup.lua /home/nandax/.config/nvim/lua/nvim_plugin_setup.lua
 ln -s /home/nandax/tools/linux_configs/.zshrc /home/nandax/.zshrc
-ln -s /home/nandax/tools/linux_configs/gruvbox_dark.conf /home/nandax/.config/kitty/gruvbox_dark.conf
 ln -s /home/nandax/tools/linux_configs/i3_config /home/nandax/.config/i3/config
 ln -s /home/nandax/tools/linux_configs/i3blocks_config /home/nandax/.config/i3blocks/config
 ln -s /home/nandax/tools/linux_configs/alacritty.toml /home/nandax/.config/alacritty/alacritty.toml

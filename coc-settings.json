@@ -1,6 +1,0 @@
-{
-    // BS that writes junk at the end of lines (in C++ files)
-    "inlayHint.enable": false,
-    "colors.enable": true,
-    "semanticTokens.enable": true
-}
