@@ -84,6 +84,7 @@ mkdir -p ~/.config/nvim/lua/plugins
 ln -s /home/nandax/tools/linux_configs/.gitconfig /home/nandax/.gitconfig
 ln -s /home/nandax/tools/linux_configs/init.lua /home/nandax/.config/nvim/init.lua
 ln -s /home/nandax/tools/linux_configs/nvim_plugin_setup.lua /home/nandax/.config/nvim/lua/nvim_plugin_setup.lua
+ln -s /home/nandax/tools/linux_configs/spec.lua /home/nandax/.config/nvim/lua/plugins/spec.lua
 ln -s /home/nandax/tools/linux_configs/.zshrc /home/nandax/.zshrc
 ln -s /home/nandax/tools/linux_configs/i3_config /home/nandax/.config/i3/config
 ln -s /home/nandax/tools/linux_configs/i3blocks_config /home/nandax/.config/i3blocks/config
