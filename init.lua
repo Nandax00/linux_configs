@@ -26,18 +26,22 @@ require("lazy").setup {
     install = { colorscheme = { "melange" } },
 }
 
+require("nvim_plugin_setup")
+
 vim.opt.autoindent = true
+vim.opt.backup = false
 vim.opt.binary = true
 vim.opt.colorcolumn = "80"
+vim.opt.cursorline = true
 vim.opt.display = "uhex"
 vim.opt.expandtab = true
+vim.opt.foldmethod = "indent"
+vim.opt.foldlevelstart = 1
 vim.opt.hlsearch = true
 vim.opt.ignorecase = true
 vim.opt.incsearch = true
 vim.opt.list = true
 vim.opt.mouse = "a"
-vim.opt.backup = false
-vim.opt.showmode = false
 vim.opt.number = true
 vim.opt.pumheight = 10
 vim.opt.pumwidth = 10
@@ -46,6 +50,7 @@ vim.opt.scrolloff = 5
 vim.opt.shiftround = true
 vim.opt.shiftwidth = 4
 vim.opt.showcmd = true
+vim.opt.showmode = false
 vim.opt.smartcase = true
 vim.opt.smartindent = true
 vim.opt.splitbelow = true
@@ -56,8 +61,13 @@ vim.opt.tabstop = 4
 vim.opt.undofile = true
 vim.opt.wildmenu = true
 vim.opt.wildmode = "longest:full"
-vim.opt.cursorline = true
 
+vim.filetype.add({
+    extension = {
+        proj = "proj",
+        robot = "robot",
+    },
+})
 vim.api.nvim_create_autocmd("FileType", {
     pattern = "cpp",
     callback = function()
@@ -76,14 +86,6 @@ vim.api.nvim_create_autocmd("FileType", {
         vim.api.nvim_buf_set_keymap(0, "n", "<localleader>r", ":GodotRun<CR>", { noremap = true })
         vim.api.nvim_buf_set_keymap(0, "n", "<localleader>t", ":GodotRunCurrent<CR>", { noremap = true })
         vim.api.nvim_buf_set_keymap(0, "n", "<localleader>c", "I# <ESC>", { noremap = true })
-    end
-})
-
-vim.api.nvim_create_autocmd("FileType", {
-    pattern = "markdown",
-    callback = function()
-        vim.opt_local.shiftwidth = 2
-        vim.opt_local.tabstop = 2
     end
 })
 
@@ -107,12 +109,6 @@ vim.api.nvim_create_autocmd("FileType", {
     end
 })
 
-vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
-    pattern = "*.proj",
-    callback = function()
-        vim.opt_local.filetype = "proj"
-    end
-})
 vim.api.nvim_create_autocmd("FileType", {
     pattern = "proj",
     callback = function()
@@ -130,12 +126,6 @@ vim.api.nvim_create_autocmd("FileType", {
     end
 })
 
-vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
-    pattern = "*.robot",
-    callback = function()
-        vim.opt_local.filetype = "robot"
-    end
-})
 vim.api.nvim_create_autocmd("FileType", {
     pattern = "robot",
     callback = function()
@@ -208,5 +198,3 @@ vim.cmd([[
 match TrailingWhitespace /\s\+$/
 highlight link TrailingWhitespace   ErrorMsg
 ]])
-
-require("nvim_plugin_setup")
