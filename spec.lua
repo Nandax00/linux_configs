@@ -28,4 +28,7 @@ return {
   {
     "nvim-telescope/telescope-fzf-native.nvim"
   },
+  {
+    url = "ssh://git@git.internal.cinemo.com:7999/~nonodi/tree-sitter-proj.git"
+  },
 }
