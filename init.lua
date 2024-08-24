@@ -11,19 +11,19 @@ vim.g.editorconfig = false
 -- Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
-    local lazyrepo = "https://github.com/folke/lazy.nvim.git"
-    vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
-    if vim.v.shell_error ~= 0 then
-        os.exit(1)
-    end
+  local lazyrepo = "https://github.com/folke/lazy.nvim.git"
+  vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
+  if vim.v.shell_error ~= 0 then
+    os.exit(1)
+  end
 end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup {
-    spec = {
-        { import = "plugins" },
-    },
-    install = { colorscheme = { "melange" } },
+  spec = {
+    { import = "plugins" },
+  },
+  install = { colorscheme = { "melange" } },
 }
 
 require("nvim_plugin_setup")
@@ -69,93 +69,109 @@ vim.filetype.add({
     },
 })
 vim.api.nvim_create_autocmd("FileType", {
-    pattern = "cpp",
-    callback = function()
-        vim.opt_local.colorcolumn = "120"
-        vim.opt_local.expandtab = false
-        vim.api.nvim_buf_set_keymap(0, "n", "<localleader>c", "I// <ESC>", { noremap = true })
-    end
+  pattern = "cpp",
+  callback = function()
+    vim.opt_local.colorcolumn = "120"
+    vim.opt_local.expandtab = false
+    vim.api.nvim_buf_set_keymap(0, "n", "<localleader>c", "I// <ESC>", { noremap = true })
+  end
 })
 
 vim.api.nvim_create_autocmd("FileType", {
-    pattern = "gdscript",
-    callback = function()
-        vim.opt_local.foldlevel = 99
-        vim.opt_local.foldmethod = "expr"
-        vim.opt_local.tabstop = 4
-        vim.api.nvim_buf_set_keymap(0, "n", "<localleader>r", ":GodotRun<CR>", { noremap = true })
-        vim.api.nvim_buf_set_keymap(0, "n", "<localleader>t", ":GodotRunCurrent<CR>", { noremap = true })
-        vim.api.nvim_buf_set_keymap(0, "n", "<localleader>c", "I# <ESC>", { noremap = true })
-    end
+  pattern = "gdscript",
+  callback = function()
+    vim.opt_local.foldlevel = 99
+    vim.opt_local.foldmethod = "expr"
+    vim.api.nvim_buf_set_keymap(0, "n", "<localleader>r", ":GodotRun<CR>", { noremap = true })
+    vim.api.nvim_buf_set_keymap(0, "n", "<localleader>t", ":GodotRunCurrent<CR>", { noremap = true })
+    vim.api.nvim_buf_set_keymap(0, "n", "<localleader>c", "I# <ESC>", { noremap = true })
+  end
 })
 
 vim.api.nvim_create_autocmd("FileType", {
-    pattern = "netrw",
-    callback = function()
-        -- Open a file or go down the hierarchy
-        vim.api.nvim_buf_set_keymap(0, "n", "l", "<CR>", {})
-        -- Go up the hierarchy, 8th line should be ".."
-        vim.api.nvim_buf_set_keymap(0, "n", "h", "8G<CR>", {})
-        -- Close preview (opened by `p`)
-        vim.api.nvim_buf_set_keymap(0, "n", "P", "<C-W>z", { noremap = true })
-    end
+  pattern = "lua",
+  callback = function()
+    vim.opt_local.shiftwidth = 2
+    vim.opt_local.tabstop = 2
+    vim.opt_local.colorcolumn = "120"
+  end
 })
 
 vim.api.nvim_create_autocmd("FileType", {
-    pattern = "plantuml",
-    callback = function()
-        vim.opt_local.shiftwidth = 2
-        vim.opt_local.tabstop = 2
-    end
+  pattern = "markdown",
+  callback = function()
+    vim.opt_local.shiftwidth = 2
+    vim.opt_local.tabstop = 2
+  end
 })
 
 vim.api.nvim_create_autocmd("FileType", {
-    pattern = "proj",
-    callback = function()
-        vim.opt_local.shiftwidth = 2
-        vim.opt_local.tabstop = 2
-    end
+  pattern = "netrw",
+  callback = function()
+    -- Open a file or go down the hierarchy
+    vim.api.nvim_buf_set_keymap(0, "n", "l", "<CR>", {})
+    -- Go up the hierarchy, 8th line should be ".."
+    vim.api.nvim_buf_set_keymap(0, "n", "h", "8G<CR>", {})
+    -- Close preview (opened by `p`)
+    vim.api.nvim_buf_set_keymap(0, "n", "P", "<C-W>z", { noremap = true })
+  end
 })
 
 vim.api.nvim_create_autocmd("FileType", {
-    pattern = "python",
-    callback = function()
-        vim.opt_local.list = true
-        vim.opt_local.wrap = false
-        vim.api.nvim_buf_set_keymap(0, "n", "<localleader>c", "I# <ESC>", { noremap = true })
-    end
+  pattern = "plantuml",
+  callback = function()
+    vim.opt_local.shiftwidth = 2
+    vim.opt_local.tabstop = 2
+  end
 })
 
 vim.api.nvim_create_autocmd("FileType", {
-    pattern = "robot",
-    callback = function()
-        vim.api.nvim_buf_set_keymap(0, "n", "<localleader>c", "I# <ESC>", { noremap = true })
-    end
+  pattern = "proj",
+  callback = function()
+    vim.opt_local.shiftwidth = 2
+    vim.opt_local.tabstop = 2
+  end
 })
 
 vim.api.nvim_create_autocmd("FileType", {
-    pattern = "rust",
-    callback = function()
-        vim.api.nvim_buf_set_keymap(0, "n", "<localleader>c", "I// <ESC>", {noremap = true })
-    end
+  pattern = "python",
+  callback = function()
+    vim.opt_local.list = true
+    vim.opt_local.wrap = false
+    vim.api.nvim_buf_set_keymap(0, "n", "<localleader>c", "I# <ESC>", { noremap = true })
+  end
 })
 
 vim.api.nvim_create_autocmd("FileType", {
-    pattern = "sh",
-    callback = function()
-        vim.opt_local.tabstop = 2
-        vim.opt_local.shiftwidth = 2
-    end
+  pattern = "robot",
+  callback = function()
+    vim.api.nvim_buf_set_keymap(0, "n", "<localleader>c", "I# <ESC>", { noremap = true })
+  end
 })
 
--- Insert mode mappings TODO place it back below augroups
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "rust",
+  callback = function()
+    vim.api.nvim_buf_set_keymap(0, "n", "<localleader>c", "I// <ESC>", { noremap = true })
+  end
+})
+
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "sh",
+  callback = function()
+    vim.opt_local.tabstop = 2
+    vim.opt_local.shiftwidth = 2
+  end
+})
+
+-- Insert mode mappings
 vim.api.nvim_set_keymap("i", "jk", "<ESC>", {})
---Remap the completion menu (used by LSPs)
+--  Remap the completion menu (used by LSPs)
 vim.api.nvim_set_keymap("i", "<C-K>", "<C-X><C-O>", { noremap = true })
---Quickly convert word under the cursor to uppercase
+--  Quickly convert word under the cursor to uppercase
 vim.api.nvim_set_keymap("i", "<C-U>", "<ESC>viwUea", { noremap = true })
 
---Normal mode mappings
+-- Normal mode mappings
 vim.api.nvim_set_keymap("n", "<leader>qq", ":nohlsearch<CR>", { noremap = true })
 --  Diagnostic Disable
 vim.api.nvim_set_keymap("n", "<leader>dd", ":lua vim.diagnostic.hide()<CR>", { noremap = true })
@@ -184,11 +200,11 @@ vim.api.nvim_set_keymap("n", "<leader>el", ":vsplit ~/.config/nvim/init.lua<CR>"
 --  Edit Plugin settings
 vim.api.nvim_set_keymap("n", "<leader>ep", ":vsplit ~/.config/nvim/lua/nvim_plugin_setup.lua<CR>", { noremap = true })
 
---Visual mode mappings
+-- Visual mode mappings
 --  Wrap selection in apostrophe marks
 vim.api.nvim_set_keymap("v", "<leader>\"", "<ESC>`<i\"<ESC>`>a\"<ESC>v", { noremap = true })
 
---Everything color related
+-- Everything color related
 --  Theme
 vim.opt.background = "dark"
 vim.cmd.colorscheme "melange"
