@@ -1,8 +1,5 @@
 return {
   {
-    "lilydjwg/colorizer"
-  },
-  {
     "tpope/vim-fugitive",
   },
   {

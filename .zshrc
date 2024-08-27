@@ -25,10 +25,22 @@ alias c='cd ~/repos/cinemo'
 alias cs='cd ~/repos/cinemo/src'
 alias ca='cd ~/repos/cinemo-audio'
 
-diff-clang-format() {
-    file=/tmp/diff.cpp
-    clang-format --assume-filename=.clang-format $1 > $file
-    nvim -d $file $1
+# git Stash-Pull-Unstash
+spu() {
+    git stash && git pull origin master && git stash pop
+}
+
+# Repeat Command
+rc() {
+    rep=$1
+    shift
+
+    i=0;
+    while (( i < rep || rep == 0 )); do
+        ((i++))
+        echo $i;
+        $@ || break;
+    done
 }
 
 prompt_theme_setup() {
@@ -41,7 +53,7 @@ prompt_theme_setup() {
             echo "$branch_name..."
         fi
     }
-    PS1='%f[%F{yellow}%(?.+.-)%f] %F{5}%m %F{cyan}> %f'
+    PS1='%f[%F{yellow}%(?.+.-)%f] %F{blue}%m %F{cyan}> %f'
     RPS1='%f[%F{yellow}$(parse_git_branch)%f] %F{green}%~'
 }
 
