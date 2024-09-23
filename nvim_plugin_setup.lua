@@ -31,7 +31,7 @@ require("lualine").setup {
       {
         "tabs",
         tab_max_length = 20,
-        max_length = vim.o.columns - 40,
+        max_length = 9999,
         mode = 2,
         use_mode_colors = true,
         symbols = { modified = " ●" },

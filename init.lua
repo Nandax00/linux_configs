@@ -33,6 +33,7 @@ vim.opt.backup = false
 vim.opt.binary = true
 vim.opt.colorcolumn = "80"
 vim.opt.cursorline = true
+vim.opt.diffopt="followwrap"
 vim.opt.display = "uhex"
 vim.opt.expandtab = true
 vim.opt.foldmethod = "indent"
@@ -86,9 +87,9 @@ vim.api.nvim_create_autocmd("FileType", {
   callback = function()
     vim.opt_local.foldlevel = 99
     vim.opt_local.foldmethod = "expr"
-    vim.api.nvim_buf_set_keymap(0, "n", "<localleader>r", ":GodotRun<CR>", { noremap = true })
-    vim.api.nvim_buf_set_keymap(0, "n", "<localleader>t", ":GodotRunCurrent<CR>", { noremap = true })
-    vim.api.nvim_buf_set_keymap(0, "n", "<localleader>c", "I# <ESC>", { noremap = true })
+    vim.keymap.set("n", "<localleader>r", ":GodotRun<CR>", { buffer = true })
+    vim.keymap.set("n", "<localleader>t", ":GodotRunCurrent<CR>", { buffer = true })
+    vim.keymap.set("n", "<localleader>c", "I# <ESC>", { buffer = true })
   end
 })
 
@@ -113,11 +114,11 @@ vim.api.nvim_create_autocmd("FileType", {
   pattern = "netrw",
   callback = function()
     -- Open a file or go down the hierarchy
-    vim.api.nvim_buf_set_keymap(0, "n", "l", "<CR>", {})
+    vim.keymap.set("n", "l", "<CR>", { remap = true, buffer = true })
     -- Go up the hierarchy, 8th line should be ".."
-    vim.api.nvim_buf_set_keymap(0, "n", "h", "8G<CR>", {})
+    vim.keymap.set("n", "h", "8G<CR>", { remap = true, buffer = true })
     -- Close preview (opened by `p`)
-    vim.api.nvim_buf_set_keymap(0, "n", "P", "<C-W>z", { noremap = true })
+    vim.keymap.set("n", "P", "<C-W>z", { remap = true, buffer = true })
   end
 })
 
@@ -142,21 +143,21 @@ vim.api.nvim_create_autocmd("FileType", {
   callback = function()
     vim.opt_local.list = true
     vim.opt_local.wrap = false
-    vim.api.nvim_buf_set_keymap(0, "n", "<localleader>c", "I# <ESC>", { noremap = true })
+    vim.keymap.set("n", "<localleader>c", "I# <ESC>", { buffer = true })
   end
 })
 
 vim.api.nvim_create_autocmd("FileType", {
   pattern = "robot",
   callback = function()
-    vim.api.nvim_buf_set_keymap(0, "n", "<localleader>c", "I# <ESC>", { noremap = true })
+    vim.keymap.set("n", "<localleader>c", "I# <ESC>", { buffer = true })
   end
 })
 
 vim.api.nvim_create_autocmd("FileType", {
   pattern = "rust",
   callback = function()
-    vim.api.nvim_buf_set_keymap(0, "n", "<localleader>c", "I// <ESC>", { noremap = true })
+    vim.keymap.set("n", "<localleader>c", "I// <ESC>", { buffer = true })
   end
 })
 
@@ -169,44 +170,44 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 -- Insert mode mappings
-vim.api.nvim_set_keymap("i", "jk", "<ESC>", {})
+vim.keymap.set("i", "jk", "<ESC>", { remap = true })
 --  Remap the completion menu (used by LSPs)
-vim.api.nvim_set_keymap("i", "<C-K>", "<C-X><C-O>", { noremap = true })
+vim.keymap.set("i", "<C-K>", "<C-X><C-O>", { remap = true})
 --  Quickly convert word under the cursor to uppercase
-vim.api.nvim_set_keymap("i", "<C-U>", "<ESC>viwUea", { noremap = true })
+vim.keymap.set("i", "<C-U>", "<ESC>viwUea", { remap = true})
 
 -- Normal mode mappings
-vim.api.nvim_set_keymap("n", "<leader>qq", ":nohlsearch<CR>", { noremap = true })
+vim.keymap.set("n", "<leader>qq", ":nohlsearch<CR>")
 --  Diagnostic Disable
-vim.api.nvim_set_keymap("n", "<leader>dd", ":lua vim.diagnostic.hide()<CR>", { noremap = true })
+vim.keymap.set("n", "<leader>dd", ":lua vim.diagnostic.hide()<CR>")
 --  Diagnostic Enable
-vim.api.nvim_set_keymap("n", "<leader>de", ":lua vim.diagnostic.show()<CR>", { noremap = true })
+vim.keymap.set("n", "<leader>de", ":lua vim.diagnostic.show()<CR>")
 --  Telescope mappings
 --    <C-X> - open file in horizontal split
 --    <C-V> - open file in vertical split
 --    <C-T> - open file in new tab
 --  Go to definition, using an LSP
-vim.api.nvim_set_keymap("n", "<leader>gd", ":Telescope lsp_definitions<CR>", { noremap = true })
-vim.api.nvim_set_keymap("n", "<leader>gi", ":Telescope lsp_implementations<CR>", { noremap = true })
-vim.api.nvim_set_keymap("n", "<leader>gr", ":Telescope lsp_references include_current_line=true<CR>", { noremap = true })
-vim.api.nvim_set_keymap("n", "<leader>ff", ":Telescope find_files<CR>", { noremap = true })
-vim.api.nvim_set_keymap("n", "<leader>fg", ":Telescope live_grep<CR>", { noremap = true })
+vim.keymap.set("n", "<leader>gd", ":Telescope lsp_definitions<CR>")
+vim.keymap.set("n", "<leader>gi", ":Telescope lsp_implementations<CR>")
+vim.keymap.set("n", "<leader>gr", ":Telescope lsp_references include_current_line=true<CR>")
+vim.keymap.set("n", "<leader>ff", ":Telescope find_files<CR>")
+vim.keymap.set("n", "<leader>fg", ":Telescope live_grep<CR>")
 --  As in "find symbol"
-vim.api.nvim_set_keymap("n", "<leader>fs", ":Telescope lsp_document_symbols<CR>", { noremap = true })
+vim.keymap.set("n", "<leader>fs", ":Telescope lsp_document_symbols<CR>")
 --  Open file under the cursor, move split to the right
-vim.api.nvim_set_keymap("n", "<leader>wf", "<C-W>f<C-W>L", { noremap = true })
+vim.keymap.set("n", "<leader>wf", "<C-W>f<C-W>L")
 --  Copies the path of the current file to the clipboard
-vim.api.nvim_set_keymap("n", "<leader>pwd", ":let @+=expand('%:p')<CR>:echo expand('%:p')<CR>", { noremap = true })
+vim.keymap.set("n", "<leader>pwd", ":let @+=expand('%:p')<CR>:echo expand('%:p')<CR>")
 --  Trim trailing whitespace
-vim.api.nvim_set_keymap("n", "<leader>tr", ":%s/\\s\\+$//e<CR>", { noremap = true })
+vim.keymap.set("n", "<leader>tr", ":%s/\\s\\+$//e<CR>")
 --  Edit Lua config
-vim.api.nvim_set_keymap("n", "<leader>el", ":vsplit ~/.config/nvim/init.lua<CR>", { noremap = true })
+vim.keymap.set("n", "<leader>el", ":vsplit ~/.config/nvim/init.lua<CR>")
 --  Edit Plugin settings
-vim.api.nvim_set_keymap("n", "<leader>ep", ":vsplit ~/.config/nvim/lua/nvim_plugin_setup.lua<CR>", { noremap = true })
+vim.keymap.set("n", "<leader>ep", ":vsplit ~/.config/nvim/lua/nvim_plugin_setup.lua<CR>")
 
 -- Visual mode mappings
 --  Wrap selection in apostrophe marks
-vim.api.nvim_set_keymap("v", "<leader>\"", "<ESC>`<i\"<ESC>`>a\"<ESC>v", { noremap = true })
+vim.keymap.set("v", "<leader>\"", "<ESC>`<i\"<ESC>`>a\"<ESC>v")
 
 -- Everything color related
 --  Theme
