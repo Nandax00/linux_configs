@@ -73,7 +73,11 @@ vim.api.nvim_create_autocmd("FileType", {
   callback = function()
     vim.opt_local.colorcolumn = "120"
     vim.opt_local.expandtab = false
-    vim.api.nvim_buf_set_keymap(0, "n", "<localleader>c", "I// <ESC>", { noremap = true })
+    vim.keymap.set("n", "<localleader>c", "I// <ESC>", { buffer = true })
+-- Switch
+    vim.keymap.set("n", "<localleader>s", ":ClangdSwitchSourceHeader<CR>", { buffer = true })
+-- Print information
+    vim.keymap.set("n", "<localleader>p", ":ClangdShowSymbolInfo<CR>", { buffer = true })
   end
 })
 

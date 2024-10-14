@@ -1,3 +1,19 @@
+local branch_name_max_length = 30
+local function truncate_git_branch(str)
+  if (str:len() < branch_name_max_length) then
+    return str
+  end
+
+  str = str:sub(1, branch_name_max_length)
+  if not str:find("[-_]") then
+    return str .. '…'
+  end
+
+  -- make the truncated output nicer by cutting off the last incomplete word
+  local last_word_separator_idx = str:len() - str:reverse():find("[-_]")
+  return str:sub(1, last_word_separator_idx) .. '…'
+end
+
 require("lualine").setup {
   sections = {
     lualine_b = { "diagnostics" },
@@ -24,7 +40,7 @@ require("lualine").setup {
     lualine_b = {
       {
         "branch",
-        max_length = 30,
+        fmt = truncate_git_branch,
       },
       "diff",
     },
