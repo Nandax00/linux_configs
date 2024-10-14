@@ -118,6 +118,6 @@ lsp.lua_ls.setup {
 lsp.pylsp.setup {}
 lsp.rust_analyzer.setup {}
 lsp.taplo.setup {}
-lsp.tsserver.setup {}
+lsp.ts_ls.setup {}
 lsp.vimls.setup {}
 lsp.bashls.setup {}
