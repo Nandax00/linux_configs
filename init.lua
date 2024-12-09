@@ -5,8 +5,10 @@ vim.opt.termguicolors = true
 
 vim.g.mapleader = ","
 vim.g.maplocalleader = "'"
+vim.g.netrw_browse_split = 0
 vim.g.terminal_scrollback_buffer_size = 100000
 vim.g.editorconfig = false
+vim.g.copilot_no_tab_map = true
 
 -- Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
@@ -49,7 +51,7 @@ vim.opt.pumwidth = 10
 vim.opt.ruler = true
 vim.opt.scrolloff = 5
 vim.opt.shiftround = true
-vim.opt.shiftwidth = 4
+vim.opt.shiftwidth = 2
 vim.opt.showcmd = true
 vim.opt.showmode = false
 vim.opt.smartcase = true
@@ -58,7 +60,7 @@ vim.opt.splitbelow = true
 vim.opt.splitright = true
 vim.opt.startofline = true
 vim.opt.tabpagemax = 100
-vim.opt.tabstop = 4
+vim.opt.tabstop = 2
 vim.opt.undofile = true
 vim.opt.wildmenu = true
 vim.opt.wildmode = "longest:full"
@@ -73,6 +75,8 @@ vim.api.nvim_create_autocmd("FileType", {
   pattern = "cpp",
   callback = function()
     vim.opt_local.colorcolumn = "120"
+    vim.opt_local.shiftwidth = 4
+    vim.opt_local.tabstop = 4
     vim.opt_local.expandtab = false
     vim.keymap.set("n", "<localleader>c", "I// <ESC>", { buffer = true })
 -- Switch
@@ -83,30 +87,9 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 vim.api.nvim_create_autocmd("FileType", {
-  pattern = "gdscript",
-  callback = function()
-    vim.opt_local.foldlevel = 99
-    vim.opt_local.foldmethod = "expr"
-    vim.keymap.set("n", "<localleader>r", ":GodotRun<CR>", { buffer = true })
-    vim.keymap.set("n", "<localleader>t", ":GodotRunCurrent<CR>", { buffer = true })
-    vim.keymap.set("n", "<localleader>c", "I# <ESC>", { buffer = true })
-  end
-})
-
-vim.api.nvim_create_autocmd("FileType", {
   pattern = "lua",
   callback = function()
-    vim.opt_local.shiftwidth = 2
-    vim.opt_local.tabstop = 2
     vim.opt_local.colorcolumn = "120"
-  end
-})
-
-vim.api.nvim_create_autocmd("FileType", {
-  pattern = "markdown",
-  callback = function()
-    vim.opt_local.shiftwidth = 2
-    vim.opt_local.tabstop = 2
   end
 })
 
@@ -123,33 +106,12 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 vim.api.nvim_create_autocmd("FileType", {
-  pattern = "plantuml",
-  callback = function()
-    vim.opt_local.shiftwidth = 2
-    vim.opt_local.tabstop = 2
-  end
-})
-
-vim.api.nvim_create_autocmd("FileType", {
-  pattern = "proj",
-  callback = function()
-    vim.opt_local.shiftwidth = 2
-    vim.opt_local.tabstop = 2
-  end
-})
-
-vim.api.nvim_create_autocmd("FileType", {
   pattern = "python",
   callback = function()
     vim.opt_local.list = true
+    vim.opt_local.shiftwidth = 4
+    vim.opt_local.tabstop = 4
     vim.opt_local.wrap = false
-    vim.keymap.set("n", "<localleader>c", "I# <ESC>", { buffer = true })
-  end
-})
-
-vim.api.nvim_create_autocmd("FileType", {
-  pattern = "robot",
-  callback = function()
     vim.keymap.set("n", "<localleader>c", "I# <ESC>", { buffer = true })
   end
 })
@@ -161,27 +123,25 @@ vim.api.nvim_create_autocmd("FileType", {
   end
 })
 
-vim.api.nvim_create_autocmd("FileType", {
-  pattern = "sh",
-  callback = function()
-    vim.opt_local.tabstop = 2
-    vim.opt_local.shiftwidth = 2
-  end
-})
-
 -- Insert mode mappings
 vim.keymap.set("i", "jk", "<ESC>", { remap = true })
 --  Remap the completion menu (used by LSPs)
 vim.keymap.set("i", "<C-K>", "<C-X><C-O>", { remap = true})
 --  Quickly convert word under the cursor to uppercase
 vim.keymap.set("i", "<C-U>", "<ESC>viwUea", { remap = true})
+vim.keymap.set("i", "<C-L>", "copilot#Accept()", { expr = true, silent = true, replace_keycodes = false })
+
 
 -- Normal mode mappings
 vim.keymap.set("n", "<leader>qq", ":nohlsearch<CR>")
 --  Diagnostic Disable
 vim.keymap.set("n", "<leader>dd", ":lua vim.diagnostic.hide()<CR>")
 --  Diagnostic Enable
-vim.keymap.set("n", "<leader>de", ":lua vim.diagnostic.show()<CR>")
+vim.keymap.set("n", "<leader>ed", ":lua vim.diagnostic.show()<CR>")
+--  Disable Copilot
+vim.keymap.set("n", "<leader>dc", ":Copilot disable<CR>")
+--  Enable Copilot after disabling
+vim.keymap.set("n", "<leader>ec", ":Copilot enable<CR>")
 --  Telescope mappings
 --    <C-X> - open file in horizontal split
 --    <C-V> - open file in vertical split
