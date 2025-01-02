@@ -123,6 +123,22 @@ vim.api.nvim_create_autocmd("FileType", {
   end
 })
 
+local lazygit = require("toggleterm.terminal").Terminal:new({
+  cmd = "lazygit",
+  direction = "float",
+  on_open = function(term)
+    vim.cmd("startinsert!")
+    vim.api.nvim_buf_set_keymap(term.bufnr, "n", "q", "<cmd>close<CR>", { noremap = true, silent = true })
+  end,
+  on_close = function()
+    vim.cmd("startinsert!")
+  end,
+})
+
+function Lazygit_toggle()
+  lazygit:toggle()
+end
+
 -- Insert mode mappings
 vim.keymap.set("i", "jk", "<ESC>", { remap = true })
 --  Remap the completion menu (used by LSPs)
@@ -130,7 +146,6 @@ vim.keymap.set("i", "<C-K>", "<C-X><C-O>", { remap = true})
 --  Quickly convert word under the cursor to uppercase
 vim.keymap.set("i", "<C-U>", "<ESC>viwUea", { remap = true})
 vim.keymap.set("i", "<C-L>", "copilot#Accept()", { expr = true, silent = true, replace_keycodes = false })
-
 
 -- Normal mode mappings
 vim.keymap.set("n", "<leader>qq", ":nohlsearch<CR>")
@@ -158,6 +173,8 @@ vim.keymap.set("n", "<leader>fs", ":Telescope lsp_document_symbols<CR>")
 vim.keymap.set("n", "<leader>wf", "<C-W>f<C-W>L")
 --  Copies the path of the current file to the clipboard
 vim.keymap.set("n", "<leader>pwd", ":let @+=expand('%:p')<CR>:echo expand('%:p')<CR>")
+-- as in Git (twice) or Good Game, up to the Reader's interpretation: opens Lazygit in a floating toggleterm
+vim.keymap.set("n", "<leader>gg", ":lua Lazygit_toggle()<CR>", {noremap = true, silent = true})
 --  Trim trailing whitespace
 vim.keymap.set("n", "<leader>tr", ":%s/\\s\\+$//e<CR>")
 --  Edit Lua config

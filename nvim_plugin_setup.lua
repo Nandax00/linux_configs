@@ -47,6 +47,8 @@ require("lualine").setup {
   },
 }
 
+require("mason").setup {}
+
 require("nvim-treesitter.configs").setup {
   ensure_installed = { "c", "cpp", "lua", "vim", "vimdoc", "query" },
   sync_install = false,
@@ -81,7 +83,9 @@ require("telescope").setup {
   },
 }
 
-require("mason").setup {}
+require("toggleterm").setup {}
+
+-- LSPs
 
 local lsp = require("lspconfig")
 lsp.clangd.setup {
@@ -90,6 +94,7 @@ lsp.clangd.setup {
     "--offset-encoding=utf-16"
   },
 }
+lsp.cmake.setup {}
 lsp.jsonls.setup {}
 lsp.marksman.setup {}
 lsp.lua_ls.setup {

@@ -31,4 +31,7 @@ return {
   {
     "nvim-telescope/telescope-fzf-native.nvim"
   },
+  {
+    "akinsho/toggleterm.nvim"
+  },
 }
