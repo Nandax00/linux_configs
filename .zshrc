@@ -30,6 +30,14 @@ spu() {
     git stash && git pull origin master && git stash pop
 }
 
+# Link file from directory, e.g. link compile_commands.json from different
+# build dirs.
+link() {
+    rm ./$1:t
+    local path=`readlink -f $1`
+    /usr/bin/ln -s $path ./$1:t
+}
+
 # Repeat Command
 rc() {
     rep=$1
