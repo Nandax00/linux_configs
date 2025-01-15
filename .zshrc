@@ -25,11 +25,6 @@ alias c='cd ~/repos/cinemo'
 alias cs='cd ~/repos/cinemo/src'
 alias ca='cd ~/repos/cinemo-audio'
 
-# git Stash-Pull-Unstash
-spu() {
-    git stash && git pull origin master && git stash pop
-}
-
 # Link file from directory, e.g. link compile_commands.json from different
 # build dirs.
 link() {
