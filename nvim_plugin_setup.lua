@@ -83,6 +83,11 @@ parser_config.proj = {
 require("telescope").setup {
   defaults = {
     layout_strategy = "vertical",
+    mappings = {
+      n = {
+        ["q"] = require("telescope.actions").close,
+      },
+    },
     sorting_strategy = "descending",
     wrap_results = true,
     file_ignore_patterns = {
