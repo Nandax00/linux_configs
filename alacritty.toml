@@ -34,11 +34,11 @@ foreground = "#ECE1D7"
 background = "#292522"
 
 [colors.search.focused_match]
-foreground = "#ECE1D7"
-background = "#292522"
+foreground = "#292522"
+background = "#D47766"
 
 [colors.search.matches]
-foreground = "#ECE1D7"
+foreground = "#D47766"
 background = "#292522"
 
 [font]
