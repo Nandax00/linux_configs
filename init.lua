@@ -44,7 +44,7 @@ vim.opt.hlsearch = true
 vim.opt.ignorecase = true
 vim.opt.incsearch = true
 vim.opt.list = true
-vim.opt.matchpairs:append{"<:>", "\":\""}
+vim.opt.matchpairs:append{"<:>"}
 vim.opt.mouse = "a"
 vim.opt.number = true
 vim.opt.pumheight = 10
