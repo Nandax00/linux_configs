@@ -44,11 +44,13 @@ vim.opt.hlsearch = true
 vim.opt.ignorecase = true
 vim.opt.incsearch = true
 vim.opt.list = true
+vim.opt.matchpairs:append{"<:>", "\":\""}
 vim.opt.mouse = "a"
 vim.opt.number = true
 vim.opt.pumheight = 10
 vim.opt.pumwidth = 10
 vim.opt.ruler = true
+vim.opt.scrolljump = -50
 vim.opt.scrolloff = 5
 vim.opt.shiftround = true
 vim.opt.shiftwidth = 2
@@ -166,7 +168,7 @@ vim.keymap.set("n", "<leader>gd", ":Telescope lsp_definitions<CR>")
 vim.keymap.set("n", "<leader>gi", ":Telescope lsp_implementations<CR>")
 vim.keymap.set("n", "<leader>gr", ":Telescope lsp_references include_current_line=true<CR>")
 vim.keymap.set("n", "<leader>ff", ":Telescope find_files<CR>")
-vim.keymap.set("n", "<leader>fg", ":Telescope live_grep<CR>")
+vim.keymap.set("n", "<leader>fg", ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>")
 --  As in "find symbol"
 vim.keymap.set("n", "<leader>fs", ":Telescope lsp_document_symbols<CR>")
 --  Open file under the cursor, move split to the right

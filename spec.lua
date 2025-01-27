@@ -32,6 +32,9 @@ return {
     "nvim-telescope/telescope-fzf-native.nvim"
   },
   {
+    "nvim-telescope/telescope-live-grep-args.nvim"
+  },
+  {
     "akinsho/toggleterm.nvim"
   },
   {

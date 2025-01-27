@@ -82,6 +82,11 @@ parser_config.proj = {
 
 require("telescope").setup {
   defaults = {
+    file_ignore_patterns = {
+      ".mak",
+      ".svg",
+      "Makefile",
+    },
     layout_strategy = "vertical",
     mappings = {
       n = {
@@ -90,13 +95,20 @@ require("telescope").setup {
     },
     sorting_strategy = "descending",
     wrap_results = true,
-    file_ignore_patterns = {
-      ".mak",
-      ".svg",
-      "Makefile",
+  },
+  extensions = {
+    live_grep_args = {
+      auto_quoting = true,
+      mappings = {
+        i = {
+          ["<C-k>"] = require("telescope-live-grep-args.actions").quote_prompt(),
+          ["<C-i>"] = require("telescope-live-grep-args.actions").quote_prompt({ postfix = " --iglob " }),
+        },
+      },
     },
   },
 }
+require("telescope").load_extension("live_grep_args")
 
 require("toggleterm").setup {}
 
