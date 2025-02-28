@@ -175,8 +175,8 @@ vim.keymap.set("n", "<leader>fs", ":Telescope lsp_document_symbols<CR>")
 vim.keymap.set("n", "<leader>wf", "<C-W>f<C-W>L")
 --  Copies the path of the current file to the clipboard
 vim.keymap.set("n", "<leader>pwd", ":let @+=expand('%:p')<CR>:echo expand('%:p')<CR>")
--- as in Git (twice) or Good Game, up to the Reader's interpretation: opens Lazygit in a floating toggleterm
-vim.keymap.set("n", "<leader>gg", ":lua Lazygit_toggle()<CR>", {noremap = true, silent = true})
+-- as in LazyGit: opens Lazygit in a floating toggleterm
+vim.keymap.set("n", "<leader>lg", ":lua Lazygit_toggle()<CR>")
 --  Trim trailing whitespace
 vim.keymap.set("n", "<leader>tr", ":%s/\\s\\+$//e<CR>")
 --  Edit Lua config
