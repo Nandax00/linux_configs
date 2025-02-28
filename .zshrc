@@ -127,4 +127,4 @@ fi
 
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-setxkbmap -model pc104 -layout us,hu -option grp:win_space_toggle -option caps:ctrl_modifier
+setxkbmap -model pc104 -layout us,hu,us -variant ,,colemak -option grp:win_space_toggle -option caps:ctrl_modifier
