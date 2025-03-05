@@ -8,7 +8,6 @@ vim.g.maplocalleader = "'"
 vim.g.netrw_browse_split = 0
 vim.g.terminal_scrollback_buffer_size = 100000
 vim.g.editorconfig = false
-vim.g.copilot_no_tab_map = true
 
 -- Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
@@ -147,18 +146,12 @@ vim.keymap.set("i", "jk", "<ESC>", { remap = true })
 vim.keymap.set("i", "<C-K>", "<C-X><C-O>", { remap = true})
 --  Quickly convert word under the cursor to uppercase
 vim.keymap.set("i", "<C-U>", "<ESC>viwUea", { remap = true})
-vim.keymap.set("i", "<C-L>", "copilot#Accept()", { expr = true, silent = true, replace_keycodes = false })
 
 -- Normal mode mappings
-vim.keymap.set("n", "<leader>qq", ":nohlsearch<CR>")
 --  Diagnostic Disable
 vim.keymap.set("n", "<leader>dd", ":lua vim.diagnostic.hide()<CR>")
 --  Diagnostic Enable
 vim.keymap.set("n", "<leader>ed", ":lua vim.diagnostic.show()<CR>")
---  Disable Copilot
-vim.keymap.set("n", "<leader>dc", ":Copilot disable<CR>")
---  Enable Copilot after disabling
-vim.keymap.set("n", "<leader>ec", ":Copilot enable<CR>")
 --  Telescope mappings
 --    <C-X> - open file in horizontal split
 --    <C-V> - open file in vertical split
@@ -175,13 +168,17 @@ vim.keymap.set("n", "<leader>fs", ":Telescope lsp_document_symbols<CR>")
 vim.keymap.set("n", "<leader>wf", "<C-W>f<C-W>L")
 --  Copies the path of the current file to the clipboard
 vim.keymap.set("n", "<leader>pwd", ":let @+=expand('%:p')<CR>:echo expand('%:p')<CR>")
--- as in LazyGit: opens Lazygit in a floating toggleterm
+--  As in LazyGit: opens Lazygit in a floating toggleterm
 vim.keymap.set("n", "<leader>lg", ":lua Lazygit_toggle()<CR>")
---  Trim trailing whitespace
+--  Custom mappings that are not package-dependent
+vim.keymap.set("n", "<leader>qq", ":nohlsearch<CR>")
+--   Trim trailing whitespace
 vim.keymap.set("n", "<leader>tr", ":%s/\\s\\+$//e<CR>")
---  Edit Lua config
+--   Tab Split - split current file to new tab. Naming is after :vs (vertical split)
+vim.keymap.set("n", "<leader>ts", ":split<CR><C-W>T")
+--   Edit Lua config
 vim.keymap.set("n", "<leader>el", ":vsplit ~/.config/nvim/init.lua<CR>")
---  Edit Plugin settings
+--   Edit Plugin settings
 vim.keymap.set("n", "<leader>ep", ":vsplit ~/.config/nvim/lua/nvim_plugin_setup.lua<CR>")
 
 -- Visual mode mappings
