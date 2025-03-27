@@ -66,6 +66,10 @@ vim.opt.undofile = true
 vim.opt.wildmenu = true
 vim.opt.wildmode = "longest:full"
 
+vim.diagnostic.config({
+  virtual_text = { current_line = true }
+})
+
 vim.filetype.add({
     extension = {
         proj = "proj",
@@ -122,6 +126,15 @@ vim.api.nvim_create_autocmd("FileType", {
   callback = function()
     vim.keymap.set("n", "<localleader>c", "I// <ESC>", { buffer = true })
   end
+})
+
+vim.api.nvim_create_autocmd('LspAttach', {
+  callback = function(ev)
+    local client = vim.lsp.get_client_by_id(ev.data.client_id)
+    if client:supports_method('textDocument/completion') then
+      vim.lsp.completion.enable(true, client.id, ev.buf, { autotrigger = false })
+    end
+  end,
 })
 
 local lazygit = require("toggleterm.terminal").Terminal:new({

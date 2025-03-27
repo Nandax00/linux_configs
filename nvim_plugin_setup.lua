@@ -114,17 +114,13 @@ require("toggleterm").setup {}
 
 -- LSPs
 
-local lsp = require("lspconfig")
-lsp.clangd.setup {
+vim.lsp.config.clangd = {
   cmd = {
     "clangd",
     "--offset-encoding=utf-16"
   },
 }
-lsp.cmake.setup {}
-lsp.jsonls.setup {}
-lsp.marksman.setup {}
-lsp.lua_ls.setup {
+vim.lsp.config.lua_ls = {
   on_init = function(client)
     local path = client.workspace_folders[1].name
     if vim.loop.fs_stat(path .. '/.luarc.json') or vim.loop.fs_stat(path .. '/.luarc.jsonc') then
@@ -147,9 +143,14 @@ lsp.lua_ls.setup {
     Lua = {}
   }
 }
-lsp.pylsp.setup {}
-lsp.rust_analyzer.setup {}
-lsp.taplo.setup {}
-lsp.ts_ls.setup {}
-lsp.vimls.setup {}
-lsp.bashls.setup {}
+vim.lsp.enable({"clangd"})
+vim.lsp.enable({"cmake"})
+vim.lsp.enable({"jsonls"})
+vim.lsp.enable({"marksman"})
+vim.lsp.enable({"lua_ls"})
+vim.lsp.enable({"pylsp"})
+vim.lsp.enable({"rust_analyzer"})
+vim.lsp.enable({"taplo"})
+vim.lsp.enable({"ts_ls"})
+vim.lsp.enable({"vimls"})
+vim.lsp.enable({"bashls"})
