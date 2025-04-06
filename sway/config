@@ -1,0 +1,177 @@
+# Melange theme
+set $grays_bg #292522
+set $grays_float #34302C
+set $grays_sel #403A36
+set $grays_ui #867462
+set $grays_com #C1A78E
+set $grays_fg #ECE1D7
+
+set $bright_red #D47766
+set $bright_yellow #EBC06D
+set $bright_green #85B695
+set $bright_cyan #89B3B6
+set $bright_blue #A3A9CE
+set $bright_magenta #CF9BC2
+
+set $normal_red #BD8183
+set $normal_yellow #E49B5D
+set $normal_green #78997A
+set $normal_cyan #7B9695
+set $normal_blue #7F91B2
+set $normal_magenta #B380B0
+
+set $dark_red #7D2A2F
+set $dark_yellow #8B7449
+set $dark_green #233524
+set $dark_cyan #253333
+set $dark_blue #273142
+set $dark_magenta #422741
+
+# Set $mod to Mod key
+set $mod Mod4
+
+default_border pixel 3
+set $font "JetBrainsMono Nerd Font 13"
+set $term alacritty
+set $menu bemenu-run --bottom --prompt "▶" --fn $font --tf "$bright_yellow" --hf "$bright_red"
+
+font $font
+
+# class                     ?           border          text            indicator
+client.focused              $grays_bg   $grays_com      $grays_float    $bright_green
+client.focused_inactive     $grays_bg   $grays_sel      $grays_float    $dark_green
+client.unfocused            $grays_bg   $grays_sel      $grays_float    $dark_green
+client.urgent               $grays_bg   $bright_red     $grays_float    $bright_red
+
+# Use pactl to adjust volume in PulseAudio.
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% && $refresh_i3status
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% && $refresh_i3status
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
+bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
+bindsym XF86AudioPlay exec --no-startup-id playerctl --player=spotify play-pause && $refresh_i3status
+bindsym XF86AudioNext exec --no-startup-id playerctl --player=spotify next && $refresh_i3status
+bindsym XF86AudioPrev exec --no-startup-id playerctl --player=spotify previous && $refresh_i3status
+bindsym --locked XF86MonBrightnessDown exec brightnessctl set 5%-
+bindsym --locked XF86MonBrightnessUp exec brightnessctl set 5%+
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+bindsym $mod+Return exec $term
+# Kill focused window
+bindsym $mod+Control+q kill
+# Start dmenu (a program launcher)
+bindsym $mod+d exec $menu
+
+# Change focus
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+# Move focused window
+bindsym $mod+Control+h move left
+bindsym $mod+Control+j move down
+bindsym $mod+Control+k move up
+bindsym $mod+Control+l move right
+
+# Move entire workspace to an adjacent screen
+bindsym $mod+less move workspace to output left
+bindsym $mod+greater move workspace to output right
+
+# Split in horizontal orientation
+bindsym $mod+c split h
+# Split in vertical orientation
+bindsym $mod+v split v
+
+# Enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+
+# Change container layout (stacked, tabbed, toggle split)
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+# Toggle tiling / floating
+bindsym $mod+Control+f floating toggle
+
+# Change focus between tiling / floating windows
+bindsym $mod+t focus mode_toggle
+
+# Focus the parent container
+bindsym $mod+a focus parent
+
+# Define names for default workspaces for which we configure key bindings later on.
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+set $ws10 "10"
+
+# Switch to workspace
+bindsym $mod+1 workspace number $ws1
+bindsym $mod+2 workspace number $ws2
+bindsym $mod+3 workspace number $ws3
+bindsym $mod+4 workspace number $ws4
+bindsym $mod+5 workspace number $ws5
+bindsym $mod+6 workspace number $ws6
+bindsym $mod+7 workspace number $ws7
+bindsym $mod+8 workspace number $ws8
+bindsym $mod+9 workspace number $ws9
+bindsym $mod+0 workspace number $ws10
+
+# Move focused container to workspace
+bindsym $mod+Control+1 move container to workspace number $ws1
+bindsym $mod+Control+2 move container to workspace number $ws2
+bindsym $mod+Control+3 move container to workspace number $ws3
+bindsym $mod+Control+4 move container to workspace number $ws4
+bindsym $mod+Control+5 move container to workspace number $ws5
+bindsym $mod+Control+6 move container to workspace number $ws6
+bindsym $mod+Control+7 move container to workspace number $ws7
+bindsym $mod+Control+8 move container to workspace number $ws8
+bindsym $mod+Control+9 move container to workspace number $ws9
+bindsym $mod+Control+0 move container to workspace number $ws10
+
+# Reload the configuration file
+bindsym $mod+Control+c reload
+# Restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Control+r restart
+# Exit i3 (logs you out of your X session)
+bindsym $mod+Control+e exec "swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'"
+
+# Resize window (you can also use the mouse for that)
+bindsym $mod+r mode "resize"
+mode "resize" {
+    bindsym h resize grow width 10 px or 10 ppt
+    bindsym j resize grow height 10 px or 10 ppt
+    bindsym k resize shrink height 10 px or 10 ppt
+    bindsym l resize shrink width 10 px or 10 ppt
+
+    # back to normal: Enter or Escape or $mod+r
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+    bindsym $mod+r mode "default"
+}
+
+input * {
+  xkb_model "pc104"
+  xkb_layout "us,hu,us"
+  xkb_variant ",,colemak"
+  xkb_options "grp:win_space_toggle,caps:ctrl_modifier"
+}
+output * bg /home/nandax/Pictures/bg.jpg fill
+
+bindsym $mod+x [urgent=latest] focus
+bindsym $mod+Print exec "slurp | grim -g - - | wl-copy"
+bindsym $mod+i exec "swaylock"
+
+exec --no-startup-id nm-applet
+exec waybar
+
+include /etc/sway/config.d/*
+exec_always systemctl --user start sway-session.target
