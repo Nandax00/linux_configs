@@ -34,7 +34,4 @@ return {
   {
     "akinsho/toggleterm.nvim"
   },
-  {
-    url = "ssh://git@git.internal.cinemo.com:7999/~nonodi/tree-sitter-proj.git"
-  },
 }
