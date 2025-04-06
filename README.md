@@ -33,10 +33,10 @@ makepkg -si
 yay -S dhcpcd sshd iftop pipewire pipewire-alsa pipewire-pulse\
     pipewire-media-session
 # sway and Wayland deps
-yay -S sway layerctl alsa-utils sysstat xkb-switch lm-sensors wl-clipboard\
+yay -S sway playerctl alsa-utils sysstat i2c-tools wl-clipboard\
     xdg-desktop-portal-wlr xdg-desktop-portal grim bemenu xorg-xwayland\
     swaylock swaybg swayidle swaync swayimg wmenu foot polkit waybar wayvnc\
-    kanshi brightnessctl nwg-look
+    kanshi brightnessctl nwg-look slurp
 # zsh
 yay -S zsh-completions zsh-syntax-highlighting
 # alacritty
@@ -83,8 +83,8 @@ supported, such as scale.
 Follow the [instructions on ArchWiki](https://wiki.archlinux.org/title/Kanshi#Manage_kanshi_with_systemd).
 
 ```bash
-systemctl --user enable swayidle.service
-systemctl --user start swayidle.service
+systemctl --user enable kanshi
+systemctl --user start kanshi
 ```
 
 ### Set up swayidle service to manage idle logic
@@ -111,8 +111,9 @@ mkdir -p ~/.config/nvim/lua/plugins
 ## Link configs
 
 ```bash
-ln -s /home/nandax/.config/.gitconfig /home/nandax/.gitconfig
-ln -s /home/nandax/.config/.zshrc /home/nandax/.zshrc
+ln -s /home/nandax/.config/other/.gitconfig /home/nandax/.gitconfig
+ln -s /home/nandax/.config/other/.zshrc /home/nandax/.zshrc
+ln -s /home/nandax/.config/other/.zprofile /home/nandax/.zprofile
 ```
 
 ### Complete the setup of LSPs
