@@ -1,3 +1,32 @@
+/* Melange theme */
+@define-color grays_bg #292522;
+@define-color grays_float #34302C;
+@define-color grays_sel #403A36;
+@define-color grays_ui #867462;
+@define-color grays_com #C1A78E;
+@define-color grays_fg #ECE1D7;
+
+@define-color bright_red #D47766;
+@define-color bright_yellow #EBC06D;
+@define-color bright_green #85B695;
+@define-color bright_cyan #89B3B6;
+@define-color bright_blue #A3A9CE;
+@define-color bright_magenta #CF9BC2;
+
+@define-color normal_red #BD8183;
+@define-color normal_yellow #E49B5D;
+@define-color normal_green #78997A;
+@define-color normal_cyan #7B9695;
+@define-color normal_blue #7F91B2;
+@define-color normal_magenta #B380B0;
+
+@define-color dark_red #7D2A2F;
+@define-color dark_yellow #8B7449;
+@define-color dark_green #233524;
+@define-color dark_cyan #253333;
+@define-color dark_blue #273142;
+@define-color dark_magenta #422741;
+
 * {
     /* `otf-font-awesome` is required to be installed for icons */
     font-family: JetBrainsMono Nerd Font, Helvetica, Arial, sans-serif;
@@ -5,8 +34,8 @@
 }
 
 window#waybar {
-    background-color: #403A36;
-    color: #ffffff;
+    background-color: @grays_sel;
+    color: @grays_fg;
     transition-property: background-color;
     transition-duration: .5s;
 }
@@ -15,15 +44,16 @@ window#waybar.hidden {
     opacity: 0.2;
 }
 
-/*
 window#waybar.empty {
     background-color: transparent;
 }
-window#waybar.solo {
-    background-color: #FFFFFF;
-}
-*/
 
+window#waybar.solo {
+    background-color: @grays_fg;
+    color: @grays_bg;
+}
+
+/*
 window#waybar.termite {
     background-color: #3F3F3F;
 }
@@ -32,6 +62,7 @@ window#waybar.chromium {
     background-color: #000000;
     border: none;
 }
+*/
 
 button {
     /* Use box-shadow instead of border so the text isn't offset */
@@ -53,9 +84,10 @@ button:hover {
 }
 
 #workspaces button {
+    margin: 1px;
     padding: 0 2px;
-    background-color: transparent ;
-    color: #C1A78E;
+    background-color: @grays_bg;
+    color: @grays_com;
 }
 
 #workspaces button:hover {
@@ -63,18 +95,18 @@ button:hover {
 }
 
 #workspaces button.focused {
-    background-color: #85B695;
+    background-color: @bright_green;
     box-shadow: inset 0 -3px #ffffff;
-    color: #34302C;
+    color: @grays_float;
 }
 
 #workspaces button.urgent {
-    background-color: #7D2A2F;
-    color: #ECE1D7;
+    background-color: @dark_red;
+    color: @grays_fg;
 }
 
 #mode {
-    background-color: #64727D;
+    background-color: @bright_red;
     box-shadow: inset 0 -3px #ffffff;
 }
 
@@ -115,17 +147,18 @@ button:hover {
 }
 
 #clock {
-    background-color: #64727D;
-}
-
-#battery {
-    background-color: #ffffff;
+    background-color: @normal_blue;
     color: #000000;
 }
 
+#battery {
+    background-color: @grays_bg;
+    color: @grays_fg;
+}
+
 #battery.charging, #battery.plugged {
-    color: #ffffff;
-    background-color: #26A65B;
+    color: @grays_fg;
+    background-color: @bright_green;
 }
 
 @keyframes blink {
@@ -137,8 +170,8 @@ button:hover {
 
 /* Using steps() instead of linear as a timing function to limit cpu usage */
 #battery.critical:not(.charging) {
-    background-color: #f53c3c;
-    color: #ffffff;
+    background-color: @bright_red;
+    color: @grays_fg;
     animation-name: blink;
     animation-duration: 0.5s;
     animation-timing-function: steps(12);
@@ -146,6 +179,7 @@ button:hover {
     animation-direction: alternate;
 }
 
+/*
 #power-profiles-daemon {
     padding-right: 15px;
 }
@@ -164,16 +198,18 @@ button:hover {
     background-color: #2ecc71;
     color: #000000;
 }
+*/
 
 label:focus {
     background-color: #000000;
 }
 
 #cpu {
-    background-color: #2ecc71;
+    background-color: @bright_cyan;
     color: #000000;
 }
 
+/*
 #memory {
     background-color: #9b59b6;
 }
@@ -181,11 +217,13 @@ label:focus {
 #disk {
     background-color: #964B00;
 }
+*/
 
 #backlight {
-    background-color: #90b1b1;
+    background-color: @bright_magenta;
 }
 
+/*
 #network {
     background-color: #2980b9;
 }
@@ -193,17 +231,19 @@ label:focus {
 #network.disconnected {
     background-color: #f53c3c;
 }
+*/
 
 #pulseaudio {
-    background-color: #f1c40f;
+    background-color: @bright_yellow;
     color: #000000;
 }
 
 #pulseaudio.muted {
-    background-color: #90b1b1;
-    color: #2a5c45;
+    background-color: @normal_cyan;
+    color: @grays_bg;
 }
 
+/*
 #wireplumber {
     background-color: #fff0f5;
     color: #000000;
@@ -212,21 +252,23 @@ label:focus {
 #wireplumber.muted {
     background-color: #f53c3c;
 }
+*/
 
 #custom-media {
-    background-color: #66cc99;
+    background-color: @bright_green;
     color: #000000;
     min-width: 100px;
 }
 
 #custom-media.custom-spotify {
-    background-color: #66cc99;
+    background-color: @bright_green;
 }
 
 #custom-media.custom-vlc {
     background-color: #ffa000;
 }
 
+/*
 #temperature {
     background-color: #f0932b;
 }
@@ -234,9 +276,10 @@ label:focus {
 #temperature.critical {
     background-color: #eb4d4b;
 }
+*/
 
 #tray {
-    background-color: #2980b9;
+    background-color: @bright_blue;
 }
 
 #tray > .passive {
@@ -245,9 +288,10 @@ label:focus {
 
 #tray > .needs-attention {
     -gtk-icon-effect: highlight;
-    background-color: #eb4d4b;
+    background-color: @bright_red;
 }
 
+/*
 #idle_inhibitor {
     background-color: #2d3436;
 }
@@ -273,15 +317,15 @@ label:focus {
 #mpd.paused {
     background-color: #51a37a;
 }
+*/
 
 #language {
-    background: #00b093;
-    color: #740864;
-    padding: 0 5px;
-    margin: 0 5px;
+    background: @normal_red;
+    color: #000000;
     min-width: 16px;
 }
 
+/*
 #keyboard-state {
     background: #97e1ad;
     color: #000000;
@@ -297,6 +341,7 @@ label:focus {
 #keyboard-state > label.locked {
     background: rgba(0, 0, 0, 0.2);
 }
+*/
 
 #scratchpad {
     background: rgba(0, 0, 0, 0.2);
@@ -306,6 +351,7 @@ label:focus {
 	background-color: transparent;
 }
 
+/*
 #privacy {
     padding: 0;
 }
@@ -326,3 +372,4 @@ label:focus {
 #privacy-item.audio-out {
     background-color: #0069d4;
 }
+*/
