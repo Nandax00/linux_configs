@@ -152,13 +152,13 @@ button:hover {
 }
 
 #battery {
-    background-color: @grays_bg;
-    color: @grays_fg;
+    background-color: @normal_yellow;
+    color: #000000;
 }
 
 #battery.charging, #battery.plugged {
-    color: @grays_fg;
-    background-color: @bright_green;
+    background-color: @normal_green;
+    color: #000000;
 }
 
 @keyframes blink {
@@ -221,6 +221,7 @@ label:focus {
 
 #backlight {
     background-color: @bright_magenta;
+    color: #000000;
 }
 
 /*
@@ -279,7 +280,7 @@ label:focus {
 */
 
 #tray {
-    background-color: @bright_blue;
+    background-color: @grays_fg;
 }
 
 #tray > .passive {
@@ -320,6 +321,7 @@ label:focus {
 */
 
 #language {
+    padding: 0 2px;
     background: @normal_red;
     color: #000000;
     min-width: 16px;
