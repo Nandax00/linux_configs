@@ -1,4 +1,9 @@
-profile {
+profile home {
   output eDP-1
   output HDMI-A-2
+}
+
+profile office {
+  output eDP-1
+  output DP-7
 }
