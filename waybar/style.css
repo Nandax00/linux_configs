@@ -84,8 +84,7 @@ button:hover {
 }
 
 #workspaces button {
-    margin: 1px;
-    padding: 0 2px;
+    padding: 0 1px;
     background-color: @grays_bg;
     color: @grays_com;
 }
@@ -152,13 +151,13 @@ button:hover {
 }
 
 #battery {
-    background-color: @grays_bg;
-    color: @grays_fg;
+    background-color: @normal_yellow;
+    color: #000000;
 }
 
 #battery.charging, #battery.plugged {
-    color: @grays_fg;
-    background-color: @bright_green;
+    background-color: @normal_green;
+    color: #000000;
 }
 
 @keyframes blink {
@@ -205,7 +204,7 @@ label:focus {
 }
 
 #cpu {
-    background-color: @bright_cyan;
+    background-color: @normal_cyan;
     color: #000000;
 }
 
@@ -221,6 +220,7 @@ label:focus {
 
 #backlight {
     background-color: @bright_magenta;
+    color: #000000;
 }
 
 /*
@@ -279,7 +279,7 @@ label:focus {
 */
 
 #tray {
-    background-color: @bright_blue;
+    background-color: transparent;
 }
 
 #tray > .passive {
@@ -320,9 +320,10 @@ label:focus {
 */
 
 #language {
+    padding: 0 4px;
     background: @normal_red;
     color: #000000;
-    min-width: 16px;
+    min-width: 22px;
 }
 
 /*
