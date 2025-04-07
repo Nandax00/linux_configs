@@ -84,8 +84,7 @@ button:hover {
 }
 
 #workspaces button {
-    margin: 1px;
-    padding: 0 2px;
+    padding: 0 1px;
     background-color: @grays_bg;
     color: @grays_com;
 }
@@ -205,7 +204,7 @@ label:focus {
 }
 
 #cpu {
-    background-color: @bright_cyan;
+    background-color: @normal_cyan;
     color: #000000;
 }
 
@@ -280,7 +279,7 @@ label:focus {
 */
 
 #tray {
-    background-color: @grays_fg;
+    background-color: transparent;
 }
 
 #tray > .passive {
@@ -321,10 +320,10 @@ label:focus {
 */
 
 #language {
-    padding: 0 2px;
+    padding: 0 4px;
     background: @normal_red;
     color: #000000;
-    min-width: 16px;
+    min-width: 22px;
 }
 
 /*

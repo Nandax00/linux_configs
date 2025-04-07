@@ -31,6 +31,8 @@ set $dark_magenta #422741
 set $mod Mod4
 
 default_border pixel 3
+titlebar_padding 1
+titlebar_border_thickness 0
 set $font "JetBrainsMono Nerd Font 13"
 set $term alacritty
 set $menu bemenu-run --bottom --prompt "▶" --fn $font --tf "$bright_yellow" --hf "$bright_red"
