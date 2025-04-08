@@ -6,8 +6,8 @@ PartOf=graphical-session.target
 [Service]
 Type=simple
 ExecStart=/usr/bin/swayidle -w \
-  timeout 300  'swaylock'\
-  timeout 1800 'systemctl suspend'\
+  timeout 1800 'swaylock'\
+  timeout 7200 'systemctl suspend'\
   before-sleep 'swaylock'
 
 [Install]
