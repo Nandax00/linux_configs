@@ -31,12 +31,18 @@ makepkg -si
 
 ```bash
 yay -S dhcpcd sshd iftop pipewire pipewire-alsa pipewire-pulse\
-    pipewire-media-session
+    pipewire-media-session alsa-utils
 # sway and Wayland deps
-yay -S sway playerctl alsa-utils sysstat i2c-tools wl-clipboard\
-    xdg-desktop-portal-wlr xdg-desktop-portal grim bemenu xorg-xwayland\
-    swaylock swaybg swayidle swaync swayimg wmenu foot polkit waybar wayvnc\
-    kanshi brightnessctl nwg-look slurp
+#   Basic
+yay -S sway sysstat i2c-tools wl-clipboard xdg-desktop-portal-wlr\
+    xdg-desktop-portal xorg-xwayland swaylock swaybg swaync swayimg wmenu foot\
+    polkit wayvnc nwg-look
+#   Sway customization: custom status bar, launcher
+yay -S waybar playerctl bemenu brightnessctl
+#   Sway user services
+yay -S kanshi swayidle
+#   Wayland screen grab
+yay -S slurp grim swappy
 # zsh
 yay -S zsh-completions zsh-syntax-highlighting
 # alacritty
@@ -99,7 +105,7 @@ systemctl --user start swayidle.service
 ### Install dependencies
 
 ```bash
-yay -S python-pip python-jedi jedi-language-server npm
+yay -S python-pip python-jedi jedi-language-server npm lazygit difftastic
 ```
 
 ### Create directory structure for nvim

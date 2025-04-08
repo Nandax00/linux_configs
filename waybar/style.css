@@ -48,12 +48,12 @@ window#waybar.empty {
     background-color: transparent;
 }
 
+/*
 window#waybar.solo {
     background-color: @grays_fg;
     color: @grays_bg;
 }
 
-/*
 window#waybar.termite {
     background-color: #3F3F3F;
 }

@@ -1,4 +1,26 @@
+# Config relating to the Lazygit UI
+gui:
+
+  # The number of lines you scroll by when scrolling the main window
+  scrollHeight: 50
+
+  # One of: 'margin' (default) | 'jump'
+  scrollOffBehavior: jump
+
+# Config relating to git
 git:
+
+  # See https://github.com/jesseduffield/lazygit/blob/master/docs/Custom_Pagers.md
+  paging:
+
+    # e.g. 'difft --color=always'
+    externalDiffCommand: "difft"
+
+  # If true, periodically fetch from remote
   autoFetch: false
+
+  # If true, periodically refresh files and submodules
   autoRefresh: false
+
+  # If true, pass the --all arg to git fetch
   fetchAll: false
