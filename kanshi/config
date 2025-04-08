@@ -1,9 +1,9 @@
 profile home {
-  output eDP-1
-  output HDMI-A-2
+  output eDP-1 mode 1920x1200 position 0,0
+  output HDMI-A-2 position 1920,0
 }
 
 profile office {
-  output eDP-1
-  output DP-7
+  output eDP-1 mode 1920x1200 position 0,0
+  output DP-7 position 1920,0
 }
