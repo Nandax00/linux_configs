@@ -105,7 +105,7 @@ systemctl --user start swayidle.service
 ### Install dependencies
 
 ```bash
-yay -S python-pip python-jedi jedi-language-server npm
+yay -S python-pip python-jedi jedi-language-server npm lazygit difftastic
 ```
 
 ### Create directory structure for nvim

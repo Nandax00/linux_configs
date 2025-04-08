@@ -16,7 +16,7 @@ gui:
     extensions: {}
 
   # The number of lines you scroll by when scrolling the main window
-  scrollHeight: 2
+  scrollHeight: 50
 
   # If true, allow scrolling past the bottom of the content in the main window
   scrollPastBottom: true
@@ -25,7 +25,7 @@ gui:
   scrollOffMargin: 2
 
   # One of: 'margin' (default) | 'jump'
-  scrollOffBehavior: margin
+  scrollOffBehavior: jump
 
   # The number of spaces per tab; used for everything that's shown in the main view, but probably mostly relevant for diffs.
   # Note that when using a pager, the pager has its own tab width setting, so you need to pass it separately in the pager command.
@@ -261,7 +261,7 @@ git:
     useConfig: false
 
     # e.g. 'difft --color=always'
-    externalDiffCommand: ""
+    externalDiffCommand: "difft"
 
   # Config relating to committing
   commit:
@@ -295,13 +295,13 @@ git:
   skipHookPrefix: WIP
 
   # If true, periodically fetch from remote
-  autoFetch: true
+  autoFetch: false
 
   # If true, periodically refresh files and submodules
-  autoRefresh: true
+  autoRefresh: false
 
   # If true, pass the --all arg to git fetch
-  fetchAll: true
+  fetchAll: false
 
   # If true, lazygit will automatically stage files that used to have merge
   # conflicts but no longer do; and it will also ask you if you want to
