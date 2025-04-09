@@ -35,7 +35,10 @@ titlebar_padding 1
 titlebar_border_thickness 0
 set $font "JetBrainsMono Nerd Font 13"
 set $term alacritty
-set $menu bemenu-run --bottom --prompt "▶" --fn $font --tf "$bright_yellow" --hf "$bright_red"
+set $menu bemenu-run --prompt "▶" --fn $font --line-height 20 --wrap\
+  --tf "$bright_red" --hb "$bright_yellow" --hf "$grays_float"\
+  --tb "$grays_float" --fb "$grays_float" --cf "$bright_green"\
+  --nb "$grays_sel" --ab "$grays_float"
 
 font $font
 
