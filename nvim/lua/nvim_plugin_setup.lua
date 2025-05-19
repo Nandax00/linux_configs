@@ -120,7 +120,7 @@ lsp.clangd.setup {
     "clangd",
     "--offset-encoding=utf-16"
   },
-  filetypes = { 'c', 'cpp' },
+  filetypes = { 'c', 'cpp', 'h', 'hpp' },
 }
 
 vim.lsp.config.lua_ls = {
@@ -146,6 +146,22 @@ vim.lsp.config.lua_ls = {
     Lua = {}
   }
 }
+
+vim.lsp.config.pylsp = {
+  settings = {
+    pylsp = {
+      plugins = {
+        pycodestyle = {
+          ignore = {"W391"},
+          maxLineLength = 100
+        }
+      }
+    }
+  },
+  cmd = {"pylsp"},
+  filetypes = {"python"}
+}
+
 vim.lsp.enable({"cmake"})
 vim.lsp.enable({"jsonls"})
 vim.lsp.enable({"marksman"})

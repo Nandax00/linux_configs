@@ -81,8 +81,8 @@ bindsym $mod+Control+k move up
 bindsym $mod+Control+l move right
 
 # Move entire workspace to an adjacent screen
-bindsym $mod+less move workspace to output left
-bindsym $mod+greater move workspace to output right
+bindsym $mod+Control+comma move workspace to output left
+bindsym $mod+Control+period move workspace to output right
 
 # Split in horizontal orientation
 bindsym $mod+c split h
@@ -167,7 +167,7 @@ input * {
   xkb_model "pc104"
   xkb_layout "us,hu,us"
   xkb_variant ",,colemak"
-  xkb_options "grp:win_space_toggle,caps:ctrl_modifier"
+  xkb_options "grp:ctrl_space_toggle,caps:ctrl_modifier"
 }
 input type:touchpad {
   tap enabled

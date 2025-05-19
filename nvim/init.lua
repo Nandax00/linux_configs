@@ -76,6 +76,14 @@ vim.filetype.add({
         robot = "robot",
     },
 })
+
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "fugitiveblame",
+  callback = function()
+    vim.keymap.set("n", "q", ":q<CR>", { buffer = true })
+  end
+})
+
 vim.api.nvim_create_autocmd("FileType", {
   pattern = "cpp",
   callback = function()
@@ -88,6 +96,14 @@ vim.api.nvim_create_autocmd("FileType", {
     vim.keymap.set("n", "<localleader>s", ":ClangdSwitchSourceHeader<CR>", { buffer = true })
 -- Print information
     vim.keymap.set("n", "<localleader>p", ":ClangdShowSymbolInfo<CR>", { buffer = true })
+  end
+})
+
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "proj",
+  callback = function()
+    vim.opt_local.expandtab = true
+    vim.keymap.set("n", "<localleader>c", "I// <ESC>", { buffer = true })
   end
 })
 

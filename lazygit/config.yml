@@ -7,6 +7,13 @@ gui:
   # One of: 'margin' (default) | 'jump'
   scrollOffBehavior: jump
 
+  # If true, increase the height of the focused side window; creating an accordion effect.
+  expandFocusedSidePanel: true
+
+  # The weight of the expanded side panel, relative to the other panels. 2 means
+  # twice as tall as the other panels. Only relevant if `expandFocusedSidePanel` is true.
+  expandedSidePanelWeight: 5
+
 # Config relating to git
 git:
 

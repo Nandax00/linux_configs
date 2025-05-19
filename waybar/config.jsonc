@@ -10,9 +10,9 @@
         "sway/workspaces",
         "sway/mode",
         "sway/scratchpad",
+        "sway/window",
     ],
     "modules-center": [
-        "sway/window"
     ],
     "modules-right": [
         "custom/media",
@@ -181,7 +181,7 @@
     "custom/media": {
         "format": "{} ",
         "return-type": "json",
-        "max-length": 40,
+        "max-length": 60,
         "escape": true,
         "exec": "python $HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null", // Script in resources folder
         // "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
