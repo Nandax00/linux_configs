@@ -18,12 +18,17 @@ alias cal='cal -m'
 alias vim='nvim'
 export LESS='-R --use-color -Dd+r$Du+b'
 
-alias p='cd /mnt/storage/projects'
-alias t='cd /mnt/storage/projects/TemaProject'
-alias r='cd ~/repos/robot'
 alias c='cd ~/repos/cinemo'
-alias cs='cd ~/repos/cinemo/src'
-alias ca='cd ~/repos/cinemo-audio'
+alias r='cd ~/repos/cinemo/release/ano'
+alias m='cd ~/repos/ap-build/bin/Debug'
+
+docker_run() {
+  eval $(ssh-agent)
+  ssh-add
+
+  docker pull artifactory.internal.cinemo.com/docker/$1
+  docker run --rm -it -u $(id -u):$(id -g) -v $(pwd):$(pwd) -w $(pwd) -v $(art locate)/..:/var/cinemo/cinemo/ -v $(readlink -f $SSH_AUTH_SOCK):/ssh-agent -e SSH_AUTH_SOCK=/ssh-agent --net=host artifactory.internal.cinemo.com/docker/$1
+}
 
 # Link file from directory, e.g. link compile_commands.json from different
 # build dirs.
