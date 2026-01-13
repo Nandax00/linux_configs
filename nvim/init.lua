@@ -9,6 +9,9 @@ vim.g.netrw_browse_split = 0
 vim.g.terminal_scrollback_buffer_size = 100000
 vim.g.editorconfig = false
 
+vim.g.copilot_no_tab_map = true
+vim.g.copilot_enabled = false
+
 -- Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
@@ -166,6 +169,10 @@ vim.keymap.set("i", "jk", "<ESC>", { remap = true })
 vim.keymap.set("i", "<C-K>", "<C-X><C-O>", { remap = true})
 --  Quickly convert word under the cursor to uppercase
 vim.keymap.set("i", "<C-U>", "<ESC>viwUea", { remap = true})
+vim.keymap.set('i', '<C-L>', 'copilot#Accept("\\<CR>")', {
+  expr = true,
+  replace_keycodes = false
+})
 
 -- Normal mode mappings
 --  Diagnostic Disable

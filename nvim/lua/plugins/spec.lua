@@ -37,4 +37,7 @@ return {
   {
     url = "ssh://git@git.internal.cinemo.com:7999/~nonodi/tree-sitter-proj.git"
   },
+  {
+    "github/copilot.vim"
+  },
 }
