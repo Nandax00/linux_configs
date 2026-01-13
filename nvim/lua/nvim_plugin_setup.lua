@@ -114,14 +114,9 @@ require("toggleterm").setup {}
 
 -- LSPs
 
-local lsp = require("lspconfig")
-lsp.clangd.setup {
-  cmd = {
-    "clangd",
-    "--offset-encoding=utf-16"
-  },
+vim.lsp.config("clangd", {
   filetypes = { 'c', 'cpp', 'h', 'hpp' },
-}
+})
 
 vim.lsp.config.lua_ls = {
   on_init = function(client)
@@ -162,13 +157,14 @@ vim.lsp.config.pylsp = {
   filetypes = {"python"}
 }
 
+vim.lsp.enable({"bashls"})
 vim.lsp.enable({"cmake"})
+vim.lsp.enable({"clangd"})
 vim.lsp.enable({"jsonls"})
-vim.lsp.enable({"marksman"})
 vim.lsp.enable({"lua_ls"})
+vim.lsp.enable({"marksman"})
 vim.lsp.enable({"pylsp"})
 vim.lsp.enable({"rust_analyzer"})
 vim.lsp.enable({"taplo"})
 vim.lsp.enable({"ts_ls"})
 vim.lsp.enable({"vimls"})
-vim.lsp.enable({"bashls"})

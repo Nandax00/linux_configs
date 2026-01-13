@@ -93,9 +93,9 @@ vim.api.nvim_create_autocmd("FileType", {
     vim.opt_local.expandtab = false
     vim.keymap.set("n", "<localleader>c", "I// <ESC>", { buffer = true })
 -- Switch
-    vim.keymap.set("n", "<localleader>s", ":ClangdSwitchSourceHeader<CR>", { buffer = true })
+    vim.keymap.set("n", "<localleader>s", ":LspClangdSwitchSourceHeader<CR>", { buffer = true })
 -- Print information
-    vim.keymap.set("n", "<localleader>p", ":ClangdShowSymbolInfo<CR>", { buffer = true })
+    vim.keymap.set("n", "<localleader>p", ":LspClangdShowSymbolInfo<CR>", { buffer = true })
   end
 })
 
@@ -198,6 +198,8 @@ vim.keymap.set("n", "<leader>tr", ":%s/\\s\\+$//e<CR>")
 vim.keymap.set("n", "<leader>ts", ":split<CR><C-W>T")
 --   Edit Lua config
 vim.keymap.set("n", "<leader>el", ":vsplit ~/.config/nvim/init.lua<CR>")
+--   Source Lua config
+vim.keymap.set("n", "<leader>sl", ":source ~/.config/nvim/init.lua<CR>")
 --   Edit Plugin settings
 vim.keymap.set("n", "<leader>ep", ":vsplit ~/.config/nvim/lua/nvim_plugin_setup.lua<CR>")
 
