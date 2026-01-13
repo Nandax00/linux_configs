@@ -2,6 +2,8 @@ autoload -Uz compinit promptinit
 compinit
 promptinit
 
+export PATH="/usr/lib/colorgcc/bin:$PATH"
+export CCACHE_PATH="/usr/bin"
 export CINEMO_TOOLCHAINS=/opt/cinemo/toolchains
 HISTFILE=~/.zsh_history
 HISTSIZE=10000000
@@ -20,7 +22,7 @@ export LESS='-R --use-color -Dd+r$Du+b'
 
 alias c='cd ~/repos/cinemo'
 alias r='cd ~/repos/cinemo/release/ano'
-alias m='cd ~/repos/ap-build/bin/Debug'
+alias m='cd ~/repos/ap-build/bin/'
 
 docker_run() {
   eval $(ssh-agent)
