@@ -15,14 +15,13 @@ alias ls='ls --color=always'
 alias ip='ip -color=always'
 alias grep='grep --color=always'
 alias ll='ls -lah'
-alias gs='git status'
 alias cal='cal -m'
 alias vim='nvim'
 export LESS='-R --use-color -Dd+r$Du+b'
 
 alias c='cd ~/repos/cinemo'
 alias r='cd ~/repos/cinemo/release/ano'
-alias m='cd ~/repos/ap-build/bin/'
+alias m='cd ~/repos/bcin/'
 
 docker_run() {
   eval $(ssh-agent)
@@ -35,7 +34,7 @@ docker_run() {
 # Link file from directory, e.g. link compile_commands.json from different
 # build dirs.
 link() {
-    rm ./$1:t
+    rm -f ./$1:t
     local path=`readlink -f $1`
     /usr/bin/ln -s $path ./$1:t
 }

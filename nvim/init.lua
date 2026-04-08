@@ -88,7 +88,7 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 vim.api.nvim_create_autocmd("FileType", {
-  pattern = "cpp",
+  pattern = {"cpp", "c"},
   callback = function()
     vim.opt_local.colorcolumn = "120"
     vim.opt_local.shiftwidth = 4
@@ -99,6 +99,14 @@ vim.api.nvim_create_autocmd("FileType", {
     vim.keymap.set("n", "<localleader>s", ":LspClangdSwitchSourceHeader<CR>", { buffer = true })
 -- Print information
     vim.keymap.set("n", "<localleader>p", ":LspClangdShowSymbolInfo<CR>", { buffer = true })
+  end
+})
+
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "json",
+  callback = function()
+    vim.opt_local.shiftwidth = 4
+    vim.opt_local.tabstop = 4
   end
 })
 
