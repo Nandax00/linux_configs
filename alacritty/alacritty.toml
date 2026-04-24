@@ -1,5 +1,5 @@
 general.import = [
-  "/home/nandax/.local/share/nvim/lazy/melange-nvim/term/alacritty/melange_dark.toml"
+  "/home/nandax/.local/share/nvim/site/pack/core/opt/melange-nvim/term/alacritty/melange_dark.toml"
 ]
 
 [colors]

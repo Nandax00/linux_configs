@@ -11,6 +11,7 @@ vim.pack.add({
   { src = "https://github.com/nvim-telescope/telescope-fzf-native.nvim" },
   { src = "https://github.com/nvim-telescope/telescope-live-grep-args.nvim" },
   { src = "https://github.com/akinsho/toggleterm.nvim" },
+  { src = "https://github.com/github/copilot.vim" }
 })
 
 local branch_name_max_length = 30

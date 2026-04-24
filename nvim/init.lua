@@ -8,6 +8,8 @@ vim.g.maplocalleader = "'"
 vim.g.netrw_browse_split = 0
 vim.g.terminal_scrollback_buffer_size = 100000
 vim.g.editorconfig = false
+vim.g.copilot_no_tab_map = true
+vim.g.copilot_enabled = false
 
 require("nvim_plugin_setup")
 
@@ -74,6 +76,8 @@ vim.api.nvim_create_autocmd("FileType", {
     vim.opt_local.tabstop = 4
     vim.opt_local.expandtab = false
     vim.keymap.set("n", "<localleader>c", "I// <ESC>", { buffer = true })
+-- comment in blockwise visual mode
+    vim.keymap.set("v", "<localleader>c", "0I// <ESC>", { buffer = true })
 -- Switch
     vim.keymap.set("n", "<localleader>s", ":LspClangdSwitchSourceHeader<CR>", { buffer = true })
 -- Print information
