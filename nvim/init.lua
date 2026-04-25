@@ -8,24 +8,8 @@ vim.g.maplocalleader = "'"
 vim.g.netrw_browse_split = 0
 vim.g.terminal_scrollback_buffer_size = 100000
 vim.g.editorconfig = false
-
--- Bootstrap lazy.nvim
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not (vim.uv or vim.loop).fs_stat(lazypath) then
-  local lazyrepo = "https://github.com/folke/lazy.nvim.git"
-  vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
-  if vim.v.shell_error ~= 0 then
-    os.exit(1)
-  end
-end
-vim.opt.rtp:prepend(lazypath)
-
-require("lazy").setup {
-  spec = {
-    { import = "plugins" },
-  },
-  install = { colorscheme = { "melange" } },
-}
+vim.g.copilot_no_tab_map = true
+vim.g.copilot_enabled = false
 
 require("nvim_plugin_setup")
 
@@ -85,17 +69,27 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 vim.api.nvim_create_autocmd("FileType", {
-  pattern = "cpp",
+  pattern = {"cpp", "c"},
   callback = function()
     vim.opt_local.colorcolumn = "120"
     vim.opt_local.shiftwidth = 4
     vim.opt_local.tabstop = 4
     vim.opt_local.expandtab = false
     vim.keymap.set("n", "<localleader>c", "I// <ESC>", { buffer = true })
+-- comment in blockwise visual mode
+    vim.keymap.set("v", "<localleader>c", "0I// <ESC>", { buffer = true })
 -- Switch
-    vim.keymap.set("n", "<localleader>s", ":ClangdSwitchSourceHeader<CR>", { buffer = true })
+    vim.keymap.set("n", "<localleader>s", ":LspClangdSwitchSourceHeader<CR>", { buffer = true })
 -- Print information
-    vim.keymap.set("n", "<localleader>p", ":ClangdShowSymbolInfo<CR>", { buffer = true })
+    vim.keymap.set("n", "<localleader>p", ":LspClangdShowSymbolInfo<CR>", { buffer = true })
+  end
+})
+
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "json",
+  callback = function()
+    vim.opt_local.shiftwidth = 4
+    vim.opt_local.tabstop = 4
   end
 })
 
@@ -166,6 +160,10 @@ vim.keymap.set("i", "jk", "<ESC>", { remap = true })
 vim.keymap.set("i", "<C-K>", "<C-X><C-O>", { remap = true})
 --  Quickly convert word under the cursor to uppercase
 vim.keymap.set("i", "<C-U>", "<ESC>viwUea", { remap = true})
+vim.keymap.set('i', '<C-L>', 'copilot#Accept("\\<CR>")', {
+  expr = true,
+  replace_keycodes = false
+})
 
 -- Normal mode mappings
 --  Diagnostic Disable
@@ -198,6 +196,8 @@ vim.keymap.set("n", "<leader>tr", ":%s/\\s\\+$//e<CR>")
 vim.keymap.set("n", "<leader>ts", ":split<CR><C-W>T")
 --   Edit Lua config
 vim.keymap.set("n", "<leader>el", ":vsplit ~/.config/nvim/init.lua<CR>")
+--   Source Lua config
+vim.keymap.set("n", "<leader>sl", ":source ~/.config/nvim/init.lua<CR>")
 --   Edit Plugin settings
 vim.keymap.set("n", "<leader>ep", ":vsplit ~/.config/nvim/lua/nvim_plugin_setup.lua<CR>")
 

@@ -2,6 +2,8 @@ autoload -Uz compinit promptinit
 compinit
 promptinit
 
+export PATH="/usr/lib/colorgcc/bin:$PATH"
+export CCACHE_PATH="/usr/bin"
 export CINEMO_TOOLCHAINS=/opt/cinemo/toolchains
 HISTFILE=~/.zsh_history
 HISTSIZE=10000000
@@ -13,22 +15,26 @@ alias ls='ls --color=always'
 alias ip='ip -color=always'
 alias grep='grep --color=always'
 alias ll='ls -lah'
-alias gs='git status'
 alias cal='cal -m'
 alias vim='nvim'
 export LESS='-R --use-color -Dd+r$Du+b'
 
-alias p='cd /mnt/storage/projects'
-alias t='cd /mnt/storage/projects/TemaProject'
-alias r='cd ~/repos/robot'
 alias c='cd ~/repos/cinemo'
-alias cs='cd ~/repos/cinemo/src'
-alias ca='cd ~/repos/cinemo-audio'
+alias r='cd ~/repos/cinemo/release/ano'
+alias m='cd ~/repos/bcin/'
+
+docker_run() {
+  eval $(ssh-agent)
+  ssh-add
+
+  docker pull artifactory.internal.cinemo.com/docker/$1
+  docker run --rm -it -u $(id -u):$(id -g) -v $(pwd):$(pwd) -w $(pwd) -v $(art locate)/..:/var/cinemo/cinemo/ -v $(readlink -f $SSH_AUTH_SOCK):/ssh-agent -e SSH_AUTH_SOCK=/ssh-agent --net=host artifactory.internal.cinemo.com/docker/$1
+}
 
 # Link file from directory, e.g. link compile_commands.json from different
 # build dirs.
 link() {
-    rm ./$1:t
+    rm -f ./$1:t
     local path=`readlink -f $1`
     /usr/bin/ln -s $path ./$1:t
 }
