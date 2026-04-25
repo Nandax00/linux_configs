@@ -179,15 +179,14 @@
         },
     },
     "custom/media": {
-        "format": "{} ",
+        "format": "{}",
         "return-type": "json",
         "max-length": 60,
         "escape": true,
-        "exec": "python $HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null", // Script in resources folder
-        // "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
-        "on-click": "playerctl play-pause",
-        "on-scroll-up": "playerctl next",
-        "on-scroll-down": "playerctl previous"
+        "exec": "python $HOME/.config/waybar/mediaplayer.py --player psysonic 2> /dev/null",
+        "on-click": "playerctl --player psysonic play-pause",
+        "on-scroll-up": "playerctl --player psysonic next",
+        "on-scroll-down": "playerctl --player psysonic previous"
     },
     "custom/power": {
         "format" : "⏻ ",
