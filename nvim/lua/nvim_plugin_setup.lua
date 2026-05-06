@@ -2,7 +2,6 @@ vim.pack.add({
   { src = "https://github.com/tpope/vim-fugitive", },
   { src = "https://github.com/nvim-lualine/lualine.nvim" },
   { src = "https://github.com/nvim-tree/nvim-web-devicons" },
-  { src = "https://github.com/williamboman/mason.nvim" },
   { src = "https://github.com/savq/melange-nvim" },
   { src = "https://github.com/neovim/nvim-lspconfig" },
   { src = "https://github.com/aklt/plantuml-syntax" },
@@ -62,8 +61,6 @@ require("lualine").setup {
     },
   },
 }
-
-require("mason").setup {}
 
 require("telescope").setup {
   defaults = {
@@ -132,14 +129,14 @@ vim.lsp.config.pylsp = {
     pylsp = {
       plugins = {
         pycodestyle = {
-          ignore = {"W391"},
+          ignore = { "W391" },
           maxLineLength = 100
         }
       }
     }
   },
-  cmd = {"pylsp"},
-  filetypes = {"python"}
+  cmd = { "pylsp" },
+  filetypes = { "python" }
 }
 
 vim.lsp.enable("bashls")
