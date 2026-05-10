@@ -121,9 +121,3 @@ ln -s /home/nandax/.config/other/.gitconfig /home/nandax/.gitconfig
 ln -s /home/nandax/.config/other/.zshrc /home/nandax/.zshrc
 ln -s /home/nandax/.config/other/.zprofile /home/nandax/.zprofile
 ```
-
-### Complete the setup of LSPs
-
-```bash
-:MasonInstall autopep8 clangd clang-format json-lsp lua-language-server marksman python-lsp-server rust-analyzer vim-language-server
-```
