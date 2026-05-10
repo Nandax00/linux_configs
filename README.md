@@ -121,3 +121,12 @@ ln -s /home/nandax/.config/other/.gitconfig /home/nandax/.gitconfig
 ln -s /home/nandax/.config/other/.zshrc /home/nandax/.zshrc
 ln -s /home/nandax/.config/other/.zprofile /home/nandax/.zprofile
 ```
+
+## ATOWER-specific
+
+Create a crontab (`crontab -e`) with the following content to fetch new albums
+from bandcamp every 5 minutes:
+```bash
+*/5 * * * * /home/nandax/.config/other/fetching.zsh
+```
+
