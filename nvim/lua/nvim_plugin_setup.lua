@@ -1,3 +1,18 @@
+vim.pack.add({
+  { src = "https://github.com/tpope/vim-fugitive", },
+  { src = "https://github.com/nvim-lualine/lualine.nvim" },
+  { src = "https://github.com/nvim-tree/nvim-web-devicons" },
+  { src = "https://github.com/savq/melange-nvim" },
+  { src = "https://github.com/neovim/nvim-lspconfig" },
+  { src = "https://github.com/aklt/plantuml-syntax" },
+  { src = "https://github.com/nvim-telescope/telescope.nvim", },
+  { src = "https://github.com/nvim-lua/plenary.nvim" },
+  { src = "https://github.com/nvim-telescope/telescope-fzf-native.nvim" },
+  { src = "https://github.com/nvim-telescope/telescope-live-grep-args.nvim" },
+  { src = "https://github.com/akinsho/toggleterm.nvim" },
+  { src = "https://github.com/github/copilot.vim" }
+})
+
 local branch_name_max_length = 30
 local function truncate_git_branch(str)
   if (str:len() < branch_name_max_length) then
@@ -47,39 +62,6 @@ require("lualine").setup {
   },
 }
 
-require("mason").setup {}
-
-require("nvim-treesitter.configs").setup {
-  ensure_installed = { "c", "cpp", "lua", "vim", "vimdoc", "query" },
-  sync_install = false,
-  auto_install = true,
-  highlight = {
-    enable = true,
-    disable = function(lang, buf)
-      local disabled_fts = { "gitrebase" }
-      if disabled_fts[lang] then
-        return true
-      end
-      local max_filesize = 100 * 1024 -- 100 KB
-      local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
-      if ok and stats and stats.size > max_filesize then
-        return true
-      end
-    end,
-    additional_vim_regex_highlighting = false,
-  },
-}
-
-local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
-parser_config.proj = {
-    install_info = {
-        url = "~/.local/share/nvim/lazy/tree-sitter-proj",
-        files = {"src/parser.c"},
-        generate_requires_npm = false,
-        requires_generate_from_grammar = false,
-    },
-}
-
 require("telescope").setup {
   defaults = {
     file_ignore_patterns = {
@@ -114,12 +96,7 @@ require("toggleterm").setup {}
 
 -- LSPs
 
-local lsp = require("lspconfig")
-lsp.clangd.setup {
-  cmd = {
-    "clangd",
-    "--offset-encoding=utf-16"
-  },
+vim.lsp.config.clangd = {
   filetypes = { 'c', 'cpp', 'h', 'hpp' },
 }
 
@@ -152,23 +129,24 @@ vim.lsp.config.pylsp = {
     pylsp = {
       plugins = {
         pycodestyle = {
-          ignore = {"W391"},
+          ignore = { "W391" },
           maxLineLength = 100
         }
       }
     }
   },
-  cmd = {"pylsp"},
-  filetypes = {"python"}
+  cmd = { "pylsp" },
+  filetypes = { "python" }
 }
 
-vim.lsp.enable({"cmake"})
-vim.lsp.enable({"jsonls"})
-vim.lsp.enable({"marksman"})
-vim.lsp.enable({"lua_ls"})
-vim.lsp.enable({"pylsp"})
-vim.lsp.enable({"rust_analyzer"})
-vim.lsp.enable({"taplo"})
-vim.lsp.enable({"ts_ls"})
-vim.lsp.enable({"vimls"})
-vim.lsp.enable({"bashls"})
+vim.lsp.enable("bashls")
+vim.lsp.enable("clangd")
+vim.lsp.enable("cmake")
+vim.lsp.enable("jsonls")
+vim.lsp.enable("lua_ls")
+vim.lsp.enable("marksman")
+vim.lsp.enable("pylsp")
+vim.lsp.enable("rust_analyzer")
+vim.lsp.enable("taplo")
+vim.lsp.enable("ts_ls")
+vim.lsp.enable("vimls")

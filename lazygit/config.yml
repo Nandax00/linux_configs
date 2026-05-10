@@ -1,33 +1,28 @@
 # Config relating to the Lazygit UI
 gui:
-
   # The number of lines you scroll by when scrolling the main window
   scrollHeight: 50
-
   # One of: 'margin' (default) | 'jump'
   scrollOffBehavior: jump
-
   # If true, increase the height of the focused side window; creating an accordion effect.
   expandFocusedSidePanel: true
-
   # The weight of the expanded side panel, relative to the other panels. 2 means
   # twice as tall as the other panels. Only relevant if `expandFocusedSidePanel` is true.
   expandedSidePanelWeight: 5
-
 # Config relating to git
 git:
-
   # See https://github.com/jesseduffield/lazygit/blob/master/docs/Custom_Pagers.md
-  paging:
-
-    # e.g. 'difft --color=always'
-    externalDiffCommand: "difft"
-
+  pagers:
+    - # e.g. 'difft --color=always'
+      externalDiffCommand: "difft"
   # If true, periodically fetch from remote
   autoFetch: false
-
   # If true, periodically refresh files and submodules
   autoRefresh: false
-
   # If true, pass the --all arg to git fetch
   fetchAll: false
+  # If true, lazygit will automatically stage files that used to have merge
+  # conflicts but no longer do; and it will also ask you if you want to continue a
+  # merge or rebase if you've resolved all conflicts. If false, it won't do either
+  # of these things.
+  autoStageResolvedConflicts: false

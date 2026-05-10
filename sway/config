@@ -31,9 +31,10 @@ set $dark_magenta #422741
 set $mod Mod4
 
 default_border pixel 3
-titlebar_padding 1
+titlebar_padding 5 3
 titlebar_border_thickness 0
-set $font "JetBrainsMono Nerd Font 13"
+smart_borders on
+set $font "JetBrainsMono Nerd Font 10"
 set $term alacritty
 set $menu bemenu-run --prompt "▶" --fn $font --line-height 20 --wrap\
   --tf "$bright_red" --hb "$bright_yellow" --hf "$grays_float"\
@@ -43,9 +44,9 @@ set $menu bemenu-run --prompt "▶" --fn $font --line-height 20 --wrap\
 font $font
 
 # class                     ?           border          text            indicator
-client.focused              $grays_bg   $grays_com      $grays_float    $bright_green
+client.focused              $grays_bg   $bright_green   $grays_float    $bright_green
 client.focused_inactive     $grays_bg   $grays_sel      $grays_float    $dark_green
-client.unfocused            $grays_bg   $grays_sel      $grays_float    $dark_green
+client.unfocused            $grays_bg   $grays_sel      $grays_ui       $dark_green
 client.urgent               $grays_bg   $bright_red     $grays_float    $bright_red
 
 # Use pactl to adjust volume in PulseAudio.
