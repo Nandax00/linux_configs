@@ -590,7 +590,7 @@ nnoremap <a-o> :sync %c<cr>
 
 " Customize view columns a bit (enable ellipsis for truncated file names)
 " set viewcolumns=-{name}..,6{}.
-set viewcolumns=*{name}..,16{mtime},7{}.
+set viewcolumns=-{name}..,16{mtime},7{}.
 
 " Show vertical border
 " set fillchars=vborder:│
