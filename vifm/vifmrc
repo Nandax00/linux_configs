@@ -25,7 +25,7 @@
 " examples and can be removed without hesitation.  Make configuration specific
 " to your needs using this file as a starting point.
 
-source /home/<user>/.config/vifm/favicons.vifm
+source /home/nandax/.config/vifm/favicons.vifm
 
 " ------------------------------------------------------------------------------
 " Main settings
