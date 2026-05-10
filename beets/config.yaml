@@ -1,0 +1,8 @@
+directory: /srv/music
+library: /home/nandax/.config/beets/library.db
+import:
+  copy: no
+plugins: musicbrainz lyrics fetchart
+lyrics:
+  sources: [lrclib]
+  synced: yes
