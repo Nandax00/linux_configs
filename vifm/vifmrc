@@ -278,14 +278,14 @@ filextype {*.avi,*.mp4,*.wmv,*.dat,*.3gp,*.ogv,*.mkv,*.mpg,*.mpeg,*.vob,
           \*.fl[icv],*.m2v,*.mov,*.webm,*.mts,*.m4v,*.r[am],*.qt,*.divx,
           \*.as[fx],*.unknown_video},
          \<video/*>
+        \ {Play using mpv}
+        \ mpv %f &,
         \ {View using ffplay}
         \ ffplay -fs -hide_banner -autoexit %f,
         \ {View using Dragon}
         \ dragon %f:p,
         \ {View using mplayer}
         \ mplayer %f,
-        \ {Play using mpv}
-        \ mpv %f,
 fileviewer {*.avi,*.mp4,*.wmv,*.dat,*.3gp,*.ogv,*.mkv,*.mpg,*.mpeg,*.vob,
            \*.fl[icv],*.m2v,*.mov,*.webm,*.mts,*.m4v,*.r[am],*.qt,*.divx,
            \*.as[fx],*.unknown_video},
@@ -489,6 +489,8 @@ filextype */
 " Sample keyboard mappings
 " ------------------------------------------------------------------------------
 
+nnoremap L :file<cr>
+
 " Start shell in current directory
 nnoremap s :shell<cr>
 
@@ -497,6 +499,7 @@ nnoremap S :sort<cr>
 
 " Toggle visibility of preview window
 nnoremap w :view<cr>
+nnoremap W :!duration=$(ffprobe -v error -show_entries format=duration -of csv=p=0 %f 2>/dev/null); mid=$(echo "$duration / 2" | bc); ffmpeg -ss $mid -i %f -frames:v 1 -q:v 2 /tmp/vifm_preview.jpg -y 2>/dev/null && feh /tmp/vifm_preview.jpg &<cr>
 vnoremap w :view<cr>gv
 
 if $DISPLAY != '' && executable('gvim')
