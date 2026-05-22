@@ -1,16 +1,16 @@
 vim.pack.add({
-  { src = "https://github.com/tpope/vim-fugitive", },
-  { src = "https://github.com/nvim-lualine/lualine.nvim" },
-  { src = "https://github.com/nvim-tree/nvim-web-devicons" },
-  { src = "https://github.com/savq/melange-nvim" },
-  { src = "https://github.com/neovim/nvim-lspconfig" },
+  { src = "https://github.com/akinsho/toggleterm.nvim" },
   { src = "https://github.com/aklt/plantuml-syntax" },
-  { src = "https://github.com/nvim-telescope/telescope.nvim", },
+  { src = "https://github.com/github/copilot.vim" },
+  { src = "https://github.com/neovim/nvim-lspconfig" },
   { src = "https://github.com/nvim-lua/plenary.nvim" },
+  { src = "https://github.com/nvim-lualine/lualine.nvim" },
   { src = "https://github.com/nvim-telescope/telescope-fzf-native.nvim" },
   { src = "https://github.com/nvim-telescope/telescope-live-grep-args.nvim" },
-  { src = "https://github.com/akinsho/toggleterm.nvim" },
-  { src = "https://github.com/github/copilot.vim" }
+  { src = "https://github.com/nvim-telescope/telescope.nvim" },
+  { src = "https://github.com/nvim-tree/nvim-web-devicons" },
+  { src = "https://github.com/savq/melange-nvim" },
+  { src = "https://github.com/tpope/vim-fugitive" }
 })
 
 local branch_name_max_length = 30
@@ -128,9 +128,14 @@ vim.lsp.config.pylsp = {
   settings = {
     pylsp = {
       plugins = {
+        black = {
+          enable = true
+        },
         pycodestyle = {
-          ignore = { "W391" },
-          maxLineLength = 100
+          enabled = false
+        },
+        mccabe = {
+          enabled = false
         }
       }
     }
@@ -139,9 +144,7 @@ vim.lsp.config.pylsp = {
   filetypes = { "python" }
 }
 
-vim.lsp.enable("bashls")
 vim.lsp.enable("clangd")
-vim.lsp.enable("cmake")
 vim.lsp.enable("jsonls")
 vim.lsp.enable("lua_ls")
 vim.lsp.enable("marksman")
