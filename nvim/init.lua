@@ -16,7 +16,7 @@ require("nvim_plugin_setup")
 vim.opt.autoindent = true
 vim.opt.backup = false
 vim.opt.binary = true
-vim.opt.colorcolumn = "80"
+vim.opt.colorcolumn = "120"
 vim.opt.cursorline = true
 vim.opt.diffopt="followwrap"
 vim.opt.display = "uhex"
@@ -71,7 +71,6 @@ vim.api.nvim_create_autocmd("FileType", {
 vim.api.nvim_create_autocmd("FileType", {
   pattern = {"cpp", "c"},
   callback = function()
-    vim.opt_local.colorcolumn = "120"
     vim.opt_local.shiftwidth = 4
     vim.opt_local.tabstop = 4
     vim.opt_local.expandtab = false
@@ -98,13 +97,6 @@ vim.api.nvim_create_autocmd("FileType", {
   callback = function()
     vim.opt_local.expandtab = true
     vim.keymap.set("n", "<localleader>c", "I// <ESC>", { buffer = true })
-  end
-})
-
-vim.api.nvim_create_autocmd("FileType", {
-  pattern = "lua",
-  callback = function()
-    vim.opt_local.colorcolumn = "120"
   end
 })
 
