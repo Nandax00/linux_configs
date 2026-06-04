@@ -1,7 +1,6 @@
 vim.pack.add({
   { src = "https://github.com/akinsho/toggleterm.nvim" },
   { src = "https://github.com/aklt/plantuml-syntax" },
-  { src = "https://github.com/github/copilot.vim" },
   { src = "https://github.com/neovim/nvim-lspconfig" },
   { src = "https://github.com/nvim-lua/plenary.nvim" },
   { src = "https://github.com/nvim-lualine/lualine.nvim" },
