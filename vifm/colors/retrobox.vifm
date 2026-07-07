@@ -47,7 +47,7 @@ hi TabLineSel    cterm=bold          ctermfg=230      ctermbg=239
 " build system files
 highlight {Makefile,Makefile.am,Makefile.in,Makefile.win,*.mak,*.mk,*.m4,*.ac,
           \configure,CMakeLists.txt,*.cmake,*.pro,*.pri,*.sln,meson.build,
-          \meson_options.txt}
+          \meson_options.txt,*.proj}
         \ cterm=none ctermfg=142 ctermbg=default
 " archives
 highlight {*.7z,*.ace,*.arj,*.bz2,*.cpio,*.deb,*.dz,*.gz,*.jar,*.lzh,*.lzma,

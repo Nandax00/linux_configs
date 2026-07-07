@@ -17,6 +17,8 @@ alias ll='ls -lah'
 alias cal='cal -m'
 alias vim='nvim'
 export LESS='-R --use-color -Dd+r$Du+b'
+export EDITOR='nvim'
+export VISUAL='nvim'
 
 # Link file from directory, e.g. link compile_commands.json from different
 # build dirs.

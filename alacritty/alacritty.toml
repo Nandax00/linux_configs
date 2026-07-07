@@ -24,7 +24,6 @@ style = "Italic"
 family = "JetBrainsMono NF"
 style = "Bold Italic"
 
-
 [hints]
 alphabet = "jfkdls;ahgurieowpq"
 
@@ -44,7 +43,8 @@ mods = "None"
 
 [keyboard]
 bindings = [
-{ key = "J", mods = "Control", action = "ToggleViMode"},
+{key = "J", mods = "Control", action = "ToggleViMode"},
+{key = "Return", mods = "Shift", mode="~Search", chars = "\u001B\r"},
 ]
 
 [scrolling]
