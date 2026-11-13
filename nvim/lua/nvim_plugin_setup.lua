@@ -1,4 +1,5 @@
 vim.pack.add({
+  { src = "https://github.com/MeanderingProgrammer/render-markdown.nvim" },
   { src = "https://github.com/akinsho/toggleterm.nvim" },
   { src = "https://github.com/aklt/plantuml-syntax" },
   { src = "https://github.com/neovim/nvim-lspconfig" },
@@ -8,6 +9,7 @@ vim.pack.add({
   { src = "https://github.com/nvim-telescope/telescope-live-grep-args.nvim" },
   { src = "https://github.com/nvim-telescope/telescope.nvim" },
   { src = "https://github.com/nvim-tree/nvim-web-devicons" },
+  { src = "https://github.com/nvim-treesitter/nvim-treesitter" },
   { src = "https://github.com/savq/melange-nvim" },
   { src = "https://github.com/tpope/vim-fugitive" }
 })
@@ -61,11 +63,13 @@ require("lualine").setup {
   },
 }
 
+require("render-markdown").setup {}
+
 require("telescope").setup {
   defaults = {
     file_ignore_patterns = {
-      ".mak",
-      ".svg",
+      "%.mak$",
+      "%.svg$",
       "Makefile",
     },
     layout_strategy = "vertical",

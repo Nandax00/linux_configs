@@ -16,7 +16,7 @@ vim.opt.backup = false
 vim.opt.binary = true
 vim.opt.colorcolumn = "120"
 vim.opt.cursorline = true
-vim.opt.diffopt="followwrap"
+vim.opt.diffopt:append("followwrap")
 vim.opt.display = "uhex"
 vim.opt.expandtab = true
 vim.opt.foldmethod = "indent"
@@ -57,6 +57,17 @@ vim.filetype.add({
         proj = "proj",
         robot = "robot",
     },
+})
+
+-- `nvim -d` forces 'nowrap' on its first window even with diffopt=followwrap
+vim.api.nvim_create_autocmd("VimEnter", {
+  callback = function()
+    for _, win in ipairs(vim.api.nvim_tabpage_list_wins(0)) do
+      if vim.wo[win].diff then
+        vim.wo[win].wrap = vim.go.wrap
+      end
+    end
+  end,
 })
 
 vim.api.nvim_create_autocmd("FileType", {
